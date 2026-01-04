@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Mentions légales, politique de confidentialité et CGU de Wallnkap - Application de gestion de tontine"
+    />
+    <title>Mentions Légales & RGPD - Wallnkap</title>
+    <link rel="icon" type="image/x-icon" href="./assets/logo-dChwq4X1.png" />
+    <script type="module" crossorigin src="./assets/index-Czrx6c0x.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/gsap-DDlvirwQ.js">
+    <link rel="stylesheet" crossorigin href="./assets/index-DNRKbT3E.css">
+  </head>
+  <body>
+    <!-- Skip to main content link -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+    <!-- Background Image -->
+    <div class="background-image" aria-hidden="true"></div>
+
+    <!-- Parallax Background Layers -->
+    <div class="parallax-container" aria-hidden="true">
+      <div class="parallax-layer layer-1"></div>
+      <div class="parallax-layer layer-2"></div>
+      <div class="parallax-layer layer-3"></div>
+      <div class="parallax-orb orb-1"></div>
+      <div class="parallax-orb orb-2"></div>
+    </div>
+
+    <!-- Barre de progression de lecture -->
+    <div
+      class="progress-bar"
+      id="progressBar"
+      role="progressbar"
+      aria-label="Progression de lecture"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-valuenow="0"
+    ></div>
+
+    <!-- Navigation -->
+    <nav
+      class="navbar"
+      id="navbar"
+      role="navigation"
+      aria-label="Navigation principale"
+    >
+      <div class="nav-container">
+        <div class="nav-logo">
+          <a href="#hero" aria-label="Retour à l'accueil">
+            <img
+              src="./assets/logo-dChwq4X1.png"
+              alt="Wallnkap - Logo"
+              class="logo"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+            />
+            <span class="logo-text" style="display: none" aria-hidden="true"
+              >WALLNKAP</span
+            >
+          </a>
+        </div>
+        <ul class="nav-menu" id="navMenu" role="menubar">
+          <li role="none">
+            <a href="#hero" class="nav-link" role="menuitem">Accueil</a>
+          </li>
+          <li role="none">
+            <a href="#confidentialite" class="nav-link" role="menuitem"
+              >Confidentialité</a
+            >
+          </li>
+          <li role="none">
+            <a href="#cgu" class="nav-link" role="menuitem">CGU/CGV</a>
+          </li>
+          <li role="none">
+            <a href="#faq" class="nav-link" role="menuitem">FAQ</a>
+          </li>
+          <li role="none">
+            <a href="#mentions" class="nav-link" role="menuitem">Mentions</a>
+          </li>
+        </ul>
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Ouvrir le menu de navigation"
+          aria-expanded="false"
+          aria-controls="navMenu"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Bannière -->
+    <div
+      class="banner"
+      role="img"
+      aria-label="Bannière promotionnelle Wallnkap"
+    >
+      <div class="banner-overlay" aria-hidden="true"></div>
+      <img
+        src="./assets/banniere-CnHLcIcB.png"
+        alt=""
+        class="banner-image"
+        aria-hidden="true"
+      />
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content">
+      <!-- Hero Section -->
+      <section id="hero" class="hero" aria-labelledby="hero-title">
+        <!-- Video Overlay - Floating Media Card -->
+        <div class="mk-video-float" id="mkVideoFloat">
+          <div class="mk-video-wrapper" id="mkVideoWrapper">
+            <button
+              class="mk-video-close-btn"
+              id="mkVideoCloseBtn"
+              aria-label="Masquer la vidéo"
+              type="button"
+            >
+              <span class="mk-video-close-icon" aria-hidden="true">×</span>
+              <span class="sr-only">Masquer la vidéo</span>
+            </button>
+            <video
+              class="mk-video"
+              id="mkVideo"
+              autoplay
+              loop
+              muted
+              playsinline
+              preload="metadata"
+              poster="./assets/banniere-CnHLcIcB.png"
+              aria-label="Vidéo de présentation Wallnkap"
+            >
+              <source src="assets/wallnkap_lancement.mp4" type="video/mp4" />
+            </video>
+            <button
+              class="mk-video-sound-toggle"
+              id="mkVideoSoundToggle"
+              aria-label="Activer le son de la vidéo"
+              type="button"
+            >
+              <span class="mk-video-sound-icon" aria-hidden="true">🔇</span>
+              <span class="sr-only">Activer le son</span>
+            </button>
+          </div>
+        </div>
+        <div class="hero-content">
+          <h1 class="hero-title" id="hero-title">
+            Votre tontine, en toute transparence et sécurité
+          </h1>
+          <p class="hero-disclaimer">
+            <strong>Nous ne touchons jamais à votre argent.</strong><br />
+            Wallnkap est un outil de suivi et de gestion de tontine. Nous ne
+            collectons aucune donnée bancaire (pas de RIB, pas de numéros de
+            carte). Les paiements d'abonnement passent exclusivement par les
+            stores Apple et Google.
+          </p>
+          <div
+            class="hero-badges"
+            role="list"
+            aria-label="Avantages de Wallnkap"
+          >
+            <span class="badge" role="listitem">🔒 Sécurisé</span>
+            <span class="badge" role="listitem">📱 RGPD Conforme</span>
+            <span class="badge" role="listitem">💳 Sans données bancaires</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Politique de Confidentialité -->
+      <section
+        id="confidentialite"
+        class="section"
+        aria-labelledby="confidentialite-title"
+      >
+        <div class="container">
+          <h2 class="section-title" id="confidentialite-title">
+            Politique de Confidentialité
+          </h2>
+          <div class="content-card">
+            <h3>1. Données collectées</h3>
+            <p>
+              Wallnkap collecte uniquement les données nécessaires au
+              fonctionnement de l'application :
+            </p>
+            <ul>
+              <li>
+                <strong>Données d'identification :</strong> Nom, prénom, adresse
+                email, numéro de téléphone
+              </li>
+              <li>
+                <strong>Données de tontine :</strong> Historique des tours de
+                tontine, contributions, groupes créés
+              </li>
+              <li>
+                <strong>Données techniques :</strong> Adresse IP, type de
+                navigateur, système d'exploitation (pour la sécurité)
+              </li>
+            </ul>
+
+            <h3>2. Données non collectées</h3>
+            <p class="highlight-box">
+              <strong>⚠️ Important :</strong> Wallnkap ne collecte
+              <strong>aucune donnée bancaire</strong> :
+            </p>
+            <ul>
+              <li>❌ Aucun RIB (Relevé d'Identité Bancaire)</li>
+              <li>❌ Aucun numéro de carte bancaire</li>
+              <li>❌ Aucune information de compte bancaire</li>
+            </ul>
+            <p>
+              Les paiements d'abonnement Premium (9,99€/mois) sont gérés
+              exclusivement par Apple (App Store) et Google (Play Store). Nous
+              n'avons jamais accès à vos informations de paiement.
+            </p>
+
+            <h3>3. Visibilité des données</h3>
+            <p>
+              Les données de votre tontine (contributions, historique) sont
+              visibles uniquement par :
+            </p>
+            <ul>
+              <li>Les membres de votre cercle de tontine</li>
+              <li>Vous-même (propriétaire des données)</li>
+            </ul>
+            <p>
+              Wallnkap ne partage jamais vos données avec des tiers à des fins
+              commerciales.
+            </p>
+
+            <h3>4. Vos droits RGPD</h3>
+            <p>
+              Conformément au Règlement Général sur la Protection des Données
+              (RGPD), vous disposez des droits suivants :
+            </p>
+            <ul>
+              <li>
+                <strong>Droit d'accès :</strong> Vous pouvez demander une copie
+                de toutes vos données personnelles
+              </li>
+              <li>
+                <strong>Droit de rectification :</strong> Vous pouvez corriger
+                vos données incorrectes
+              </li>
+              <li>
+                <strong>Droit à l'effacement :</strong> Vous pouvez demander la
+                suppression de votre compte et de toutes vos données
+              </li>
+              <li>
+                <strong>Droit à la portabilité :</strong> Vous pouvez récupérer
+                vos données dans un format structuré
+              </li>
+              <li>
+                <strong>Droit d'opposition :</strong> Vous pouvez vous opposer
+                au traitement de vos données
+              </li>
+            </ul>
+            <p>
+              Pour exercer ces droits, contactez-nous à :
+              <a href="mailto:contact@wallnkap.com">contact@wallnkap.com</a>
+            </p>
+
+            <h3>5. Conservation des données</h3>
+            <p>
+              Vos données sont conservées pendant toute la durée d'utilisation
+              de l'application. En cas de suppression de compte, vos données
+              sont supprimées dans un délai de 30 jours, sauf obligation légale
+              de conservation.
+            </p>
+
+            <h3>6. Sécurité</h3>
+            <p>
+              Nous mettons en œuvre toutes les mesures techniques et
+              organisationnelles nécessaires pour protéger vos données contre
+              tout accès non autorisé, perte ou destruction.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CGU / CGV -->
+      <section id="cgu" class="section" aria-labelledby="cgu-title">
+        <div class="container">
+          <h2 class="section-title" id="cgu-title">
+            Conditions Générales d'Utilisation et de Vente
+          </h2>
+          <div class="cgu-grid">
+            <div class="cgu-tile" data-category="info">
+              <h3 class="tile-title">
+                <span class="tile-icon">📋</span>
+                Objet
+              </h3>
+              <p class="tile-content">
+                Les présentes Conditions Générales d'Utilisation (CGU) et
+                Conditions Générales de Vente (CGV) régissent l'utilisation de
+                l'application Wallnkap, un outil de gestion et de suivi de
+                tontine.
+              </p>
+            </div>
+
+            <div class="cgu-tile" data-category="info">
+              <h3 class="tile-title">
+                <span class="tile-icon">✅</span>
+                Acceptation des conditions
+              </h3>
+              <p class="tile-content">
+                En téléchargeant et en utilisant Wallnkap, vous acceptez sans
+                réserve les présentes CGU/CGV. Si vous n'acceptez pas ces
+                conditions, veuillez ne pas utiliser l'application.
+              </p>
+            </div>
+
+            <div class="cgu-tile tile-featured" data-category="trial">
+              <h3 class="tile-title">
+                <span class="tile-icon">🎁</span>
+                Essai gratuit de 30 jours
+              </h3>
+              <div class="tile-content">
+                <p>
+                  Wallnkap propose un essai gratuit de
+                  <strong>30 jours</strong> avec les fonctionnalités suivantes :
+                </p>
+                <ul class="tile-list">
+                  <li>✅ Création d'1 groupe maximum</li>
+                  <li>✅ Création d'1 tontine maximum</li>
+                  <li>✅ Invitation de 5 personnes maximum</li>
+                  <li>✅ Création d'1 cagnotte maximum</li>
+                  <li>✅ 2 publications maximum</li>
+                  <li>✅ 1 publication vidéo maximum</li>
+                </ul>
+                <p>
+                  À l'expiration, certaines fonctionnalités seront limitées
+                  jusqu'à l'activation d'un abonnement Premium.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="cgu-tile tile-featured tile-premium"
+              data-category="premium"
+            >
+              <h3 class="tile-title">
+                <span class="tile-icon">💎</span>
+                Abonnement Premium
+              </h3>
+              <div class="tile-content">
+                <p class="tile-price">9,99€/mois</p>
+                <p>
+                  L'abonnement Premium vous donne accès à toutes les
+                  fonctionnalités de Wallnkap :
+                </p>
+                <ul class="tile-list">
+                  <li>✅ Création illimitée de groupes</li>
+                  <li>✅ Création illimitée de tontines</li>
+                  <li>✅ Invitations illimitées</li>
+                  <li>✅ Création illimitée de cagnottes</li>
+                  <li>✅ Publications illimitées</li>
+                  <li>✅ Publication de vidéos</li>
+                  <li>✅ Filtrage des publications</li>
+                  <li>✅ Support prioritaire</li>
+                </ul>
+                <p>
+                  <strong>Paiement :</strong> Facturé mensuellement via l'App
+                  Store (iOS) ou le Play Store (Android). Renouvellement
+                  automatique.
+                </p>
+              </div>
+            </div>
+
+            <div class="cgu-tile" data-category="legal">
+              <h3 class="tile-title">
+                <span class="tile-icon">⚖️</span>
+                Droit de rétractation
+              </h3>
+              <div class="tile-content">
+                <p>
+                  Conformément à la législation européenne, vous disposez d'un
+                  <strong>droit de rétractation de 14 jours</strong> à compter
+                  de la souscription de l'abonnement Premium.
+                </p>
+                <p>Pour exercer votre droit de rétractation :</p>
+                <ul class="tile-list">
+                  <li>Sur iOS : Réglages de votre iPhone</li>
+                  <li>Sur Android : Play Store</li>
+                  <li>
+                    Par email :
+                    <a href="mailto:contact@wallnkap.com"
+                      >contact@wallnkap.com</a
+                    >
+                  </li>
+                </ul>
+                <p>
+                  En cas de rétractation, le remboursement sera effectué dans un
+                  délai de 14 jours.
+                </p>
+              </div>
+            </div>
+
+            <div class="cgu-tile" data-category="legal">
+              <h3 class="tile-title">
+                <span class="tile-icon">🔄</span>
+                Résiliation
+              </h3>
+              <div class="tile-content">
+                <p>
+                  Vous pouvez résilier votre abonnement Premium à tout moment :
+                </p>
+                <ul class="tile-list">
+                  <li>
+                    L'abonnement reste actif jusqu'à la fin de la période payée
+                  </li>
+                  <li>Aucun remboursement pour la période en cours</li>
+                  <li>
+                    Vos données restent accessibles jusqu'à la fin de
+                    l'abonnement
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="cgu-tile" data-category="warning">
+              <h3 class="tile-title">
+                <span class="tile-icon">⚠️</span>
+                Restrictions d'utilisation
+              </h3>
+              <div class="tile-content">
+                <p>
+                  Wallnkap est un outil de suivi et de gestion. L'application :
+                </p>
+                <ul class="tile-list">
+                  <li>❌ N'est pas un intermédiaire financier</li>
+                  <li>❌ Ne gère pas les transactions financières</li>
+                  <li>❌ Ne garantit pas les paiements entre membres</li>
+                  <li>❌ N'est pas responsable des litiges entre membres</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="cgu-tile" data-category="warning">
+              <h3 class="tile-title">
+                <span class="tile-icon">🛡️</span>
+                Responsabilité
+              </h3>
+              <div class="tile-content">
+                <p>Wallnkap ne peut être tenu responsable :</p>
+                <ul class="tile-list">
+                  <li>Des pertes financières liées à une tontine</li>
+                  <li>Des litiges entre membres d'une tontine</li>
+                  <li>Des erreurs de saisie des utilisateurs</li>
+                  <li>
+                    Des interruptions de service dues à des cas de force majeure
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="cgu-tile" data-category="legal">
+              <h3 class="tile-title">
+                <span class="tile-icon">©️</span>
+                Propriété intellectuelle
+              </h3>
+              <p class="tile-content">
+                Tous les éléments de l'application Wallnkap (code, design, logo,
+                contenu) sont la propriété exclusive de Wallnkap et sont
+                protégés par les lois sur la propriété intellectuelle.
+              </p>
+            </div>
+
+            <div class="cgu-tile" data-category="info">
+              <h3 class="tile-title">
+                <span class="tile-icon">📝</span>
+                Modification des CGU/CGV
+              </h3>
+              <p class="tile-content">
+                Wallnkap se réserve le droit de modifier les présentes CGU/CGV à
+                tout moment. Les utilisateurs seront informés des modifications
+                par email ou via l'application.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="section" aria-labelledby="faq-title">
+        <div class="container">
+          <h2 class="section-title" id="faq-title">
+            Questions Fréquentes (FAQ)
+          </h2>
+          <div class="faq-container" role="list">
+            <div class="faq-item" role="listitem">
+              <button
+                class="faq-question"
+                aria-expanded="false"
+                aria-controls="faq-answer-1"
+                id="faq-question-1"
+              >
+                <span>Wallnkap a-t-il accès à mon argent ?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div
+                class="faq-answer"
+                id="faq-answer-1"
+                role="region"
+                aria-labelledby="faq-question-1"
+              >
+                <p>
+                  <strong>Non, absolument pas.</strong> Wallnkap est un outil de
+                  suivi et de gestion de tontine. Nous ne collectons aucune
+                  donnée bancaire (pas de RIB, pas de numéros de carte). Les
+                  paiements d'abonnement Premium passent exclusivement par les
+                  stores Apple et Google. Nous n'avons jamais accès à votre
+                  argent ou à vos informations bancaires.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+              <button
+                class="faq-question"
+                aria-expanded="false"
+                aria-controls="faq-answer-2"
+                id="faq-question-2"
+              >
+                <span>Qui peut voir mes données de tontine ?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div
+                class="faq-answer"
+                id="faq-answer-2"
+                role="region"
+                aria-labelledby="faq-question-2"
+              >
+                <p>
+                  Vos données de tontine (contributions, historique) sont
+                  visibles uniquement par :
+                </p>
+                <ul>
+                  <li>Les membres de votre cercle de tontine</li>
+                  <li>Vous-même (propriétaire des données)</li>
+                </ul>
+                <p>
+                  Wallnkap ne partage jamais vos données avec des tiers à des
+                  fins commerciales. Nous respectons strictement le RGPD.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+              <button
+                class="faq-question"
+                aria-expanded="false"
+                aria-controls="faq-answer-3"
+                id="faq-question-3"
+              >
+                <span
+                  >Que se passe-t-il à la fin de l'essai gratuit de 30 jours
+                  ?</span
+                >
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div
+                class="faq-answer"
+                id="faq-answer-3"
+                role="region"
+                aria-labelledby="faq-question-3"
+              >
+                <p>
+                  À l'expiration de votre essai gratuit de 30 jours, certaines
+                  fonctionnalités seront limitées :
+                </p>
+                <ul>
+                  <li>
+                    Vous ne pourrez plus créer de nouveaux groupes, tontines ou
+                    cagnottes
+                  </li>
+                  <li>Vous ne pourrez plus inviter de nouveaux membres</li>
+                  <li>Vous ne pourrez plus créer de nouvelles publications</li>
+                  <li>
+                    Vous pourrez toujours consulter vos données existantes
+                  </li>
+                </ul>
+                <p>
+                  Pour continuer à utiliser toutes les fonctionnalités, vous
+                  devrez souscrire à l'abonnement Premium à 9,99€/mois.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+              <button
+                class="faq-question"
+                aria-expanded="false"
+                aria-controls="faq-answer-4"
+                id="faq-question-4"
+              >
+                <span>Comment supprimer mon compte et mes données ?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div
+                class="faq-answer"
+                id="faq-answer-4"
+                role="region"
+                aria-labelledby="faq-question-4"
+              >
+                <p>
+                  Vous pouvez supprimer votre compte et toutes vos données à
+                  tout moment :
+                </p>
+                <ol>
+                  <li>Ouvrez l'application Wallnkap</li>
+                  <li>Allez dans les Paramètres de votre profil</li>
+                  <li>Cliquez sur "Supprimer mon compte"</li>
+                  <li>Confirmez la suppression</li>
+                </ol>
+                <p>
+                  Vos données seront supprimées dans un délai de 30 jours, sauf
+                  obligation légale de conservation. Vous pouvez également nous
+                  contacter directement à
+                  <a href="mailto:contact@wallnkap.com">contact@wallnkap.com</a>
+                  pour demander la suppression de vos données.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+              <button
+                class="faq-question"
+                aria-expanded="false"
+                aria-controls="faq-answer-5"
+                id="faq-question-5"
+              >
+                <span>Wallnkap est-il conforme au RGPD ?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div
+                class="faq-answer"
+                id="faq-answer-5"
+                role="region"
+                aria-labelledby="faq-question-5"
+              >
+                <p>
+                  <strong
+                    >Oui, Wallnkap est entièrement conforme au RGPD (Règlement
+                    Général sur la Protection des Données).</strong
+                  >
+                </p>
+                <p>Nous respectons tous vos droits :</p>
+                <ul>
+                  <li>✅ Droit d'accès à vos données</li>
+                  <li>✅ Droit de rectification</li>
+                  <li>✅ Droit à l'effacement</li>
+                  <li>✅ Droit à la portabilité</li>
+                  <li>✅ Droit d'opposition</li>
+                </ul>
+                <p>
+                  Nous collectons uniquement les données nécessaires au
+                  fonctionnement de l'application et ne les partageons jamais
+                  avec des tiers à des fins commerciales. Pour exercer vos
+                  droits, contactez-nous à
+                  <a href="mailto:contact@wallnkap.com">contact@wallnkap.com</a
+                  >.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mentions Légales -->
+      <section id="mentions" class="section" aria-labelledby="mentions-title">
+        <div class="container">
+          <h2 class="section-title" id="mentions-title">Mentions Légales</h2>
+          <div class="mentions-grid">
+            <div class="mention-card">
+              <h3>Éditeur</h3>
+              <p>
+                <strong>Wallnkap</strong><br />
+                [Raison sociale]<br />
+                [Adresse complète]<br />
+                [Numéro SIRET]<br />
+                Directeur de publication : [Nom du directeur]
+              </p>
+            </div>
+
+            <div class="mention-card">
+              <h3>Contact</h3>
+              <p>
+                Email :
+                <a href="mailto:contact@wallnkap.com">contact@wallnkap.com</a
+                ><br />
+                Téléphone : [Numéro de téléphone]
+              </p>
+            </div>
+
+            <div class="mention-card">
+              <h3>Hébergeur</h3>
+              <p>
+                [Nom de l'hébergeur]<br />
+                [Adresse de l'hébergeur]<br />
+                [Téléphone de l'hébergeur]
+              </p>
+            </div>
+
+            <div class="mention-card">
+              <h3>Protection des données</h3>
+              <p>
+                Délégué à la Protection des Données (DPO) :<br />
+                Email : <a href="mailto:dpo@wallnkap.com">dpo@wallnkap.com</a>
+              </p>
+            </div>
+
+            <div class="mention-card">
+              <h3>CNIL</h3>
+              <p>
+                Conformément à la loi "Informatique et Libertés", vous disposez
+                d'un droit d'accès, de rectification et de suppression des
+                données vous concernant. Pour exercer ce droit, adressez-vous à
+                :
+                <a href="mailto:contact@wallnkap.com">contact@wallnkap.com</a>
+              </p>
+            </div>
+
+            <div class="mention-card">
+              <h3>Cookies</h3>
+              <p>
+                Ce site utilise des cookies techniques nécessaires au
+                fonctionnement du site. Aucun cookie de suivi ou de publicité
+                n'est utilisé.
+              </p>
+            </div>
+
+            <div class="mention-card">
+              <h3>Droit applicable</h3>
+              <p>
+                Les présentes mentions légales sont régies par le droit
+                français. En cas de litige, les tribunaux français seront seuls
+                compétents.
+              </p>
+            </div>
+
+            <div class="mention-card">
+              <h3>Propriété intellectuelle</h3>
+              <p>
+                Tous les contenus de ce site (textes, images, logos) sont la
+                propriété exclusive de Wallnkap et sont protégés par les lois
+                sur la propriété intellectuelle.
+              </p>
+            </div>
+
+            <div class="mention-card">
+              <h3>Modifications</h3>
+              <p>
+                Wallnkap se réserve le droit de modifier les présentes mentions
+                légales à tout moment. Les utilisateurs sont invités à les
+                consulter régulièrement.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <p>&copy; 2024 Wallnkap. Tous droits réservés.</p>
+        <nav class="footer-links" aria-label="Liens du pied de page">
+          <a href="#confidentialite">Politique de Confidentialité</a>
+          <span aria-hidden="true">|</span>
+          <a href="#cgu">CGU/CGV</a>
+          <span aria-hidden="true">|</span>
+          <a href="#mentions">Mentions Légales</a>
+        </nav>
+      </div>
+    </footer>
+
+  </body>
+</html>
