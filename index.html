@@ -659,36 +659,92 @@
     /* ── FOOTER ── */
     footer{
       background:var(--bg2);border-top:1px solid var(--border);
-      padding:60px 60px 40px;
+      padding:48px 24px 28px;
     }
-    .footer-top{display:flex;gap:80px;margin-bottom:56px}
-    .footer-brand{flex:1;max-width:300px}
-    .fb-logo{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-    .fb-logo img{width:44px;height:44px;border-radius:11px;object-fit:cover}
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      grid-template-rows:auto auto;
+      gap:14px;
+      max-width:1280px;margin:0 auto 20px;
+    }
+    /* Brand card — spans 3 rows on mobile, 1 col on desktop */
+    .footer-brand-card{
+      grid-column:1 / -1;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:20px;
+      padding:24px;
+      display:flex;align-items:center;
+      gap:20px;flex-wrap:wrap;
+      justify-content:space-between;
+    }
+    .footer-brand-left{display:flex;flex-direction:column;gap:10px}
+    .fb-logo{display:flex;align-items:center;gap:10px}
+    .fb-logo img{width:40px;height:40px;border-radius:10px;object-fit:cover}
     .fb-name{
-      font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:800;
+      font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:800;
       background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
     }
-    .footer-tagline{color:var(--muted);font-size:14px;line-height:1.65}
-    .footer-col h4{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;margin-bottom:18px}
-    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
-    .footer-col a{color:var(--muted);text-decoration:none;font-size:14px;transition:color .2s}
-    .footer-col a:hover{color:var(--text)}
-    .footer-bottom{
-      border-top:1px solid var(--border);padding-top:26px;
-      display:flex;justify-content:space-between;align-items:center;
-      flex-wrap:wrap;gap:14px;
-    }
-    .footer-legal{color:var(--muted);font-size:13px}
-    .social-row{display:flex;gap:10px}
+    .footer-tagline{color:var(--muted);font-size:13px;line-height:1.6;max-width:340px}
+    .social-row{display:flex;gap:8px;flex-wrap:wrap}
     .social-btn{
-      width:34px;height:34px;border-radius:9px;
-      background:var(--card);border:1px solid var(--border);
+      width:36px;height:36px;border-radius:10px;
+      background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
       display:flex;align-items:center;justify-content:center;
-      text-decoration:none;color:var(--muted);font-size:13px;
+      text-decoration:none;color:var(--muted);
       transition:all .2s;
     }
     .social-btn:hover{background:rgba(60,90,224,.15);border-color:rgba(60,90,224,.4);color:var(--blue2)}
+    /* Nav cards */
+    .footer-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px;
+      padding:22px 20px;
+    }
+    .footer-card h4{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:12px;font-weight:700;
+      letter-spacing:.1em;text-transform:uppercase;
+      color:var(--blue2);margin-bottom:16px;
+      display:flex;align-items:center;gap:6px;
+    }
+    .footer-card h4::before{
+      content:'';display:block;width:16px;height:1.5px;
+      background:var(--grad);flex-shrink:0;border-radius:2px;
+    }
+    .footer-card ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+    .footer-card a{
+      color:var(--muted);text-decoration:none;font-size:14px;
+      transition:color .2s;display:flex;align-items:center;gap:6px;
+    }
+    .footer-card a::before{
+      content:'';width:4px;height:4px;border-radius:50%;
+      background:rgba(255,255,255,.15);flex-shrink:0;
+      transition:background .2s;
+    }
+    .footer-card a:hover{color:var(--text)}
+    .footer-card a:hover::before{background:var(--blue2)}
+    /* Bottom bar */
+    .footer-bottom{
+      max-width:1280px;margin:0 auto;
+      border-top:1px solid var(--border);padding-top:20px;
+      display:flex;justify-content:space-between;align-items:center;
+      flex-wrap:wrap;gap:10px;
+    }
+    .footer-legal{color:var(--muted);font-size:12px}
+    /* Responsive */
+    @media(max-width:768px){
+      footer{padding:24px 14px 20px}
+      .footer-grid{grid-template-columns:1fr 1fr;gap:10px}
+      .footer-brand-card{padding:18px;gap:14px}
+      .footer-tagline{font-size:12px}
+      .footer-card{padding:16px 14px}
+    }
+    @media(max-width:480px){
+      .footer-grid{grid-template-columns:1fr}
+    }
 
     /* ── REVEAL ── */
     .reveal{
@@ -2594,15 +2650,35 @@
 
 <!-- ═══ FOOTER ═══ -->
 <footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <div class="fb-logo">
-        <img src="images/logo.jpg" alt="Wallnkap">
-        <span class="fb-name">Wallnkap</span>
+  <div class="footer-grid">
+
+    <!-- Brand card -->
+    <div class="footer-brand-card">
+      <div class="footer-brand-left">
+        <div class="fb-logo">
+          <img src="images/logo.jpg" alt="Wallnkap" loading="lazy">
+          <span class="fb-name">Wallnkap</span>
+        </div>
+        <p class="footer-tagline">La tontine digitale — épargne collective,<br>transparence et solidarité pour les communautés modernes.</p>
       </div>
-      <p class="footer-tagline">La tontine digitale — épargne collective, transparence et solidarité pour les communautés modernes.</p>
+      <div class="social-row">
+        <a href="#" class="social-btn" title="Instagram">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" class="social-btn" title="Twitter / X">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" class="social-btn" title="LinkedIn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="#" class="social-btn" title="Facebook">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
     </div>
-    <div class="footer-col">
+
+    <!-- Produit -->
+    <div class="footer-card">
       <h4>Produit</h4>
       <ul>
         <li><a href="#features">Fonctionnalités</a></li>
@@ -2611,7 +2687,9 @@
         <li><a href="#showcase">Aperçu</a></li>
       </ul>
     </div>
-    <div class="footer-col">
+
+    <!-- Ressources -->
+    <div class="footer-card">
       <h4>Ressources</h4>
       <ul>
         <li><a href="#">Centre d'aide</a></li>
@@ -2620,7 +2698,9 @@
         <li><a href="#">Communauté</a></li>
       </ul>
     </div>
-    <div class="footer-col">
+
+    <!-- Légal -->
+    <div class="footer-card">
       <h4>Légal</h4>
       <ul>
         <li><a href="#legal" data-legal-tab="cgu">Conditions d'utilisation</a></li>
@@ -2629,23 +2709,12 @@
         <li><a href="#legal" data-legal-tab="confidentialite">RGPD</a></li>
       </ul>
     </div>
+
   </div>
+
   <div class="footer-bottom">
-    <p class="footer-legal">© 2026 Wallnkap. Tous droits réservés. &nbsp;·&nbsp; <button id="cookieReset" style="background:none;border:none;color:var(--muted);font-size:13px;cursor:pointer;padding:0;transition:color .2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">Gérer les cookies</button></p>
-    <div class="social-row">
-      <a href="#" class="social-btn" title="Instagram">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-      </a>
-      <a href="#" class="social-btn" title="Twitter / X">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-      </a>
-      <a href="#" class="social-btn" title="LinkedIn">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-      </a>
-      <a href="#" class="social-btn" title="Facebook">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-      </a>
-    </div>
+    <p class="footer-legal">© 2026 Wallnkap. Tous droits réservés. &nbsp;·&nbsp; <button id="cookieReset" style="background:none;border:none;color:var(--muted);font-size:12px;cursor:pointer;padding:0;transition:color .2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">Gérer les cookies</button></p>
+    <p class="footer-legal" style="color:rgba(255,255,255,.18)">Fait avec ♥ pour les tontines</p>
   </div>
 </footer>
 
