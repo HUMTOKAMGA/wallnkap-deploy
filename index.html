@@ -1137,6 +1137,64 @@
       .mentions-g{grid-template-columns:1fr}
       .faq-q-txt{font-size:14px}
     }
+
+    /* ── COOKIE CONSENT BANNER ── */
+    #cookie-banner{
+      position:fixed;bottom:0;left:0;right:0;z-index:9999;
+      padding:0 24px 24px;
+      display:flex;justify-content:center;
+      transform:translateY(calc(100% + 24px));
+      transition:transform .5s cubic-bezier(.4,0,.2,1);
+      pointer-events:none;
+    }
+    #cookie-banner.visible{
+      transform:translateY(0);
+      pointer-events:all;
+    }
+    .cookie-inner{
+      display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+      max-width:960px;width:100%;
+      background:rgba(9,14,42,.96);
+      backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
+      border:1px solid rgba(255,255,255,.1);
+      border-top:1px solid rgba(60,90,224,.25);
+      border-radius:20px;
+      padding:18px 22px;
+      box-shadow:0 -8px 48px rgba(0,0,0,.5),0 0 0 1px rgba(60,90,224,.08);
+    }
+    .cookie-icon{
+      width:38px;height:38px;border-radius:11px;flex-shrink:0;
+      background:rgba(60,90,224,.14);border:1px solid rgba(60,90,224,.25);
+      display:flex;align-items:center;justify-content:center;
+    }
+    .cookie-text{flex:1;min-width:200px}
+    .cookie-text p{font-size:13px;color:var(--muted);line-height:1.65}
+    .cookie-text a{color:var(--blue2);text-decoration:none;transition:color .2s}
+    .cookie-text a:hover{color:var(--text)}
+    .cookie-text strong{color:var(--text);font-weight:600}
+    .cookie-actions{display:flex;gap:10px;flex-shrink:0;align-items:center}
+    .cookie-accept{
+      padding:10px 20px;border-radius:12px;
+      background:var(--grad);color:#fff;
+      border:none;cursor:pointer;
+      font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;
+      transition:transform .2s,box-shadow .2s;white-space:nowrap;
+    }
+    .cookie-accept:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(60,90,224,.38)}
+    .cookie-refuse{
+      padding:10px 16px;border-radius:12px;
+      background:rgba(255,255,255,.04);color:var(--muted);
+      border:1px solid rgba(255,255,255,.09);cursor:pointer;
+      font-size:13px;font-weight:500;
+      transition:color .2s,background .2s;white-space:nowrap;
+    }
+    .cookie-refuse:hover{color:var(--text);background:rgba(255,255,255,.08)}
+    @media(max-width:640px){
+      #cookie-banner{padding:0 10px 14px}
+      .cookie-inner{gap:12px;padding:14px 16px}
+      .cookie-icon{display:none}
+      .cookie-actions{width:100%;justify-content:flex-end}
+    }
   </style>
 </head>
 <body>
@@ -2501,7 +2559,7 @@
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--blue2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
             Cookies
           </div>
-          <p>Ce site utilise uniquement des cookies techniques nécessaires au fonctionnement. <strong>Aucun cookie de suivi ou publicitaire</strong> n'est utilisé.</p>
+          <p>Ce site utilise <strong>Google Tag Manager</strong> pour mesurer l'audience (analytics). Ces cookies sont déposés uniquement après votre consentement explicite. Vous pouvez accepter, refuser ou modifier votre choix à tout moment via le lien <strong>Gérer les cookies</strong> en bas de page.</p>
         </div>
 
         <div class="ment-card">
@@ -2573,7 +2631,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-legal">© 2026 Wallnkap. Tous droits réservés.</p>
+    <p class="footer-legal">© 2026 Wallnkap. Tous droits réservés. &nbsp;·&nbsp; <button id="cookieReset" style="background:none;border:none;color:var(--muted);font-size:13px;cursor:pointer;padding:0;transition:color .2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">Gérer les cookies</button></p>
     <div class="social-row">
       <a href="#" class="social-btn" title="Instagram">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
@@ -2745,6 +2803,76 @@ document.getElementById('navBurger').addEventListener('click',()=>{
   });
 })();
 
+// ── GTM + Cookie Consent
+(function(){
+  var CONSENT_KEY = 'wk_consent';
+  var GTM_ID = 'GTM-NWK4VXXD';
+  var banner = document.getElementById('cookie-banner');
+  var gtmLoaded = false;
+
+  function loadGTM(){
+    if(gtmLoaded) return;
+    gtmLoaded = true;
+    // GTM main script
+    (function(w,d,s,l,i){
+      w[l]=w[l]||[];
+      w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+      var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),
+          dl=l!='dataLayer'?'&l='+l:'';
+      j.async=true;
+      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+      f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer',GTM_ID);
+    // GTM noscript fallback
+    var ns=document.createElement('noscript');
+    var ifrm=document.createElement('iframe');
+    ifrm.src='https://www.googletagmanager.com/ns.html?id='+GTM_ID;
+    ifrm.height='0'; ifrm.width='0';
+    ifrm.style.cssText='display:none;visibility:hidden';
+    ns.appendChild(ifrm);
+    document.body.insertAdjacentElement('afterbegin',ns);
+  }
+
+  function hideBanner(){
+    if(banner) banner.classList.remove('visible');
+  }
+
+  function showBanner(){
+    if(banner) setTimeout(function(){ banner.classList.add('visible'); }, 700);
+  }
+
+  // On load: check stored consent
+  var stored = localStorage.getItem(CONSENT_KEY);
+  if(stored === 'accepted'){
+    loadGTM();
+  } else if(stored === null){
+    showBanner();
+  }
+
+  // Accept button
+  document.getElementById('cookieAccept').addEventListener('click', function(){
+    localStorage.setItem(CONSENT_KEY, 'accepted');
+    loadGTM();
+    hideBanner();
+  });
+
+  // Refuse button
+  document.getElementById('cookieRefuse').addEventListener('click', function(){
+    localStorage.setItem(CONSENT_KEY, 'refused');
+    hideBanner();
+  });
+
+  // Footer "Gérer les cookies" — resets and re-shows banner
+  var resetBtn = document.getElementById('cookieReset');
+  if(resetBtn){
+    resetBtn.addEventListener('click', function(){
+      localStorage.removeItem(CONSENT_KEY);
+      showBanner();
+    });
+  }
+})();
+
 // ── Legal section: FAQ accordion
 (function(){
   document.querySelectorAll('.faq-item-l').forEach(item => {
@@ -2766,5 +2894,22 @@ document.getElementById('navBurger').addEventListener('click',()=>{
   });
 })();
 </script>
+
+<!-- ═══ COOKIE CONSENT BANNER ═══ -->
+<div id="cookie-banner" role="dialog" aria-live="polite" aria-label="Consentement aux cookies">
+  <div class="cookie-inner">
+    <div class="cookie-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/></svg>
+    </div>
+    <div class="cookie-text">
+      <p><strong>Wallnkap</strong> utilise des cookies analytiques (Google Tag Manager) pour mesurer l'audience et améliorer l'expérience. Aucune donnée n'est transmise à des fins publicitaires. <a href="#legal" data-legal-tab="mentions">En savoir plus</a></p>
+    </div>
+    <div class="cookie-actions">
+      <button class="cookie-refuse" id="cookieRefuse" type="button">Refuser</button>
+      <button class="cookie-accept" id="cookieAccept" type="button">Accepter</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
