@@ -1251,6 +1251,36 @@
       .cookie-icon{display:none}
       .cookie-actions{width:100%;justify-content:flex-end}
     }
+
+    /* ── LANG TOGGLE ── */
+    .lang-toggle{
+      display:flex;align-items:center;gap:2px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:100px;
+      padding:3px;
+      margin-right:4px;
+    }
+    .lang-btn{
+      background:none;border:none;cursor:pointer;
+      font-family:'Space Grotesk',sans-serif;
+      font-size:12px;font-weight:700;letter-spacing:.04em;
+      color:var(--muted);
+      padding:5px 10px;border-radius:100px;
+      transition:all .2s;
+    }
+    .lang-btn.active{background:var(--grad);color:#fff;box-shadow:0 2px 8px rgba(60,90,224,.3)}
+    .lang-btn:hover:not(.active){color:var(--text);background:rgba(255,255,255,.06)}
+    .nav-lang-mobile{
+      display:none;align-items:center;justify-content:center;gap:8px;
+      padding:12px 0 4px;
+      border-top:1px solid rgba(255,255,255,.06);
+      margin-top:8px;
+    }
+    @media(max-width:1024px){
+      .lang-toggle{display:none}
+      .nav-lang-mobile{display:flex}
+    }
   </style>
 </head>
 <body>
@@ -1262,27 +1292,35 @@
     <span class="nav-logo-txt">Wallnkap</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#concept">Le concept</a></li>
-    <li><a href="#features">Fonctionnalités</a></li>
-    <li><a href="#how">Comment ça marche</a></li>
-    <li><a href="#pricing">Tarifs</a></li>
-    <li><a href="#legal">Légal & RGPD</a></li>
+    <li><a href="#concept" data-i18n="nav.concept">Le concept</a></li>
+    <li><a href="#features" data-i18n="nav.features">Fonctionnalités</a></li>
+    <li><a href="#how" data-i18n="nav.how">Comment ça marche</a></li>
+    <li><a href="#pricing" data-i18n="nav.pricing">Tarifs</a></li>
+    <li><a href="#legal" data-i18n="nav.legal">Légal &amp; RGPD</a></li>
   </ul>
+  <div class="lang-toggle" aria-label="Language">
+    <button class="lang-btn active" data-lang="fr">FR</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+  </div>
   <a href="#download" class="nav-cta">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-6 2h12v2H6v-2z"/></svg>
-    Télécharger
+    <span data-i18n="nav.cta">Télécharger</span>
   </a>
   <button class="nav-burger" id="navBurger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 <div class="nav-mobile" id="navMobile">
-  <a href="#concept" onclick="closeMobileNav()">Le concept</a>
-  <a href="#features" onclick="closeMobileNav()">Fonctionnalités</a>
-  <a href="#how" onclick="closeMobileNav()">Comment ça marche</a>
-  <a href="#pricing" onclick="closeMobileNav()">Tarifs</a>
-  <a href="#legal" onclick="closeMobileNav()">Légal & RGPD</a>
-  <a href="#download" onclick="closeMobileNav()" style="color:var(--gold);font-weight:700">Télécharger</a>
+  <a href="#concept" onclick="closeMobileNav()" data-i18n="nav.concept">Le concept</a>
+  <a href="#features" onclick="closeMobileNav()" data-i18n="nav.features">Fonctionnalités</a>
+  <a href="#how" onclick="closeMobileNav()" data-i18n="nav.how">Comment ça marche</a>
+  <a href="#pricing" onclick="closeMobileNav()" data-i18n="nav.pricing">Tarifs</a>
+  <a href="#legal" onclick="closeMobileNav()" data-i18n="nav.legal">Légal &amp; RGPD</a>
+  <a href="#download" onclick="closeMobileNav()" style="color:var(--gold);font-weight:700" data-i18n="nav.cta">Télécharger</a>
+  <div class="nav-lang-mobile">
+    <button class="lang-btn active" data-lang="fr">FR</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+  </div>
 </div>
 
 <!-- ═══ HERO ═══ -->
@@ -1297,14 +1335,14 @@
     <div class="hero-copy">
       <div class="eyebrow reveal">
         <span class="ew-dot"></span>
-        Disponible sur iOS &amp; Android
+        <span data-i18n="hero.eyebrow">Disponible sur iOS &amp; Android</span>
       </div>
-      <h1 class="reveal d1">
+      <h1 class="reveal d1" data-i18n-html="hero.h1">
         La tontine,<br>
         comme vous ne<br>
         l'avez jamais <span class="grad">vécue.</span>
       </h1>
-      <p class="hero-desc reveal d2">
+      <p class="hero-desc reveal d2" data-i18n="hero.desc">
         Wallnkap modernise l'épargne collective africaine — transparence absolue, sécurité de niveau bancaire, et une expérience digitale pensée pour votre communauté.
       </p>
       <div class="hero-ctas reveal d3">
@@ -1318,9 +1356,9 @@
         </a>
       </div>
       <div class="hero-stats reveal d4">
-        <div><div class="hs-n" data-count="500" data-suffix="+">0</div><div class="hs-l">Groupes actifs</div></div>
-        <div><div class="hs-n" data-count="10000" data-suffix="+">0</div><div class="hs-l">Membres</div></div>
-        <div><div class="hs-n" data-static="4.8★">0</div><div class="hs-l">Note App Store</div></div>
+        <div><div class="hs-n" data-count="500" data-suffix="+">0</div><div class="hs-l" data-i18n="hero.stat.groups">Groupes actifs</div></div>
+        <div><div class="hs-n" data-count="10000" data-suffix="+">0</div><div class="hs-l" data-i18n="hero.stat.members">Membres</div></div>
+        <div><div class="hs-n" data-static="4.8★">0</div><div class="hs-l" data-i18n="hero.stat.rating">Note App Store</div></div>
       </div>
     </div>
 
@@ -1333,19 +1371,19 @@
           <div class="fbi fbi-gold">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
           </div>
-          <div><div class="fb-lbl">Cotisation enregistrée</div><div class="fb-sub">+200 € · Tour #3</div></div>
+          <div><div class="fb-lbl" data-i18n="hero.badge1">Cotisation enregistrée</div><div class="fb-sub" data-i18n="hero.badge1.sub">+200 € · Tour #3</div></div>
         </div>
         <div class="fbadge fb2">
           <div class="fbi fbi-blue">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
           </div>
-          <div><div class="fb-lbl">Badge obtenu</div><div class="fb-sub">Ponctualité parfaite</div></div>
+          <div><div class="fb-lbl" data-i18n="hero.badge2">Badge obtenu</div><div class="fb-sub" data-i18n="hero.badge2.sub">Ponctualité parfaite</div></div>
         </div>
         <div class="fbadge fb3">
           <div class="fbi fbi-purple">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
           </div>
-          <div><div class="fb-lbl">Tirage dans 2h</div><div class="fb-sub">Groupe Famille · 8 membres</div></div>
+          <div><div class="fb-lbl" data-i18n="hero.badge3">Tirage dans 2h</div><div class="fb-sub" data-i18n="hero.badge3.sub">Groupe Famille · 8 membres</div></div>
         </div>
         <div class="phone-frame">
           <div class="phone-notch"></div>
@@ -1400,30 +1438,30 @@
   </div>
   <div class="scroll-indicator">
     <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
-    <span>Défiler</span>
+    <span data-i18n="hero.scroll">Défiler</span>
   </div>
 </section>
 
 <!-- ═══ TICKER BELT ═══ -->
 <div class="ticker-belt">
   <div class="ticker-track">
-    <span class="ticker-item"><span class="dot"></span><strong>Tirage algorithmique vérifiable</strong></span>
-    <span class="ticker-item"><span class="dot"></span>Authentification biométrique</span>
-    <span class="ticker-item"><span class="dot"></span><strong>Chiffrement de bout-en-bout</strong></span>
-    <span class="ticker-item"><span class="dot"></span>Notifications push temps réel</span>
-    <span class="ticker-item"><span class="dot"></span><strong>Rapports PDF automatiques</strong></span>
-    <span class="ticker-item"><span class="dot"></span>Infrastructure Supabase · 99.9% uptime</span>
-    <span class="ticker-item"><span class="dot"></span><strong>Multi-devises · Multi-pays</strong></span>
-    <span class="ticker-item"><span class="dot"></span>Historique immuable</span>
+    <span class="ticker-item"><span class="dot"></span><strong data-i18n="ticker.1">Tirage algorithmique vérifiable</strong></span>
+    <span class="ticker-item"><span class="dot"></span><span data-i18n="ticker.2">Authentification biométrique</span></span>
+    <span class="ticker-item"><span class="dot"></span><strong data-i18n="ticker.3">Chiffrement de bout-en-bout</strong></span>
+    <span class="ticker-item"><span class="dot"></span><span data-i18n="ticker.4">Notifications push temps réel</span></span>
+    <span class="ticker-item"><span class="dot"></span><strong data-i18n="ticker.5">Rapports PDF automatiques</strong></span>
+    <span class="ticker-item"><span class="dot"></span><span data-i18n="ticker.6">Infrastructure Supabase · 99.9% uptime</span></span>
+    <span class="ticker-item"><span class="dot"></span><strong data-i18n="ticker.7">Multi-devises · Multi-pays</strong></span>
+    <span class="ticker-item"><span class="dot"></span><span data-i18n="ticker.8">Historique immuable</span></span>
     <!-- duplicate for loop -->
-    <span class="ticker-item"><span class="dot"></span><strong>Tirage algorithmique vérifiable</strong></span>
-    <span class="ticker-item"><span class="dot"></span>Authentification biométrique</span>
-    <span class="ticker-item"><span class="dot"></span><strong>Chiffrement de bout-en-bout</strong></span>
-    <span class="ticker-item"><span class="dot"></span>Notifications push temps réel</span>
-    <span class="ticker-item"><span class="dot"></span><strong>Rapports PDF automatiques</strong></span>
-    <span class="ticker-item"><span class="dot"></span>Infrastructure Supabase · 99.9% uptime</span>
-    <span class="ticker-item"><span class="dot"></span><strong>Multi-devises · Multi-pays</strong></span>
-    <span class="ticker-item"><span class="dot"></span>Historique immuable</span>
+    <span class="ticker-item"><span class="dot"></span><strong data-i18n="ticker.1">Tirage algorithmique vérifiable</strong></span>
+    <span class="ticker-item"><span class="dot"></span><span data-i18n="ticker.2">Authentification biométrique</span></span>
+    <span class="ticker-item"><span class="dot"></span><strong data-i18n="ticker.3">Chiffrement de bout-en-bout</strong></span>
+    <span class="ticker-item"><span class="dot"></span><span data-i18n="ticker.4">Notifications push temps réel</span></span>
+    <span class="ticker-item"><span class="dot"></span><strong data-i18n="ticker.5">Rapports PDF automatiques</strong></span>
+    <span class="ticker-item"><span class="dot"></span><span data-i18n="ticker.6">Infrastructure Supabase · 99.9% uptime</span></span>
+    <span class="ticker-item"><span class="dot"></span><strong data-i18n="ticker.7">Multi-devises · Multi-pays</strong></span>
+    <span class="ticker-item"><span class="dot"></span><span data-i18n="ticker.8">Historique immuable</span></span>
   </div>
 </div>
 
@@ -1436,12 +1474,12 @@
         <div class="concept-overlay"></div>
       </div>
       <div>
-        <span class="s-label reveal">Le concept</span>
-        <h2 class="s-title reveal d1">
+        <span class="s-label reveal" data-i18n="concept.label">Le concept</span>
+        <h2 class="s-title reveal d1" data-i18n-html="concept.h2">
           Vous connaissez<br>déjà la tontine.<br>
           <span class="grad">Nous l'avons amplifiée.</span>
         </h2>
-        <p class="s-desc reveal d2" style="margin-bottom:32px">
+        <p class="s-desc reveal d2" style="margin-bottom:32px" data-i18n="concept.desc">
           La tontine existe depuis des siècles au cœur des communautés africaines. Wallnkap conserve cet esprit de solidarité et y ajoute la transparence, la traçabilité et la puissance du digital.
         </p>
         <div class="concept-points">
@@ -1450,8 +1488,8 @@
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             </div>
             <div>
-              <div class="cp-title">Sécurité de niveau bancaire</div>
-              <div class="cp-desc">Authentification biométrique, stockage chiffré (flutter_secure_storage), infrastructure Supabase certifiée. Votre argent et vos données sont inviolables.</div>
+              <div class="cp-title" data-i18n="concept.cp1.title">Sécurité de niveau bancaire</div>
+              <div class="cp-desc" data-i18n="concept.cp1.desc">Authentification biométrique, stockage chiffré (flutter_secure_storage), infrastructure Supabase certifiée. Votre argent et vos données sont inviolables.</div>
             </div>
           </div>
           <div class="cp reveal d3">
@@ -1459,8 +1497,8 @@
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
             </div>
             <div>
-              <div class="cp-title">Transparence totale &amp; vérifiable</div>
-              <div class="cp-desc">Chaque cotisation, tirage et transaction est enregistrée et visible par tous les membres en temps réel. L'algorithme de tirage est auditable.</div>
+              <div class="cp-title" data-i18n="concept.cp2.title">Transparence totale &amp; vérifiable</div>
+              <div class="cp-desc" data-i18n="concept.cp2.desc">Chaque cotisation, tirage et transaction est enregistrée et visible par tous les membres en temps réel. L'algorithme de tirage est auditable.</div>
             </div>
           </div>
           <div class="cp reveal d4">
@@ -1468,8 +1506,8 @@
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
             </div>
             <div>
-              <div class="cp-title">100% mobile · toujours synchronisé</div>
-              <div class="cp-desc">iOS et Android, interface bilingue (fr/en), notifications instantanées. Gérez votre tontine depuis n'importe quel continent.</div>
+              <div class="cp-title" data-i18n="concept.cp3.title">100% mobile · toujours synchronisé</div>
+              <div class="cp-desc" data-i18n="concept.cp3.desc">iOS et Android, interface bilingue (fr/en), notifications instantanées. Gérez votre tontine depuis n'importe quel continent.</div>
             </div>
           </div>
         </div>
@@ -1481,42 +1519,42 @@
 <!-- ═══ INNOVATION ═══ -->
 <section id="innovation">
   <div class="inno-header">
-    <span class="s-label reveal">Technologie</span>
-    <h2 class="s-title reveal d1" style="text-align:center">Ce qui nous <span class="grad">distingue.</span></h2>
-    <p class="s-desc reveal d2" style="text-align:center;margin:0 auto">Wallnkap n'est pas une simple app de gestion. C'est une infrastructure financière pensée pour votre communauté.</p>
+    <span class="s-label reveal" data-i18n="inno.label">Technologie</span>
+    <h2 class="s-title reveal d1" style="text-align:center" data-i18n-html="inno.h2">Ce qui nous <span class="grad">distingue.</span></h2>
+    <p class="s-desc reveal d2" style="text-align:center;margin:0 auto" data-i18n="inno.desc">Wallnkap n'est pas une simple app de gestion. C'est une infrastructure financière pensée pour votre communauté.</p>
   </div>
   <div class="inno-grid">
     <div class="inno-card reveal d1">
       <div class="inno-icon-wrap iw-gold">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="6" height="6" rx="1"/><rect x="16" y="2" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="16" y="16" width="6" height="6" rx="1"/><path d="M9 5h6M5 9v6M19 9v6M9 19h6"/></svg>
       </div>
-      <div class="inno-title">Tirage vérifiable</div>
-      <div class="inno-desc">L'algorithme de tirage au sort est auditable par chaque membre. Aucune manipulation possible. Résultats affichés en direct devant tous.</div>
-      <span class="inno-chip">Algorithme ouvert</span>
+      <div class="inno-title" data-i18n="inno.card1.title">Tirage vérifiable</div>
+      <div class="inno-desc" data-i18n="inno.card1.desc">L'algorithme de tirage au sort est auditable par chaque membre. Aucune manipulation possible. Résultats affichés en direct devant tous.</div>
+      <span class="inno-chip" data-i18n="inno.card1.chip">Algorithme ouvert</span>
     </div>
     <div class="inno-card reveal d2">
       <div class="inno-icon-wrap iw-blue">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--blue2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       </div>
-      <div class="inno-title">Sécurité biométrique</div>
-      <div class="inno-desc">Empreinte digitale ou Face ID requis à chaque session sensible. Vos identifiants ne quittent jamais votre appareil.</div>
-      <span class="inno-chip">Face ID · Touch ID</span>
+      <div class="inno-title" data-i18n="inno.card2.title">Sécurité biométrique</div>
+      <div class="inno-desc" data-i18n="inno.card2.desc">Empreinte digitale ou Face ID requis à chaque session sensible. Vos identifiants ne quittent jamais votre appareil.</div>
+      <span class="inno-chip" data-i18n="inno.card2.chip">Face ID · Touch ID</span>
     </div>
     <div class="inno-card reveal d3">
       <div class="inno-icon-wrap iw-blue">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--blue2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
       </div>
-      <div class="inno-title">Temps réel absolu</div>
-      <div class="inno-desc">Supabase Realtime synchronise chaque action instantanément entre tous les membres. Plus d'attente, plus de doute.</div>
-      <span class="inno-chip">Realtime sync</span>
+      <div class="inno-title" data-i18n="inno.card3.title">Temps réel absolu</div>
+      <div class="inno-desc" data-i18n="inno.card3.desc">Supabase Realtime synchronise chaque action instantanément entre tous les membres. Plus d'attente, plus de doute.</div>
+      <span class="inno-chip" data-i18n="inno.card3.chip">Realtime sync</span>
     </div>
     <div class="inno-card reveal d4">
       <div class="inno-icon-wrap iw-silver">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--silver)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
       </div>
-      <div class="inno-title">Rapports intelligents</div>
-      <div class="inno-desc">Tableaux de bord automatiques, export PDF, historique complet. Chaque groupe dispose de sa propre comptabilité digitale.</div>
-      <span class="inno-chip">PDF auto · Analytics</span>
+      <div class="inno-title" data-i18n="inno.card4.title">Rapports intelligents</div>
+      <div class="inno-desc" data-i18n="inno.card4.desc">Tableaux de bord automatiques, export PDF, historique complet. Chaque groupe dispose de sa propre comptabilité digitale.</div>
+      <span class="inno-chip" data-i18n="inno.card4.chip">PDF auto · Analytics</span>
     </div>
   </div>
 </section>
@@ -1524,9 +1562,9 @@
 <!-- ═══ FEATURES ═══ -->
 <section id="features">
   <div class="section">
-    <span class="s-label reveal">Fonctionnalités</span>
-    <h2 class="s-title reveal d1">Tout ce qu'il vous faut,<br><span class="grad">rien de superflu.</span></h2>
-    <p class="s-desc reveal d2">Six piliers pour une tontine complète, fluide et résolument moderne.</p>
+    <span class="s-label reveal" data-i18n="feat.label">Fonctionnalités</span>
+    <h2 class="s-title reveal d1" data-i18n-html="feat.h2">Tout ce qu'il vous faut,<br><span class="grad">rien de superflu.</span></h2>
+    <p class="s-desc reveal d2" data-i18n="feat.desc">Six piliers pour une tontine complète, fluide et résolument moderne.</p>
     <div class="feat-grid">
 
       <div class="feat-card reveal d1">
@@ -1535,8 +1573,8 @@
         </div>
         <div class="feat-body">
           <span class="feat-tag ft-b"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.43"/></svg> Core feature</span>
-          <div class="feat-name">Tontines rotatifs</div>
-          <div class="feat-desc">Définissez règles, montants, fréquence et ordre des bénéficiaires. L'algorithme gère les tours, les rappels et les confirmations automatiquement.</div>
+          <div class="feat-name" data-i18n="feat.card1.name">Tontines rotatifs</div>
+          <div class="feat-desc" data-i18n="feat.card1.desc">Définissez règles, montants, fréquence et ordre des bénéficiaires. L'algorithme gère les tours, les rappels et les confirmations automatiquement.</div>
         </div>
       </div>
 
@@ -1546,8 +1584,8 @@
         </div>
         <div class="feat-body">
           <span class="feat-tag ft-gold"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg> Épargne collective</span>
-          <div class="feat-name">Cagnottes collectives</div>
-          <div class="feat-desc">Créez des cagnottes pour un objectif commun — voyage, mariage, investissement. Chaque membre contribue à son rythme, tout est tracé.</div>
+          <div class="feat-name" data-i18n="feat.card2.name">Cagnottes collectives</div>
+          <div class="feat-desc" data-i18n="feat.card2.desc">Créez des cagnottes pour un objectif commun — voyage, mariage, investissement. Chaque membre contribue à son rythme, tout est tracé.</div>
         </div>
       </div>
 
@@ -1557,8 +1595,8 @@
         </div>
         <div class="feat-body">
           <span class="feat-tag ft-b"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg> Live &amp; vérifiable</span>
-          <div class="feat-name">Tirage en direct</div>
-          <div class="feat-desc">Des tirages au sort en temps réel, transparents et vérifiables par tous les membres simultanément. L'équité garantie par la technologie.</div>
+          <div class="feat-name" data-i18n="feat.card3.name">Tirage en direct</div>
+          <div class="feat-desc" data-i18n="feat.card3.desc">Des tirages au sort en temps réel, transparents et vérifiables par tous les membres simultanément. L'équité garantie par la technologie.</div>
         </div>
       </div>
 
@@ -1568,8 +1606,8 @@
         </div>
         <div class="feat-body">
           <span class="feat-tag ft-b"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Analytics</span>
-          <div class="feat-name">Suivi des cotisations</div>
-          <div class="feat-desc">Tableau de bord temps réel, historique complet, export PDF. Sachez exactement qui a payé, combien et quand. Zéro ambiguïté.</div>
+          <div class="feat-name" data-i18n="feat.card4.name">Suivi des cotisations</div>
+          <div class="feat-desc" data-i18n="feat.card4.desc">Tableau de bord temps réel, historique complet, export PDF. Sachez exactement qui a payé, combien et quand. Zéro ambiguïté.</div>
         </div>
       </div>
 
@@ -1579,8 +1617,8 @@
         </div>
         <div class="feat-body">
           <span class="feat-tag ft-s"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Communauté</span>
-          <div class="feat-name">Feed social de groupe</div>
-          <div class="feat-desc">Publications, photos, vidéos et annonces entre membres. Votre groupe a sa propre vie digitale — un réseau social privé pour votre tontine.</div>
+          <div class="feat-name" data-i18n="feat.card5.name">Feed social de groupe</div>
+          <div class="feat-desc" data-i18n="feat.card5.desc">Publications, photos, vidéos et annonces entre membres. Votre groupe a sa propre vie digitale — un réseau social privé pour votre tontine.</div>
         </div>
       </div>
 
@@ -1590,8 +1628,8 @@
         </div>
         <div class="feat-body">
           <span class="feat-tag ft-gold"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg> Gamification</span>
-          <div class="feat-name">Badges &amp; Récompenses</div>
-          <div class="feat-desc">Des badges valorisent la ponctualité, la fidélité et l'engagement. Collectionnez, comparez et défiez vos proches à travers vos groupes.</div>
+          <div class="feat-name" data-i18n="feat.card6.name">Badges &amp; Récompenses</div>
+          <div class="feat-desc" data-i18n="feat.card6.desc">Des badges valorisent la ponctualité, la fidélité et l'engagement. Collectionnez, comparez et défiez vos proches à travers vos groupes.</div>
         </div>
       </div>
 
@@ -1604,31 +1642,31 @@
   <div class="section">
     <div class="how-grid">
       <div>
-        <span class="s-label reveal">Comment ça marche</span>
-        <h2 class="s-title reveal d1">Lancez votre tontine<br><span class="grad">en 3 étapes.</span></h2>
+        <span class="s-label reveal" data-i18n="how.label">Comment ça marche</span>
+        <h2 class="s-title reveal d1" data-i18n-html="how.h2">Lancez votre tontine<br><span class="grad">en 3 étapes.</span></h2>
         <div class="steps">
           <div class="step reveal d1">
             <div class="step-num">01</div>
             <div class="step-body">
-              <div class="step-title">Créez votre groupe</div>
-              <div class="step-desc">Donnez un nom à votre groupe, personnalisez-le et invitez vos proches via un lien ou un code unique. En moins de 2 minutes, votre communauté est prête.</div>
-              <div class="step-micro">⚡ Invitation par lien · QR code · Code personnel</div>
+              <div class="step-title" data-i18n="how.step1.title">Créez votre groupe</div>
+              <div class="step-desc" data-i18n="how.step1.desc">Donnez un nom à votre groupe, personnalisez-le et invitez vos proches via un lien ou un code unique. En moins de 2 minutes, votre communauté est prête.</div>
+              <div class="step-micro" data-i18n="how.step1.micro">⚡ Invitation par lien · QR code · Code personnel</div>
             </div>
           </div>
           <div class="step reveal d2">
             <div class="step-num">02</div>
             <div class="step-body">
-              <div class="step-title">Configurez la tontine</div>
-              <div class="step-desc">Définissez les règles : montant des cotisations, fréquence, ordre des bénéficiaires (manuel ou tirage algorithmique). Le système s'adapte à vos habitudes.</div>
-              <div class="step-micro">🔄 Tirage automatique · Ordre fixe · Hybride</div>
+              <div class="step-title" data-i18n="how.step2.title">Configurez la tontine</div>
+              <div class="step-desc" data-i18n="how.step2.desc">Définissez les règles : montant des cotisations, fréquence, ordre des bénéficiaires (manuel ou tirage algorithmique). Le système s'adapte à vos habitudes.</div>
+              <div class="step-micro" data-i18n="how.step2.micro">🔄 Tirage automatique · Ordre fixe · Hybride</div>
             </div>
           </div>
           <div class="step reveal d3">
             <div class="step-num">03</div>
             <div class="step-body">
-              <div class="step-title">Suivez en temps réel</div>
-              <div class="step-desc">Notifications automatiques, rappels de cotisation, rapports financiers complets et historique immuable. Chaque membre sait où en est la tontine, à tout instant.</div>
-              <div class="step-micro">📊 Rapports PDF · Historique · Alertes push</div>
+              <div class="step-title" data-i18n="how.step3.title">Suivez en temps réel</div>
+              <div class="step-desc" data-i18n="how.step3.desc">Notifications automatiques, rappels de cotisation, rapports financiers complets et historique immuable. Chaque membre sait où en est la tontine, à tout instant.</div>
+              <div class="step-micro" data-i18n="how.step3.micro">📊 Rapports PDF · Historique · Alertes push</div>
             </div>
           </div>
         </div>
@@ -1682,8 +1720,8 @@
 <!-- ═══ SHOWCASE ═══ -->
 <section id="showcase" class="section-full">
   <div class="section-inner" style="margin-bottom:40px">
-    <span class="s-label reveal">Aperçu</span>
-    <h2 class="s-title reveal d1">L'app, dans tous<br><span class="grad">ses états.</span></h2>
+    <span class="s-label reveal" data-i18n="showcase.label">Aperçu</span>
+    <h2 class="s-title reveal d1" data-i18n-html="showcase.h2">L'app, dans tous<br><span class="grad">ses états.</span></h2>
   </div>
   <div class="showcase-scroll-wrap">
     <div class="showcase-track">
@@ -1705,8 +1743,8 @@
             <div class="scr-row"><div class="scr-dot" style="background:var(--blue)"></div><div class="scr-lines"><div class="scr-line scr-w80"></div><div class="scr-line scr-w50"></div></div><span class="scr-amt" style="color:var(--blue2)">350€</span></div>
           </div>
         </div>
-        <div class="sc-label">Accueil</div>
-        <div class="sc-sub">Toutes vos tontines d'un coup d'œil</div>
+        <div class="sc-label" data-i18n="showcase.home.label">Accueil</div>
+        <div class="sc-sub" data-i18n="showcase.home.sub">Toutes vos tontines d'un coup d'œil</div>
       </div>
       <!-- Live Draw -->
       <div class="sc-card">
@@ -1728,8 +1766,8 @@
             </div>
           </div>
         </div>
-        <div class="sc-label">Tirage Live</div>
-        <div class="sc-sub">Transparent · Vérifiable · Temps réel</div>
+        <div class="sc-label" data-i18n="showcase.draw.label">Tirage Live</div>
+        <div class="sc-sub" data-i18n="showcase.draw.sub">Transparent · Vérifiable · Temps réel</div>
       </div>
       <!-- Feed -->
       <div class="sc-card">
@@ -1762,8 +1800,8 @@
             </div>
           </div>
         </div>
-        <div class="sc-label">Feed social</div>
-        <div class="sc-sub">La vie du groupe en temps réel</div>
+        <div class="sc-label" data-i18n="showcase.feed.label">Feed social</div>
+        <div class="sc-sub" data-i18n="showcase.feed.sub">La vie du groupe en temps réel</div>
       </div>
       <!-- Cagnotte -->
       <div class="sc-card">
@@ -1783,8 +1821,8 @@
             <div class="scr-row"><div class="scr-dot" style="background:var(--silver)"></div><div class="scr-lines"><div class="scr-line scr-w60"></div></div><span class="scr-amt" style="color:var(--silver)">+210€</span></div>
           </div>
         </div>
-        <div class="sc-label">Cagnotte</div>
-        <div class="sc-sub">Épargnez ensemble vers un objectif</div>
+        <div class="sc-label" data-i18n="showcase.pool.label">Cagnotte</div>
+        <div class="sc-sub" data-i18n="showcase.pool.sub">Épargnez ensemble vers un objectif</div>
       </div>
       <!-- Badges -->
       <div class="sc-card">
@@ -1819,8 +1857,8 @@
             </div>
           </div>
         </div>
-        <div class="sc-label">Badges</div>
-        <div class="sc-sub">Collectionnez vos trophées d'épargnant</div>
+        <div class="sc-label" data-i18n="showcase.badges.label">Badges</div>
+        <div class="sc-sub" data-i18n="showcase.badges.sub">Collectionnez vos trophées d'épargnant</div>
       </div>
       <!-- duplicates for infinite loop -->
       <div class="sc-card">
@@ -1838,8 +1876,8 @@
             <div class="scr-row"><div class="scr-dot" style="background:var(--silver)"></div><div class="scr-lines"><div class="scr-line scr-w80"></div><div class="scr-line scr-w60"></div></div><span class="scr-amt" style="color:var(--silver)">500€</span></div>
           </div>
         </div>
-        <div class="sc-label">Accueil</div>
-        <div class="sc-sub">Toutes vos tontines d'un coup d'œil</div>
+        <div class="sc-label" data-i18n="showcase.home.label">Accueil</div>
+        <div class="sc-sub" data-i18n="showcase.home.sub">Toutes vos tontines d'un coup d'œil</div>
       </div>
       <div class="sc-card">
         <div class="sc-screen">
@@ -1850,8 +1888,8 @@
             <div class="scr-chip sc-b">8 membres connectés</div>
           </div>
         </div>
-        <div class="sc-label">Tirage Live</div>
-        <div class="sc-sub">Transparent · Vérifiable · Temps réel</div>
+        <div class="sc-label" data-i18n="showcase.draw.label">Tirage Live</div>
+        <div class="sc-sub" data-i18n="showcase.draw.sub">Transparent · Vérifiable · Temps réel</div>
       </div>
       <div class="sc-card">
         <div class="sc-screen">
@@ -1863,8 +1901,8 @@
             </div>
           </div>
         </div>
-        <div class="sc-label">Cagnotte</div>
-        <div class="sc-sub">Épargnez ensemble vers un objectif</div>
+        <div class="sc-label" data-i18n="showcase.pool.label">Cagnotte</div>
+        <div class="sc-sub" data-i18n="showcase.pool.sub">Épargnez ensemble vers un objectif</div>
       </div>
     </div>
   </div>
@@ -1878,28 +1916,28 @@
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
       </div>
       <div class="stat-n" data-count="500" data-suffix="+">0</div>
-      <div class="stat-l">Groupes actifs</div>
+      <div class="stat-l" data-i18n="stats.groups">Groupes actifs</div>
     </div>
     <div class="stat-box reveal d1">
       <div class="stat-icon si-gold">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
       </div>
       <div class="stat-n" data-count="10" data-suffix="k+">0</div>
-      <div class="stat-l">Membres enregistrés</div>
+      <div class="stat-l" data-i18n="stats.members">Membres enregistrés</div>
     </div>
     <div class="stat-box reveal d2">
       <div class="stat-icon si-green">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
       </div>
       <div class="stat-n" data-static="0">0</div>
-      <div class="stat-l">Litige enregistré</div>
+      <div class="stat-l" data-i18n="stats.disputes">Litige enregistré</div>
     </div>
     <div class="stat-box reveal d3">
       <div class="stat-icon si-gold">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
       </div>
       <div class="stat-n" data-static="4.8★">0</div>
-      <div class="stat-l">Note App Store</div>
+      <div class="stat-l" data-i18n="stats.rating">Note App Store</div>
     </div>
   </div>
 </section>
@@ -1907,90 +1945,90 @@
 <!-- ═══ TESTIMONIALS ═══ -->
 <section id="testimonials">
   <div class="section">
-    <span class="s-label reveal">Témoignages</span>
-    <h2 class="s-title reveal d1">Ils font confiance<br><span class="grad">à Wallnkap.</span></h2>
+    <span class="s-label reveal" data-i18n="testi.label">Témoignages</span>
+    <h2 class="s-title reveal d1" data-i18n-html="testi.h2">Ils font confiance<br><span class="grad">à Wallnkap.</span></h2>
     <div class="testi-marquee-wrap reveal d1">
       <div class="testi-track">
         <!-- set 1 -->
         <div class="testi-card">
           <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-          <p class="testi-quote">"Enfin une app qui comprend vraiment comment fonctionne une tontine. On gérait tout ça sur WhatsApp avant — c'était le chaos. Wallnkap a tout changé."</p>
+          <p class="testi-quote" data-i18n="testi.1.quote">"Enfin une app qui comprend vraiment comment fonctionne une tontine. On gérait tout ça sur WhatsApp avant — c'était le chaos. Wallnkap a tout changé."</p>
           <div class="testi-author">
             <div class="testi-av" style="background:var(--grad)">A</div>
-            <div><div class="testi-name">Aminata Coulibaly</div><div class="testi-role">Organisatrice · Paris</div></div>
+            <div><div class="testi-name">Aminata Coulibaly</div><div class="testi-role" data-i18n="testi.1.role">Organisatrice · Paris</div></div>
           </div>
         </div>
         <div class="testi-card">
           <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-          <p class="testi-quote">"Les tirages en direct ont éliminé toute suspicion dans notre groupe. Tout le monde voit le résultat en même temps. C'est ce qui manquait depuis des années."</p>
+          <p class="testi-quote" data-i18n="testi.2.quote">"Les tirages en direct ont éliminé toute suspicion dans notre groupe. Tout le monde voit le résultat en même temps. C'est ce qui manquait depuis des années."</p>
           <div class="testi-author">
             <div class="testi-av" style="background:linear-gradient(135deg,var(--silver),#8893a8)">I</div>
-            <div><div class="testi-name">Ibrahim Diallo</div><div class="testi-role">Membre · Lyon</div></div>
+            <div><div class="testi-name">Ibrahim Diallo</div><div class="testi-role" data-i18n="testi.2.role">Membre · Lyon</div></div>
           </div>
         </div>
         <div class="testi-card">
           <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-          <p class="testi-quote">"La cagnotte pour le mariage de ma fille a été gérée via Wallnkap. Les rapports PDF, les notifications auto… c'est professionnel et rassurant pour tous."</p>
+          <p class="testi-quote" data-i18n="testi.3.quote">"La cagnotte pour le mariage de ma fille a été gérée via Wallnkap. Les rapports PDF, les notifications auto… c'est professionnel et rassurant pour tous."</p>
           <div class="testi-author">
             <div class="testi-av" style="background:linear-gradient(135deg,var(--blue2),var(--blue))">M</div>
-            <div><div class="testi-name">Mariam Traoré</div><div class="testi-role">Gestionnaire · Marseille</div></div>
+            <div><div class="testi-name">Mariam Traoré</div><div class="testi-role" data-i18n="testi.3.role">Gestionnaire · Marseille</div></div>
           </div>
         </div>
         <div class="testi-card">
           <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-          <p class="testi-quote">"J'organise 3 tontines simultanément pour la diaspora camerounaise à Bruxelles. Sans Wallnkap, ce serait impossible. La transparence a renforcé la confiance de tous."</p>
+          <p class="testi-quote" data-i18n="testi.4.quote">"J'organise 3 tontines simultanément pour la diaspora camerounaise à Bruxelles. Sans Wallnkap, ce serait impossible. La transparence a renforcé la confiance de tous."</p>
           <div class="testi-author">
             <div class="testi-av" style="background:linear-gradient(135deg,var(--gold),var(--gold2))">D</div>
-            <div><div class="testi-name">Danielle Mbida</div><div class="testi-role">Organisatrice · Bruxelles</div></div>
+            <div><div class="testi-name">Danielle Mbida</div><div class="testi-role" data-i18n="testi.4.role">Organisatrice · Bruxelles</div></div>
           </div>
         </div>
         <div class="testi-card">
           <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-          <p class="testi-quote">"Les badges de ponctualité ont créé une saine émulation dans notre groupe. Tout le monde veut être à jour maintenant — les retards ont chuté de 90%."</p>
+          <p class="testi-quote" data-i18n="testi.5.quote">"Les badges de ponctualité ont créé une saine émulation dans notre groupe. Tout le monde veut être à jour maintenant — les retards ont chuté de 90%."</p>
           <div class="testi-author">
             <div class="testi-av" style="background:linear-gradient(135deg,#7C3AED,var(--blue2))">K</div>
-            <div><div class="testi-name">Kofi Asante</div><div class="testi-role">Membre · Amsterdam</div></div>
+            <div><div class="testi-name">Kofi Asante</div><div class="testi-role" data-i18n="testi.5.role">Membre · Amsterdam</div></div>
           </div>
         </div>
         <!-- set 2 (duplicate for loop) -->
         <div class="testi-card">
           <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-          <p class="testi-quote">"Enfin une app qui comprend vraiment comment fonctionne une tontine. On gérait tout ça sur WhatsApp avant — c'était le chaos. Wallnkap a tout changé."</p>
+          <p class="testi-quote" data-i18n="testi.1.quote">"Enfin une app qui comprend vraiment comment fonctionne une tontine. On gérait tout ça sur WhatsApp avant — c'était le chaos. Wallnkap a tout changé."</p>
           <div class="testi-author">
             <div class="testi-av" style="background:var(--grad)">A</div>
-            <div><div class="testi-name">Aminata Coulibaly</div><div class="testi-role">Organisatrice · Paris</div></div>
+            <div><div class="testi-name">Aminata Coulibaly</div><div class="testi-role" data-i18n="testi.1.role">Organisatrice · Paris</div></div>
           </div>
         </div>
         <div class="testi-card">
           <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-          <p class="testi-quote">"Les tirages en direct ont éliminé toute suspicion dans notre groupe. Tout le monde voit le résultat en même temps. C'est ce qui manquait depuis des années."</p>
+          <p class="testi-quote" data-i18n="testi.2.quote">"Les tirages en direct ont éliminé toute suspicion dans notre groupe. Tout le monde voit le résultat en même temps. C'est ce qui manquait depuis des années."</p>
           <div class="testi-author">
             <div class="testi-av" style="background:linear-gradient(135deg,var(--silver),#8893a8)">I</div>
-            <div><div class="testi-name">Ibrahim Diallo</div><div class="testi-role">Membre · Lyon</div></div>
+            <div><div class="testi-name">Ibrahim Diallo</div><div class="testi-role" data-i18n="testi.2.role">Membre · Lyon</div></div>
           </div>
         </div>
         <div class="testi-card">
           <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-          <p class="testi-quote">"La cagnotte pour le mariage de ma fille a été gérée via Wallnkap. Les rapports PDF, les notifications auto… c'est professionnel et rassurant pour tous."</p>
+          <p class="testi-quote" data-i18n="testi.3.quote">"La cagnotte pour le mariage de ma fille a été gérée via Wallnkap. Les rapports PDF, les notifications auto… c'est professionnel et rassurant pour tous."</p>
           <div class="testi-author">
             <div class="testi-av" style="background:linear-gradient(135deg,var(--blue2),var(--blue))">M</div>
-            <div><div class="testi-name">Mariam Traoré</div><div class="testi-role">Gestionnaire · Marseille</div></div>
+            <div><div class="testi-name">Mariam Traoré</div><div class="testi-role" data-i18n="testi.3.role">Gestionnaire · Marseille</div></div>
           </div>
         </div>
         <div class="testi-card">
           <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-          <p class="testi-quote">"J'organise 3 tontines simultanément pour la diaspora camerounaise à Bruxelles. Sans Wallnkap, ce serait impossible. La transparence a renforcé la confiance de tous."</p>
+          <p class="testi-quote" data-i18n="testi.4.quote">"J'organise 3 tontines simultanément pour la diaspora camerounaise à Bruxelles. Sans Wallnkap, ce serait impossible. La transparence a renforcé la confiance de tous."</p>
           <div class="testi-author">
             <div class="testi-av" style="background:linear-gradient(135deg,var(--gold),var(--gold2))">D</div>
-            <div><div class="testi-name">Danielle Mbida</div><div class="testi-role">Organisatrice · Bruxelles</div></div>
+            <div><div class="testi-name">Danielle Mbida</div><div class="testi-role" data-i18n="testi.4.role">Organisatrice · Bruxelles</div></div>
           </div>
         </div>
         <div class="testi-card">
           <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-          <p class="testi-quote">"Les badges de ponctualité ont créé une saine émulation dans notre groupe. Tout le monde veut être à jour maintenant — les retards ont chuté de 90%."</p>
+          <p class="testi-quote" data-i18n="testi.5.quote">"Les badges de ponctualité ont créé une saine émulation dans notre groupe. Tout le monde veut être à jour maintenant — les retards ont chuté de 90%."</p>
           <div class="testi-author">
             <div class="testi-av" style="background:linear-gradient(135deg,#7C3AED,var(--blue2))">K</div>
-            <div><div class="testi-name">Kofi Asante</div><div class="testi-role">Membre · Amsterdam</div></div>
+            <div><div class="testi-name">Kofi Asante</div><div class="testi-role" data-i18n="testi.5.role">Membre · Amsterdam</div></div>
           </div>
         </div>
       </div>
@@ -2002,60 +2040,60 @@
 <section id="pricing">
   <div class="section">
     <div class="pricing-header">
-      <span class="s-label reveal">Tarifs</span>
-      <h2 class="s-title reveal d1">Simple, transparent,<br><span class="grad">sans mauvaise surprise.</span></h2>
-      <p class="s-desc reveal d2" style="margin:0 auto">30 jours d'essai complet, puis un seul plan Premium — tout inclus, aucune limite.</p>
+      <span class="s-label reveal" data-i18n="pricing.label">Tarifs</span>
+      <h2 class="s-title reveal d1" data-i18n-html="pricing.h2">Simple, transparent,<br><span class="grad">sans mauvaise surprise.</span></h2>
+      <p class="s-desc reveal d2" style="margin:0 auto" data-i18n="pricing.desc">30 jours d'essai complet, puis un seul plan Premium — tout inclus, aucune limite.</p>
       <div class="pt-toggle reveal d3">
-        <button class="pt-btn on" id="ptM">Mensuel</button>
-        <button class="pt-btn" id="ptY">Annuel <span style="color:var(--blue2);font-size:11px">−20%</span></button>
+        <button class="pt-btn on" id="ptM" data-i18n="pricing.monthly">Mensuel</button>
+        <button class="pt-btn" id="ptY"><span data-i18n="pricing.yearly">Annuel</span> <span style="color:var(--blue2);font-size:11px">−20%</span></button>
       </div>
     </div>
     <div class="price-grid">
 
       <!-- TRIAL -->
       <div class="price-card reveal d1">
-        <div class="plan-name">Essai — 30 jours</div>
+        <div class="plan-name" data-i18n="pricing.trial.name">Essai — 30 jours</div>
         <div class="plan-price">0€</div>
-        <div class="plan-period">gratuit · sans carte bancaire</div>
-        <div class="plan-desc">Découvrez Wallnkap librement. Les fonctionnalités core sont entièrement accessibles dès le premier jour.</div>
+        <div class="plan-period" data-i18n="pricing.trial.period">gratuit · sans carte bancaire</div>
+        <div class="plan-desc" data-i18n="pricing.trial.desc">Découvrez Wallnkap librement. Les fonctionnalités core sont entièrement accessibles dès le premier jour.</div>
         <div class="plan-div"></div>
-        <div style="font-size:11px;font-weight:700;color:var(--blue2);letter-spacing:.06em;margin-bottom:12px">INCLUS DANS L'ESSAI</div>
-        <div class="plan-feat"><span class="pf-ok">✓</span> Créer &amp; gérer des groupes</div>
-        <div class="plan-feat"><span class="pf-ok">✓</span> Créer des tontines (tours, cotisations)</div>
-        <div class="plan-feat"><span class="pf-ok">✓</span> Inviter des membres</div>
-        <div class="plan-feat"><span class="pf-ok">✓</span> Tirage en direct</div>
+        <div style="font-size:11px;font-weight:700;color:var(--blue2);letter-spacing:.06em;margin-bottom:12px" data-i18n="pricing.trial.inc.label">INCLUS DANS L'ESSAI</div>
+        <div class="plan-feat"><span class="pf-ok">✓</span> <span data-i18n="pricing.trial.f1">Créer &amp; gérer des groupes</span></div>
+        <div class="plan-feat"><span class="pf-ok">✓</span> <span data-i18n="pricing.trial.f2">Créer des tontines (tours, cotisations)</span></div>
+        <div class="plan-feat"><span class="pf-ok">✓</span> <span data-i18n="pricing.trial.f3">Inviter des membres</span></div>
+        <div class="plan-feat"><span class="pf-ok">✓</span> <span data-i18n="pricing.trial.f4">Tirage en direct</span></div>
         <div class="plan-div" style="margin-top:16px"></div>
-        <div style="font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.06em;margin-bottom:12px">PREMIUM REQUIS</div>
-        <div class="plan-feat"><span class="pf-no">✗</span> <span style="color:var(--muted)">Cagnotte (dépôts, retraits, historique)</span></div>
-        <div class="plan-feat"><span class="pf-no">✗</span> <span style="color:var(--muted)">Publications (texte, photo, vidéo)</span></div>
-        <div class="plan-feat"><span class="pf-no">✗</span> <span style="color:var(--muted)">Rôle Gestionnaire</span></div>
-        <div class="plan-feat"><span class="pf-no">✗</span> <span style="color:var(--muted)">Comptes rendus de groupe</span></div>
-        <div class="plan-feat"><span class="pf-no">✗</span> <span style="color:var(--muted)">Filtrage des publications</span></div>
-        <a href="#download" class="plan-cta cta-out">Commencer l'essai gratuit</a>
+        <div style="font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.06em;margin-bottom:12px" data-i18n="pricing.trial.prem.label">PREMIUM REQUIS</div>
+        <div class="plan-feat"><span class="pf-no">✗</span> <span style="color:var(--muted)" data-i18n="pricing.trial.p1">Cagnotte (dépôts, retraits, historique)</span></div>
+        <div class="plan-feat"><span class="pf-no">✗</span> <span style="color:var(--muted)" data-i18n="pricing.trial.p2">Publications (texte, photo, vidéo)</span></div>
+        <div class="plan-feat"><span class="pf-no">✗</span> <span style="color:var(--muted)" data-i18n="pricing.trial.p3">Rôle Gestionnaire</span></div>
+        <div class="plan-feat"><span class="pf-no">✗</span> <span style="color:var(--muted)" data-i18n="pricing.trial.p4">Comptes rendus de groupe</span></div>
+        <div class="plan-feat"><span class="pf-no">✗</span> <span style="color:var(--muted)" data-i18n="pricing.trial.p5">Filtrage des publications</span></div>
+        <a href="#download" class="plan-cta cta-out" data-i18n="pricing.trial.cta">Commencer l'essai gratuit</a>
       </div>
 
       <!-- PREMIUM -->
       <div class="price-card hot reveal d2">
-        <div class="pop-badge">Tout inclus</div>
-        <div class="plan-name">Premium</div>
+        <div class="pop-badge" data-i18n="pricing.prem.badge">Tout inclus</div>
+        <div class="plan-name" data-i18n="pricing.prem.name">Premium</div>
         <div class="plan-price gp" id="pPrice">9,99€</div>
-        <div class="plan-period" id="pPeriod">/mois · par organisateur</div>
-        <div class="plan-desc">L'accès complet à toutes les fonctionnalités, sans aucune restriction ni quota caché.</div>
+        <div class="plan-period" id="pPeriod" data-i18n="pricing.prem.period">/mois · par organisateur</div>
+        <div class="plan-desc" data-i18n="pricing.prem.desc">L'accès complet à toutes les fonctionnalités, sans aucune restriction ni quota caché.</div>
         <div class="plan-div"></div>
-        <div style="font-size:11px;font-weight:700;color:var(--blue2);letter-spacing:.06em;margin-bottom:12px">TOUT DE L'ESSAI, PLUS :</div>
-        <div class="plan-feat"><span class="pf-ok">✓</span> Publications texte, photo &amp; vidéo</div>
-        <div class="plan-feat"><span class="pf-ok">✓</span> Cagnotte complète (dépôts, retraits, historique)</div>
-        <div class="plan-feat"><span class="pf-ok">✓</span> Rôle Gestionnaire — délégation des droits</div>
-        <div class="plan-feat"><span class="pf-ok">✓</span> Comptes rendus de groupe</div>
-        <div class="plan-feat"><span class="pf-ok">✓</span> Filtrage &amp; modération des publications</div>
-        <div class="plan-feat"><span class="pf-ok">✓</span> Groupes, tontines &amp; membres illimités</div>
-        <div class="plan-feat"><span class="pf-ok">✓</span> Support prioritaire</div>
-        <a href="#download" class="plan-cta cta-fill">Passer en Premium</a>
-        <p style="text-align:center;font-size:11px;color:var(--muted);margin-top:12px">30 jours d'essai inclus · Annulable à tout moment</p>
+        <div style="font-size:11px;font-weight:700;color:var(--blue2);letter-spacing:.06em;margin-bottom:12px" data-i18n="pricing.prem.inc.label">TOUT DE L'ESSAI, PLUS :</div>
+        <div class="plan-feat"><span class="pf-ok">✓</span> <span data-i18n="pricing.prem.f1">Publications texte, photo &amp; vidéo</span></div>
+        <div class="plan-feat"><span class="pf-ok">✓</span> <span data-i18n="pricing.prem.f2">Cagnotte complète (dépôts, retraits, historique)</span></div>
+        <div class="plan-feat"><span class="pf-ok">✓</span> <span data-i18n="pricing.prem.f3">Rôle Gestionnaire — délégation des droits</span></div>
+        <div class="plan-feat"><span class="pf-ok">✓</span> <span data-i18n="pricing.prem.f4">Comptes rendus de groupe</span></div>
+        <div class="plan-feat"><span class="pf-ok">✓</span> <span data-i18n="pricing.prem.f5">Filtrage &amp; modération des publications</span></div>
+        <div class="plan-feat"><span class="pf-ok">✓</span> <span data-i18n="pricing.prem.f6">Groupes, tontines &amp; membres illimités</span></div>
+        <div class="plan-feat"><span class="pf-ok">✓</span> <span data-i18n="pricing.prem.f7">Support prioritaire</span></div>
+        <a href="#download" class="plan-cta cta-fill" data-i18n="pricing.prem.cta">Passer en Premium</a>
+        <p style="text-align:center;font-size:11px;color:var(--muted);margin-top:12px" data-i18n="pricing.prem.note">30 jours d'essai inclus · Annulable à tout moment</p>
       </div>
 
     </div>
-    <p style="text-align:center;color:var(--muted);font-size:13px;margin-top:28px">
+    <p style="text-align:center;color:var(--muted);font-size:13px;margin-top:28px" data-i18n="pricing.payment">
       🔒 Paiement sécurisé via Apple Pay &amp; Google Pay · Chargé dynamiquement depuis l'App Store / Google Play
     </p>
   </div>
@@ -2067,22 +2105,22 @@
   <div class="dl-glow"></div>
   <div class="dl-inner">
     <img src="images/logo.jpg" class="dl-logo reveal" alt="Wallnkap" loading="lazy">
-    <h2 class="dl-title reveal d1">
+    <h2 class="dl-title reveal d1" data-i18n-html="dl.h2">
       Votre tontine<br>vous attend dans<br><span class="grad">votre poche.</span>
     </h2>
-    <p class="dl-desc reveal d2">Rejoignez des milliers de personnes qui ont déjà digitalisé leur épargne collective. Téléchargement gratuit, configuration en 2 minutes.</p>
+    <p class="dl-desc reveal d2" data-i18n="dl.desc">Rejoignez des milliers de personnes qui ont déjà digitalisé leur épargne collective. Téléchargement gratuit, configuration en 2 minutes.</p>
     <div class="app-badges reveal d3">
       <a href="#" class="app-badge">
         <span class="ab-icon">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         </span>
-        <div><div class="ab-sub">Télécharger sur</div><div class="ab-store">App Store</div></div>
+        <div><div class="ab-sub" data-i18n="dl.ios.sub">Télécharger sur</div><div class="ab-store">App Store</div></div>
       </a>
       <a href="#" class="app-badge">
         <span class="ab-icon">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M3.18 23.76c.3.17.64.24.98.2l13.08-12.08-2.74-2.74-11.32 14.62zm16.1-9.96l2.38-1.38c.45-.26.45-.69 0-.95l-2.5-1.44-2.89 2.89 2.89 2.89zm-3.07-11.52L3.14.23c-.35-.2-.74-.2-1.04-.03l11.54 11.54 2.57-2.57v.01zM2.1.23c-.38.22-.6.6-.6 1.1v20.84c0 .49.22.88.6 1.1l.1.06 11.66-11.66v-.27L2.1.23z"/></svg>
         </span>
-        <div><div class="ab-sub">Disponible sur</div><div class="ab-store">Google Play</div></div>
+        <div><div class="ab-sub" data-i18n="dl.play.sub">Disponible sur</div><div class="ab-store">Google Play</div></div>
       </a>
     </div>
     <div class="trust-signals reveal d4">
@@ -2090,25 +2128,25 @@
         <div class="trust-icon">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         </div>
-        Chiffrement de bout en bout
+        <span data-i18n="dl.trust.enc">Chiffrement de bout en bout</span>
       </div>
       <div class="trust-item">
         <div class="trust-icon">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        Infrastructure certifiée
+        <span data-i18n="dl.trust.cert">Infrastructure certifiée</span>
       </div>
       <div class="trust-item">
         <div class="trust-icon">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
         </div>
-        30 jours d'essai gratuit
+        <span data-i18n="dl.trust.trial">30 jours d'essai gratuit</span>
       </div>
       <div class="trust-item">
         <div class="trust-icon">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--silver)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 9.81a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16l.19.92z"/></svg>
         </div>
-        Support 7j/7
+        <span data-i18n="dl.trust.support">Support 7j/7</span>
       </div>
     </div>
   </div>
@@ -2117,27 +2155,27 @@
 <!-- ═══ LÉGAL & RGPD ═══ -->
 <section id="legal">
   <div class="section">
-    <span class="s-label reveal">Légal & RGPD</span>
-    <h2 class="s-title reveal d1">Transparence &amp; <span class="grad">protection de vos données.</span></h2>
-    <p class="s-desc reveal d2">Vos droits, nos engagements — tout est ici, en toute clarté.</p>
+    <span class="s-label reveal" data-i18n="legal.label">Légal &amp; RGPD</span>
+    <h2 class="s-title reveal d1" data-i18n-html="legal.h2">Transparence &amp; <span class="grad">protection de vos données.</span></h2>
+    <p class="s-desc reveal d2" data-i18n="legal.desc">Vos droits, nos engagements — tout est ici, en toute clarté.</p>
 
     <!-- ── Tab navigation ── -->
     <div class="legal-tabs reveal d2">
       <button class="legal-tab-btn active" data-tab="confidentialite">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Confidentialité
+        <span data-i18n="legal.tab.confidentialite">Confidentialité</span>
       </button>
       <button class="legal-tab-btn" data-tab="cgu">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        CGU / CGV
+        <span data-i18n="legal.tab.cgu">CGU / CGV</span>
       </button>
       <button class="legal-tab-btn" data-tab="faq">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        FAQ
+        <span data-i18n="legal.tab.faq">FAQ</span>
       </button>
       <button class="legal-tab-btn" data-tab="mentions">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        Mentions Légales
+        <span data-i18n="legal.tab.mentions">Mentions Légales</span>
       </button>
     </div>
 
@@ -2659,7 +2697,7 @@
           <img src="images/logo.jpg" alt="Wallnkap" loading="lazy">
           <span class="fb-name">Wallnkap</span>
         </div>
-        <p class="footer-tagline">La tontine digitale — épargne collective,<br>transparence et solidarité pour les communautés modernes.</p>
+        <p class="footer-tagline" data-i18n-html="footer.tagline">La tontine digitale — épargne collective,<br>transparence et solidarité pour les communautés modernes.</p>
       </div>
       <div class="social-row">
         <a href="#" class="social-btn" title="Instagram">
@@ -2679,42 +2717,42 @@
 
     <!-- Produit -->
     <div class="footer-card">
-      <h4>Produit</h4>
+      <h4 data-i18n="footer.col.product">Produit</h4>
       <ul>
-        <li><a href="#features">Fonctionnalités</a></li>
-        <li><a href="#how">Comment ça marche</a></li>
-        <li><a href="#pricing">Tarifs</a></li>
-        <li><a href="#showcase">Aperçu</a></li>
+        <li><a href="#features" data-i18n="footer.link.features">Fonctionnalités</a></li>
+        <li><a href="#how" data-i18n="footer.link.how">Comment ça marche</a></li>
+        <li><a href="#pricing" data-i18n="footer.link.pricing">Tarifs</a></li>
+        <li><a href="#showcase" data-i18n="footer.link.showcase">Aperçu</a></li>
       </ul>
     </div>
 
     <!-- Ressources -->
     <div class="footer-card">
-      <h4>Ressources</h4>
+      <h4 data-i18n="footer.col.resources">Ressources</h4>
       <ul>
-        <li><a href="#">Centre d'aide</a></li>
-        <li><a href="#">Tutoriels</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Communauté</a></li>
+        <li><a href="#" data-i18n="footer.link.help">Centre d'aide</a></li>
+        <li><a href="#" data-i18n="footer.link.tutorials">Tutoriels</a></li>
+        <li><a href="#" data-i18n="footer.link.blog">Blog</a></li>
+        <li><a href="#" data-i18n="footer.link.community">Communauté</a></li>
       </ul>
     </div>
 
     <!-- Légal -->
     <div class="footer-card">
-      <h4>Légal</h4>
+      <h4 data-i18n="footer.col.legal">Légal</h4>
       <ul>
-        <li><a href="#legal" data-legal-tab="cgu">Conditions d'utilisation</a></li>
-        <li><a href="#legal" data-legal-tab="confidentialite">Confidentialité</a></li>
-        <li><a href="#legal" data-legal-tab="mentions">Cookies &amp; Mentions</a></li>
-        <li><a href="#legal" data-legal-tab="confidentialite">RGPD</a></li>
+        <li><a href="#legal" data-legal-tab="cgu" data-i18n="footer.link.cgu">Conditions d'utilisation</a></li>
+        <li><a href="#legal" data-legal-tab="confidentialite" data-i18n="footer.link.privacy">Confidentialité</a></li>
+        <li><a href="#legal" data-legal-tab="mentions" data-i18n="footer.link.cookies">Cookies &amp; Mentions</a></li>
+        <li><a href="#legal" data-legal-tab="confidentialite" data-i18n="footer.link.rgpd">RGPD</a></li>
       </ul>
     </div>
 
   </div>
 
   <div class="footer-bottom">
-    <p class="footer-legal">© 2026 Wallnkap. Tous droits réservés. &nbsp;·&nbsp; <button id="cookieReset" style="background:none;border:none;color:var(--muted);font-size:12px;cursor:pointer;padding:0;transition:color .2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">Gérer les cookies</button></p>
-    <p class="footer-legal" style="color:rgba(255,255,255,.18)">Fait avec ♥ pour les tontines</p>
+    <p class="footer-legal"><span data-i18n="footer.copyright">© 2026 Wallnkap. Tous droits réservés.</span> &nbsp;·&nbsp; <button id="cookieReset" style="background:none;border:none;color:var(--muted);font-size:12px;cursor:pointer;padding:0;transition:color .2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'" data-i18n="footer.cookie.btn">Gérer les cookies</button></p>
+    <p class="footer-legal" style="color:rgba(255,255,255,.18)" data-i18n="footer.made">Fait avec ♥ pour les tontines</p>
   </div>
 </footer>
 
@@ -2725,14 +2763,218 @@
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/></svg>
     </div>
     <div class="cookie-text">
-      <p><strong>Wallnkap</strong> utilise des cookies pour améliorer l'expérience. Aucune donnée n'est transmise à des fins publicitaires. <a href="#legal" data-legal-tab="mentions">En savoir plus</a></p>
+      <p data-i18n-html="cookie.text"><strong>Wallnkap</strong> utilise des cookies pour améliorer l'expérience. Aucune donnée n'est transmise à des fins publicitaires. <a href="#legal" data-legal-tab="mentions">En savoir plus</a></p>
     </div>
     <div class="cookie-actions">
-      <button class="cookie-refuse" id="cookieRefuse" type="button">Refuser</button>
-      <button class="cookie-accept" id="cookieAccept" type="button">Accepter</button>
+      <button class="cookie-refuse" id="cookieRefuse" type="button" data-i18n="cookie.refuse">Refuser</button>
+      <button class="cookie-accept" id="cookieAccept" type="button" data-i18n="cookie.accept">Accepter</button>
     </div>
   </div>
 </div>
+
+<script>
+/* ── i18n ── */
+(function(){
+  var i18n = {
+    fr: {
+      'nav.concept':'Le concept','nav.features':'Fonctionnalités','nav.how':'Comment ça marche','nav.pricing':'Tarifs','nav.legal':'Légal & RGPD','nav.cta':'Télécharger',
+      'hero.eyebrow':'Disponible sur iOS & Android',
+      'hero.h1':'La tontine,<br>comme vous ne<br>l\'avez jamais <span class="grad">vécue.</span>',
+      'hero.desc':'Wallnkap modernise l\'épargne collective africaine — transparence absolue, sécurité de niveau bancaire, et une expérience digitale pensée pour votre communauté.',
+      'hero.stat.groups':'Groupes actifs','hero.stat.members':'Membres','hero.stat.rating':'Note App Store',
+      'hero.badge1':'Cotisation enregistrée','hero.badge1.sub':'+200 € · Tour #3',
+      'hero.badge2':'Badge obtenu','hero.badge2.sub':'Ponctualité parfaite',
+      'hero.badge3':'Tirage dans 2h','hero.badge3.sub':'Groupe Famille · 8 membres',
+      'hero.scroll':'Défiler',
+      'ticker.1':'Tirage algorithmique vérifiable','ticker.2':'Authentification biométrique','ticker.3':'Chiffrement de bout-en-bout',
+      'ticker.4':'Notifications push temps réel','ticker.5':'Rapports PDF automatiques','ticker.6':'Infrastructure Supabase · 99.9% uptime',
+      'ticker.7':'Multi-devises · Multi-pays','ticker.8':'Historique immuable',
+      'concept.label':'Le concept',
+      'concept.h2':'Vous connaissez<br>déjà la tontine.<br><span class="grad">Nous l\'avons amplifiée.</span>',
+      'concept.desc':'La tontine existe depuis des siècles au cœur des communautés africaines. Wallnkap conserve cet esprit de solidarité et y ajoute la transparence, la traçabilité et la puissance du digital.',
+      'concept.cp1.title':'Sécurité de niveau bancaire','concept.cp1.desc':'Authentification biométrique, stockage chiffré (flutter_secure_storage), infrastructure Supabase certifiée. Votre argent et vos données sont inviolables.',
+      'concept.cp2.title':'Transparence totale & vérifiable','concept.cp2.desc':'Chaque cotisation, tirage et transaction est enregistrée et visible par tous les membres en temps réel. L\'algorithme de tirage est auditable.',
+      'concept.cp3.title':'100% mobile · toujours synchronisé','concept.cp3.desc':'iOS et Android, interface bilingue (fr/en), notifications instantanées. Gérez votre tontine depuis n\'importe quel continent.',
+      'inno.label':'Technologie','inno.h2':'Ce qui nous <span class="grad">distingue.</span>',
+      'inno.desc':'Wallnkap n\'est pas une simple app de gestion. C\'est une infrastructure financière pensée pour votre communauté.',
+      'inno.card1.title':'Tirage vérifiable','inno.card1.desc':'L\'algorithme de tirage au sort est auditable par chaque membre. Aucune manipulation possible. Résultats affichés en direct devant tous.','inno.card1.chip':'Algorithme ouvert',
+      'inno.card2.title':'Sécurité biométrique','inno.card2.desc':'Empreinte digitale ou Face ID requis à chaque session sensible. Vos identifiants ne quittent jamais votre appareil.','inno.card2.chip':'Face ID · Touch ID',
+      'inno.card3.title':'Temps réel absolu','inno.card3.desc':'Supabase Realtime synchronise chaque action instantanément entre tous les membres. Plus d\'attente, plus de doute.','inno.card3.chip':'Realtime sync',
+      'inno.card4.title':'Rapports intelligents','inno.card4.desc':'Tableaux de bord automatiques, export PDF, historique complet. Chaque groupe dispose de sa propre comptabilité digitale.','inno.card4.chip':'PDF auto · Analytics',
+      'feat.label':'Fonctionnalités','feat.h2':'Tout ce qu\'il vous faut,<br><span class="grad">rien de superflu.</span>',
+      'feat.desc':'Six piliers pour une tontine complète, fluide et résolument moderne.',
+      'feat.card1.name':'Tontines rotatifs','feat.card1.desc':'Définissez règles, montants, fréquence et ordre des bénéficiaires. L\'algorithme gère les tours, les rappels et les confirmations automatiquement.',
+      'feat.card2.name':'Cagnottes collectives','feat.card2.desc':'Créez des cagnottes pour un objectif commun — voyage, mariage, investissement. Chaque membre contribue à son rythme, tout est tracé.',
+      'feat.card3.name':'Tirage en direct','feat.card3.desc':'Des tirages au sort en temps réel, transparents et vérifiables par tous les membres simultanément. L\'équité garantie par la technologie.',
+      'feat.card4.name':'Suivi des cotisations','feat.card4.desc':'Tableau de bord temps réel, historique complet, export PDF. Sachez exactement qui a payé, combien et quand. Zéro ambiguïté.',
+      'feat.card5.name':'Feed social de groupe','feat.card5.desc':'Publications, photos, vidéos et annonces entre membres. Votre groupe a sa propre vie digitale — un réseau social privé pour votre tontine.',
+      'feat.card6.name':'Badges & Récompenses','feat.card6.desc':'Des badges valorisent la ponctualité, la fidélité et l\'engagement. Collectionnez, comparez et défiez vos proches à travers vos groupes.',
+      'how.label':'Comment ça marche','how.h2':'Lancez votre tontine<br><span class="grad">en 3 étapes.</span>',
+      'how.step1.title':'Créez votre groupe','how.step1.desc':'Donnez un nom à votre groupe, personnalisez-le et invitez vos proches via un lien ou un code unique. En moins de 2 minutes, votre communauté est prête.','how.step1.micro':'⚡ Invitation par lien · QR code · Code personnel',
+      'how.step2.title':'Configurez la tontine','how.step2.desc':'Définissez les règles : montant des cotisations, fréquence, ordre des bénéficiaires (manuel ou tirage algorithmique). Le système s\'adapte à vos habitudes.','how.step2.micro':'🔄 Tirage automatique · Ordre fixe · Hybride',
+      'how.step3.title':'Suivez en temps réel','how.step3.desc':'Notifications automatiques, rappels de cotisation, rapports financiers complets et historique immuable. Chaque membre sait où en est la tontine, à tout instant.','how.step3.micro':'📊 Rapports PDF · Historique · Alertes push',
+      'showcase.label':'Aperçu','showcase.h2':'L\'app, dans tous<br><span class="grad">ses états.</span>',
+      'showcase.home.label':'Accueil','showcase.home.sub':'Toutes vos tontines d\'un coup d\'œil',
+      'showcase.draw.label':'Tirage Live','showcase.draw.sub':'Transparent · Vérifiable · Temps réel',
+      'showcase.feed.label':'Feed social','showcase.feed.sub':'La vie du groupe en temps réel',
+      'showcase.pool.label':'Cagnotte','showcase.pool.sub':'Épargnez ensemble vers un objectif',
+      'showcase.badges.label':'Badges','showcase.badges.sub':'Collectionnez vos trophées d\'épargnant',
+      'stats.groups':'Groupes actifs','stats.members':'Membres enregistrés','stats.disputes':'Litige enregistré','stats.rating':'Note App Store',
+      'testi.label':'Témoignages','testi.h2':'Ils font confiance<br><span class="grad">à Wallnkap.</span>',
+      'testi.1.quote':'"Enfin une app qui comprend vraiment comment fonctionne une tontine. On gérait tout ça sur WhatsApp avant — c\'était le chaos. Wallnkap a tout changé."','testi.1.role':'Organisatrice · Paris',
+      'testi.2.quote':'"Les tirages en direct ont éliminé toute suspicion dans notre groupe. Tout le monde voit le résultat en même temps. C\'est ce qui manquait depuis des années."','testi.2.role':'Membre · Lyon',
+      'testi.3.quote':'"La cagnotte pour le mariage de ma fille a été gérée via Wallnkap. Les rapports PDF, les notifications auto… c\'est professionnel et rassurant pour tous."','testi.3.role':'Gestionnaire · Marseille',
+      'testi.4.quote':'"J\'organise 3 tontines simultanément pour la diaspora camerounaise à Bruxelles. Sans Wallnkap, ce serait impossible. La transparence a renforcé la confiance de tous."','testi.4.role':'Organisatrice · Bruxelles',
+      'testi.5.quote':'"Les badges de ponctualité ont créé une saine émulation dans notre groupe. Tout le monde veut être à jour maintenant — les retards ont chuté de 90%."','testi.5.role':'Membre · Amsterdam',
+      'pricing.label':'Tarifs','pricing.h2':'Simple, transparent,<br><span class="grad">sans mauvaise surprise.</span>',
+      'pricing.desc':'30 jours d\'essai complet, puis un seul plan Premium — tout inclus, aucune limite.',
+      'pricing.monthly':'Mensuel','pricing.yearly':'Annuel',
+      'pricing.trial.name':'Essai — 30 jours','pricing.trial.period':'gratuit · sans carte bancaire',
+      'pricing.trial.desc':'Découvrez Wallnkap librement. Les fonctionnalités core sont entièrement accessibles dès le premier jour.',
+      'pricing.trial.inc.label':'INCLUS DANS L\'ESSAI',
+      'pricing.trial.f1':'Créer & gérer des groupes','pricing.trial.f2':'Créer des tontines (tours, cotisations)','pricing.trial.f3':'Inviter des membres','pricing.trial.f4':'Tirage en direct',
+      'pricing.trial.prem.label':'PREMIUM REQUIS',
+      'pricing.trial.p1':'Cagnotte (dépôts, retraits, historique)','pricing.trial.p2':'Publications (texte, photo, vidéo)','pricing.trial.p3':'Rôle Gestionnaire','pricing.trial.p4':'Comptes rendus de groupe','pricing.trial.p5':'Filtrage des publications',
+      'pricing.trial.cta':'Commencer l\'essai gratuit',
+      'pricing.prem.badge':'Tout inclus','pricing.prem.name':'Premium','pricing.prem.period':'/mois · par organisateur',
+      'pricing.prem.desc':'L\'accès complet à toutes les fonctionnalités, sans aucune restriction ni quota caché.',
+      'pricing.prem.inc.label':'TOUT DE L\'ESSAI, PLUS :',
+      'pricing.prem.f1':'Publications texte, photo & vidéo','pricing.prem.f2':'Cagnotte complète (dépôts, retraits, historique)','pricing.prem.f3':'Rôle Gestionnaire — délégation des droits',
+      'pricing.prem.f4':'Comptes rendus de groupe','pricing.prem.f5':'Filtrage & modération des publications','pricing.prem.f6':'Groupes, tontines & membres illimités','pricing.prem.f7':'Support prioritaire',
+      'pricing.prem.cta':'Passer en Premium','pricing.prem.note':'30 jours d\'essai inclus · Annulable à tout moment',
+      'pricing.payment':'🔒 Paiement sécurisé via Apple Pay & Google Pay · Chargé dynamiquement depuis l\'App Store / Google Play',
+      'dl.h2':'Votre tontine<br>vous attend dans<br><span class="grad">votre poche.</span>',
+      'dl.desc':'Rejoignez des milliers de personnes qui ont déjà digitalisé leur épargne collective. Téléchargement gratuit, configuration en 2 minutes.',
+      'dl.ios.sub':'Télécharger sur','dl.play.sub':'Disponible sur',
+      'dl.trust.enc':'Chiffrement de bout en bout','dl.trust.cert':'Infrastructure certifiée','dl.trust.trial':'30 jours d\'essai gratuit','dl.trust.support':'Support 7j/7',
+      'legal.label':'Légal & RGPD','legal.h2':'Transparence & <span class="grad">protection de vos données.</span>',
+      'legal.desc':'Vos droits, nos engagements — tout est ici, en toute clarté.',
+      'legal.tab.confidentialite':'Confidentialité','legal.tab.cgu':'CGU / CGV','legal.tab.faq':'FAQ','legal.tab.mentions':'Mentions Légales',
+      'footer.tagline':'La tontine digitale — épargne collective,<br>transparence et solidarité pour les communautés modernes.',
+      'footer.col.product':'Produit','footer.col.resources':'Ressources','footer.col.legal':'Légal',
+      'footer.link.features':'Fonctionnalités','footer.link.how':'Comment ça marche','footer.link.pricing':'Tarifs','footer.link.showcase':'Aperçu',
+      'footer.link.help':'Centre d\'aide','footer.link.tutorials':'Tutoriels','footer.link.blog':'Blog','footer.link.community':'Communauté',
+      'footer.link.cgu':'Conditions d\'utilisation','footer.link.privacy':'Confidentialité','footer.link.cookies':'Cookies & Mentions','footer.link.rgpd':'RGPD',
+      'footer.copyright':'© 2026 Wallnkap. Tous droits réservés.','footer.cookie.btn':'Gérer les cookies','footer.made':'Fait avec ♥ pour les tontines',
+      'cookie.text':'<strong>Wallnkap</strong> utilise des cookies analytiques (Google Tag Manager) pour mesurer l\'audience et améliorer l\'expérience. Aucune donnée n\'est transmise à des fins publicitaires. <a href="#legal" data-legal-tab="mentions">En savoir plus</a>',
+      'cookie.accept':'Accepter','cookie.refuse':'Refuser'
+    },
+    en: {
+      'nav.concept':'The concept','nav.features':'Features','nav.how':'How it works','nav.pricing':'Pricing','nav.legal':'Legal & GDPR','nav.cta':'Download',
+      'hero.eyebrow':'Available on iOS & Android',
+      'hero.h1':'The tontine,<br>as you\'ve never<br><span class="grad">experienced it.</span>',
+      'hero.desc':'Wallnkap modernizes African collective savings — absolute transparency, bank-level security, and a digital experience built for your community.',
+      'hero.stat.groups':'Active groups','hero.stat.members':'Members','hero.stat.rating':'App Store rating',
+      'hero.badge1':'Payment recorded','hero.badge1.sub':'+€200 · Round #3',
+      'hero.badge2':'Badge earned','hero.badge2.sub':'Perfect punctuality',
+      'hero.badge3':'Draw in 2h','hero.badge3.sub':'Family Group · 8 members',
+      'hero.scroll':'Scroll',
+      'ticker.1':'Verifiable algorithmic draw','ticker.2':'Biometric authentication','ticker.3':'End-to-end encryption',
+      'ticker.4':'Real-time push notifications','ticker.5':'Automatic PDF reports','ticker.6':'Supabase infrastructure · 99.9% uptime',
+      'ticker.7':'Multi-currency · Multi-country','ticker.8':'Immutable history',
+      'concept.label':'The concept',
+      'concept.h2':'You already know<br>the tontine.<br><span class="grad">We\'ve amplified it.</span>',
+      'concept.desc':'The tontine has existed for centuries at the heart of African communities. Wallnkap preserves that spirit of solidarity and adds transparency, traceability and the power of digital.',
+      'concept.cp1.title':'Bank-level security','concept.cp1.desc':'Biometric authentication, encrypted storage (flutter_secure_storage), certified Supabase infrastructure. Your money and data are inviolable.',
+      'concept.cp2.title':'Total & verifiable transparency','concept.cp2.desc':'Every contribution, draw and transaction is recorded and visible to all members in real time. The draw algorithm is fully auditable.',
+      'concept.cp3.title':'100% mobile · always in sync','concept.cp3.desc':'iOS and Android, bilingual interface (fr/en), instant notifications. Manage your tontine from any continent.',
+      'inno.label':'Technology','inno.h2':'What sets us <span class="grad">apart.</span>',
+      'inno.desc':'Wallnkap is not just a management app. It\'s a financial infrastructure built for your community.',
+      'inno.card1.title':'Verifiable draw','inno.card1.desc':'The draw algorithm is fully auditable by every member. No manipulation possible. Results displayed live in front of everyone.','inno.card1.chip':'Open algorithm',
+      'inno.card2.title':'Biometric security','inno.card2.desc':'Fingerprint or Face ID required for every sensitive session. Your credentials never leave your device.','inno.card2.chip':'Face ID · Touch ID',
+      'inno.card3.title':'Absolute real-time','inno.card3.desc':'Supabase Realtime syncs every action instantly across all members. No more waiting, no more doubt.','inno.card3.chip':'Realtime sync',
+      'inno.card4.title':'Smart reports','inno.card4.desc':'Automatic dashboards, PDF export, complete history. Each group has its own digital accounting.','inno.card4.chip':'PDF auto · Analytics',
+      'feat.label':'Features','feat.h2':'Everything you need,<br><span class="grad">nothing superfluous.</span>',
+      'feat.desc':'Six pillars for a complete, smooth and truly modern tontine.',
+      'feat.card1.name':'Rotating tontines','feat.card1.desc':'Set rules, amounts, frequency and beneficiary order. The algorithm manages rounds, reminders and confirmations automatically.',
+      'feat.card2.name':'Group savings pools','feat.card2.desc':'Create savings pools for a common goal — travel, wedding, investment. Each member contributes at their own pace, everything is tracked.',
+      'feat.card3.name':'Live draw','feat.card3.desc':'Real-time draws, transparent and verifiable by all members simultaneously. Fairness guaranteed by technology.',
+      'feat.card4.name':'Payment tracking','feat.card4.desc':'Real-time dashboard, full history, PDF export. Know exactly who paid, how much and when. Zero ambiguity.',
+      'feat.card5.name':'Group social feed','feat.card5.desc':'Posts, photos, videos and announcements between members. Your group has its own digital life — a private social network for your tontine.',
+      'feat.card6.name':'Badges & Rewards','feat.card6.desc':'Badges reward punctuality, loyalty and engagement. Collect, compare and challenge your friends across groups.',
+      'how.label':'How it works','how.h2':'Launch your tontine<br><span class="grad">in 3 steps.</span>',
+      'how.step1.title':'Create your group','how.step1.desc':'Name your group, customize it and invite your loved ones via a unique link or code. In less than 2 minutes, your community is ready.','how.step1.micro':'⚡ Invite by link · QR code · Personal code',
+      'how.step2.title':'Set up the tontine','how.step2.desc':'Define the rules: contribution amount, frequency, beneficiary order (manual or algorithmic draw). The system adapts to your habits.','how.step2.micro':'🔄 Automatic draw · Fixed order · Hybrid',
+      'how.step3.title':'Track in real-time','how.step3.desc':'Automatic notifications, payment reminders, complete financial reports and immutable history. Every member knows where the tontine stands, at any time.','how.step3.micro':'📊 PDF Reports · History · Push alerts',
+      'showcase.label':'Preview','showcase.h2':'The app, in all<br><span class="grad">its forms.</span>',
+      'showcase.home.label':'Home','showcase.home.sub':'All your tontines at a glance',
+      'showcase.draw.label':'Live Draw','showcase.draw.sub':'Transparent · Verifiable · Real-time',
+      'showcase.feed.label':'Social feed','showcase.feed.sub':'Group activity in real time',
+      'showcase.pool.label':'Savings pool','showcase.pool.sub':'Save together towards a goal',
+      'showcase.badges.label':'Badges','showcase.badges.sub':'Collect your saver trophies',
+      'stats.groups':'Active groups','stats.members':'Registered members','stats.disputes':'Dispute recorded','stats.rating':'App Store rating',
+      'testi.label':'Testimonials','testi.h2':'They trust<br><span class="grad">Wallnkap.</span>',
+      'testi.1.quote':'"Finally an app that truly understands how a tontine works. We managed everything on WhatsApp before — it was chaos. Wallnkap changed everything."','testi.1.role':'Organizer · Paris',
+      'testi.2.quote':'"Live draws eliminated all suspicion in our group. Everyone sees the result at the same time. This is what we\'ve been missing for years."','testi.2.role':'Member · Lyon',
+      'testi.3.quote':'"My daughter\'s wedding savings pool was managed through Wallnkap. PDF reports, auto notifications… it\'s professional and reassuring for everyone."','testi.3.role':'Manager · Marseille',
+      'testi.4.quote':'"I manage 3 tontines simultaneously for the Cameroonian diaspora in Brussels. Without Wallnkap, it would be impossible. Transparency has strengthened everyone\'s trust."','testi.4.role':'Organizer · Brussels',
+      'testi.5.quote':'"Punctuality badges created healthy competition in our group. Everyone wants to stay up to date now — late payments dropped by 90%."','testi.5.role':'Member · Amsterdam',
+      'pricing.label':'Pricing','pricing.h2':'Simple, transparent,<br><span class="grad">no surprises.</span>',
+      'pricing.desc':'30-day full trial, then one Premium plan — everything included, no limits.',
+      'pricing.monthly':'Monthly','pricing.yearly':'Annual',
+      'pricing.trial.name':'Trial — 30 days','pricing.trial.period':'free · no credit card required',
+      'pricing.trial.desc':'Discover Wallnkap freely. Core features are fully accessible from day one.',
+      'pricing.trial.inc.label':'INCLUDED IN TRIAL',
+      'pricing.trial.f1':'Create & manage groups','pricing.trial.f2':'Create tontines (rounds, contributions)','pricing.trial.f3':'Invite members','pricing.trial.f4':'Live draw',
+      'pricing.trial.prem.label':'PREMIUM REQUIRED',
+      'pricing.trial.p1':'Savings pool (deposits, withdrawals, history)','pricing.trial.p2':'Posts (text, photo, video)','pricing.trial.p3':'Manager role','pricing.trial.p4':'Group reports','pricing.trial.p5':'Post filtering',
+      'pricing.trial.cta':'Start free trial',
+      'pricing.prem.badge':'All inclusive','pricing.prem.name':'Premium','pricing.prem.period':'/month · per organizer',
+      'pricing.prem.desc':'Full access to all features, with no hidden restrictions or quotas.',
+      'pricing.prem.inc.label':'EVERYTHING IN TRIAL, PLUS:',
+      'pricing.prem.f1':'Text, photo & video posts','pricing.prem.f2':'Full savings pool (deposits, withdrawals, history)','pricing.prem.f3':'Manager role — rights delegation',
+      'pricing.prem.f4':'Group reports','pricing.prem.f5':'Post filtering & moderation','pricing.prem.f6':'Unlimited groups, tontines & members','pricing.prem.f7':'Priority support',
+      'pricing.prem.cta':'Go Premium','pricing.prem.note':'30-day trial included · Cancel anytime',
+      'pricing.payment':'🔒 Secure payment via Apple Pay & Google Pay · Dynamically charged from App Store / Google Play',
+      'dl.h2':'Your tontine<br>is waiting for you<br><span class="grad">in your pocket.</span>',
+      'dl.desc':'Join thousands of people who have already digitized their collective savings. Free download, set up in 2 minutes.',
+      'dl.ios.sub':'Download on the','dl.play.sub':'Get it on',
+      'dl.trust.enc':'End-to-end encryption','dl.trust.cert':'Certified infrastructure','dl.trust.trial':'30-day free trial','dl.trust.support':'Support 7 days/week',
+      'legal.label':'Legal & GDPR','legal.h2':'Transparency & <span class="grad">your data protection.</span>',
+      'legal.desc':'Your rights, our commitments — everything is here, with full clarity.',
+      'legal.tab.confidentialite':'Privacy','legal.tab.cgu':'Terms of Use','legal.tab.faq':'FAQ','legal.tab.mentions':'Legal Notice',
+      'footer.tagline':'The digital tontine — collective savings,<br>transparency and solidarity for modern communities.',
+      'footer.col.product':'Product','footer.col.resources':'Resources','footer.col.legal':'Legal',
+      'footer.link.features':'Features','footer.link.how':'How it works','footer.link.pricing':'Pricing','footer.link.showcase':'Preview',
+      'footer.link.help':'Help center','footer.link.tutorials':'Tutorials','footer.link.blog':'Blog','footer.link.community':'Community',
+      'footer.link.cgu':'Terms of use','footer.link.privacy':'Privacy','footer.link.cookies':'Cookies & Legal','footer.link.rgpd':'GDPR',
+      'footer.copyright':'© 2026 Wallnkap. All rights reserved.','footer.cookie.btn':'Manage cookies','footer.made':'Made with ♥ for tontines',
+      'cookie.text':'<strong>Wallnkap</strong> uses analytics cookies (Google Tag Manager) to measure audience and improve the experience. No data is shared for advertising purposes. <a href="#legal" data-legal-tab="mentions">Learn more</a>',
+      'cookie.accept':'Accept','cookie.refuse':'Decline'
+    }
+  };
+
+  var currentLang = localStorage.getItem('wk_lang') || 'fr';
+
+  function applyLang(lang) {
+    var t = i18n[lang];
+    if(!t) return;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var v = t[el.getAttribute('data-i18n')];
+      if(v !== undefined) el.textContent = v;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el){
+      var v = t[el.getAttribute('data-i18n-html')];
+      if(v !== undefined) el.innerHTML = v;
+    });
+    document.documentElement.lang = lang;
+    localStorage.setItem('wk_lang', lang);
+    currentLang = lang;
+    document.querySelectorAll('.lang-btn').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+    });
+  }
+
+  window.wkI18n = { applyLang: applyLang, getCurrentLang: function(){ return currentLang; } };
+
+  document.addEventListener('DOMContentLoaded', function(){
+    applyLang(currentLang);
+    document.querySelectorAll('.lang-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){ applyLang(btn.getAttribute('data-lang')); });
+    });
+  });
+})();
+</script>
 
 <script>
 // ── Navbar scroll
@@ -2807,11 +3049,13 @@ const ptM=document.getElementById('ptM'), ptY=document.getElementById('ptY');
 const pP=document.getElementById('pPrice'), pPer=document.getElementById('pPeriod');
 ptM.addEventListener('click',()=>{
   ptM.classList.add('on'); ptY.classList.remove('on');
-  pP.textContent='9,99€'; pPer.textContent='/mois · par organisateur';
+  pP.textContent='9,99€';
+  pPer.textContent=wkI18n.getCurrentLang()==='en' ? '/month · per organizer' : '/mois · par organisateur';
 });
 ptY.addEventListener('click',()=>{
   ptY.classList.add('on'); ptM.classList.remove('on');
-  pP.textContent='95,90€'; pPer.textContent='/an · soit 7,99€/mois (-20%)';
+  pP.textContent='95,90€';
+  pPer.textContent=wkI18n.getCurrentLang()==='en' ? '/year · that\'s €7.99/mo (-20%)' : '/an · soit 7,99€/mois (-20%)';
 });
 
 // ── Smooth scroll
