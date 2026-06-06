@@ -1281,7 +1281,333 @@
       .lang-toggle{display:none}
       .nav-lang-mobile{display:flex}
     }
+
+    /* ── LIGHT THEME ── */
+    [data-theme="light"] {
+      --bg: #F2F5FF;
+      --bg2: #E8EDFF;
+      --navy: #EBF0FF;
+      --card: rgba(255,255,255,0.7);
+      --blue: #3C5AE0;
+      --blue2: #3C5AE0;
+      --blue3: #6B8AFF;
+      --silver: #5A6A8A;
+      --text: #080C22;
+      --muted: #4A5580;
+      --border: rgba(0,0,50,0.1);
+      --grad: linear-gradient(135deg,#3C5AE0 0%,#7A9AFF 100%);
+      --gold: #B87612;
+      --gold2: #D49210;
+      --glass: rgba(255,255,255,0.6);
+      --glass-border: rgba(0,0,50,0.12);
+    }
+    /* Nav */
+    [data-theme="light"] nav.solid {
+      background: rgba(242,245,255,.95);
+      box-shadow: 0 4px 24px rgba(0,0,80,.1);
+    }
+    [data-theme="light"] .nav-mobile {
+      background: rgba(242,245,255,.98);
+      box-shadow: 0 4px 24px rgba(0,0,80,.12);
+    }
+    /* Floating badges */
+    [data-theme="light"] .fbadge {
+      background: rgba(255,255,255,.95);
+      border-color: rgba(0,0,80,.1);
+      box-shadow: 0 8px 32px rgba(0,0,80,.12);
+    }
+    /* Concept image overlay */
+    [data-theme="light"] .concept-overlay {
+      background: linear-gradient(to top,rgba(232,237,255,.7) 0%,transparent 55%);
+    }
+    /* How section dashboard overlay */
+    [data-theme="light"] .dash-overlay {
+      background: rgba(242,245,255,.92);
+      border-color: rgba(0,0,80,.1);
+    }
+    /* Cookie banner */
+    [data-theme="light"] .cookie-inner {
+      background: rgba(255,255,255,.98);
+      border-color: rgba(0,0,80,.1);
+      box-shadow: 0 -4px 24px rgba(0,0,80,.1);
+    }
+    /* Innovation strip */
+    [data-theme="light"] #innovation {
+      background: linear-gradient(135deg,rgba(60,90,224,.05) 0%,rgba(107,138,255,.03) 100%);
+    }
+    /* Inno icon wraps */
+    [data-theme="light"] .inno-icon-wrap {
+      background: rgba(60,90,224,.08);
+    }
+    /* Stat boxes */
+    [data-theme="light"] .stat-box {
+      border-radius: 18px;
+      background: rgba(255,255,255,.7);
+      padding: 24px;
+      border: 1px solid rgba(0,0,80,.08);
+    }
+    /* Price cards */
+    [data-theme="light"] .price-card {
+      background: rgba(255,255,255,.8);
+      border-color: rgba(0,0,80,.1);
+      box-shadow: 0 8px 32px rgba(0,0,80,.06);
+    }
+    [data-theme="light"] .price-card.hot {
+      background: rgba(255,255,255,.95);
+      box-shadow: 0 16px 48px rgba(60,90,224,.15);
+    }
+    /* Footer */
+    [data-theme="light"] footer {
+      background: var(--bg2);
+    }
+    [data-theme="light"] .footer-brand-card,
+    [data-theme="light"] .footer-card {
+      background: rgba(255,255,255,.6);
+      border-color: rgba(0,0,80,.1);
+    }
+    /* Feature cards */
+    [data-theme="light"] .feat-card {
+      box-shadow: 0 4px 24px rgba(0,0,80,.06);
+    }
+    /* Testimonial cards */
+    [data-theme="light"] .testi-card {
+      background: rgba(255,255,255,.8);
+      border-color: rgba(0,0,80,.1);
+    }
+    /* Legal cards */
+    [data-theme="light"] .legal-card {
+      background: rgba(255,255,255,.8);
+      border-color: rgba(0,0,80,.1);
+    }
+    /* FAQ */
+    [data-theme="light"] .faq-item-l {
+      background: rgba(255,255,255,.7);
+      border-color: rgba(0,0,80,.1);
+    }
+    /* App badge download buttons */
+    [data-theme="light"] .app-badge {
+      background: rgba(255,255,255,.1);
+      border-color: rgba(255,255,255,.2);
+    }
+    /* Step number circles */
+    [data-theme="light"] .step-num {
+      background: var(--bg2);
+    }
+    /* Mentions cards */
+    [data-theme="light"] .ment-card {
+      background: rgba(255,255,255,.7);
+      border-color: rgba(0,0,80,.1);
+    }
+    /* Plan tiles in legal */
+    [data-theme="light"] .plan-tile {
+      background: rgba(255,255,255,.7);
+      border-color: rgba(0,0,80,.1);
+    }
+    /* Hero glow adjust */
+    [data-theme="light"] .hg1 { background: rgba(60,90,224,.06); }
+    [data-theme="light"] .hg2 { background: rgba(107,138,255,.04); }
+    /* Legal warn */
+    [data-theme="light"] .legal-warn {
+      background: rgba(245,159,11,.08);
+      border-color: rgba(184,118,18,.2);
+    }
+    /* Restriction items */
+    [data-theme="light"] .restr-item svg path,
+    [data-theme="light"] .restr-item svg rect { color: var(--muted); }
+
+    /* ── THEME TOGGLE BUTTON ── */
+    .theme-toggle {
+      width: 38px; height: 38px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .2s;
+      color: var(--muted);
+      margin-right: 4px;
+      flex-shrink: 0;
+    }
+    [data-theme="light"] .theme-toggle {
+      background: rgba(0,0,50,.05);
+      border-color: rgba(0,0,50,.12);
+    }
+    .theme-toggle:hover { background: rgba(255,255,255,.1); color: var(--text); }
+    [data-theme="light"] .theme-toggle:hover { background: rgba(0,0,50,.08); }
+    .theme-toggle .icon-sun { display: block; }
+    .theme-toggle .icon-moon { display: none; }
+    [data-theme="light"] .theme-toggle .icon-sun { display: none; }
+    [data-theme="light"] .theme-toggle .icon-moon { display: block; }
+
+    /* ── GLOBAL / GLOBE SECTION ── */
+    #global {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+    }
+    #global::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 30% 50%, rgba(60,90,224,.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .global-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .globe-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+    .globe-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+    }
+    .globe-glow {
+      position: absolute;
+      inset: -20%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(60,90,224,.18) 0%, transparent 70%);
+      pointer-events: none;
+      animation: globeGlow 4s ease-in-out infinite;
+    }
+    @keyframes globeGlow {
+      0%,100% { opacity: .6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.08); }
+    }
+    .globe-cities {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      max-width: 420px;
+    }
+    .city-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 100px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      transition: all .25s;
+      cursor: default;
+    }
+    .city-chip:hover {
+      background: rgba(60,90,224,.12);
+      border-color: rgba(60,90,224,.3);
+      transform: translateY(-2px);
+      color: var(--text);
+    }
+    .global-copy {
+      display: flex;
+      flex-direction: column;
+    }
+    .global-feats {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-top: 32px;
+    }
+    .gf-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .gf-icon {
+      width: 42px; height: 42px;
+      border-radius: 12px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .gf-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px; font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .gf-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .globe-canvas-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1;
+    }
+    /* Polaroid card (light mode) */
+    .polaroid-card {
+      background: #fff;
+      padding: 6px 6px 22px;
+      box-shadow: 0 3px 14px rgba(0,0,0,.18), 0 1px 3px rgba(0,0,0,.1);
+      filter: blur(0);
+      will-change: transform, opacity;
+    }
+    .polaroid-card img {
+      display: block;
+      width: 60px; height: 60px;
+      object-fit: cover;
+    }
+    .polaroid-card span {
+      position: absolute;
+      bottom: 5px; left: 0; right: 0;
+      text-align: center;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 7.5px; font-weight: 600;
+      color: #333; letter-spacing: .04em;
+    }
+    /* Pulsing marker (dark mode) */
+    .gm-pulse {
+      position: absolute;
+      width: 24px; height: 24px;
+      transform: translate(-50%,-50%);
+      pointer-events: none;
+    }
+    .gm-pulse span {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1.5px solid rgba(0,210,255,.85);
+      animation: gmpRing 2.4s ease-out infinite;
+    }
+    .gm-pulse span:nth-child(2) { animation-delay: 1.2s; }
+    .gm-pulse i {
+      position: absolute;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #00e5ff;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      box-shadow: 0 0 8px 2px rgba(0,210,255,.6);
+      font-style: normal;
+    }
+    @keyframes gmpRing {
+      0%   { transform: scale(.2);  opacity: .9; }
+      100% { transform: scale(2.6); opacity: 0;  }
+    }
+    @media (max-width: 1024px) {
+      .global-grid { grid-template-columns: 1fr; gap: 48px; }
+      .globe-wrap { max-width: 340px; }
+    }
+    @media (max-width: 640px) {
+      .globe-wrap { max-width: 280px; }
+      .city-chip { font-size: 12px; padding: 6px 12px; }
+    }
   </style>
+  <script type="module" crossorigin src="./assets/index-1EocEMqS.js"></script>
 </head>
 <body>
 
@@ -1302,6 +1628,10 @@
     <button class="lang-btn active" data-lang="fr">FR</button>
     <button class="lang-btn" data-lang="en">EN</button>
   </div>
+  <button class="theme-toggle" id="themeToggle" aria-label="Basculer le thème">
+    <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </button>
   <a href="#download" class="nav-cta">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-6 2h12v2H6v-2z"/></svg>
     <span data-i18n="nav.cta">Télécharger</span>
@@ -1320,6 +1650,10 @@
   <div class="nav-lang-mobile">
     <button class="lang-btn active" data-lang="fr">FR</button>
     <button class="lang-btn" data-lang="en">EN</button>
+    <button class="theme-toggle" id="themeToggleMobile" aria-label="Basculer le thème" style="margin-right:0">
+      <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
   </div>
 </div>
 
@@ -1713,6 +2047,73 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GLOBAL ═══ -->
+<section id="global">
+  <div class="section">
+    <div class="global-grid">
+
+      <div class="globe-col reveal">
+        <div class="globe-wrap">
+          <div class="globe-glow"></div>
+          <div class="globe-canvas-wrap">
+            <canvas id="globe-canvas" style="opacity:0;transition:opacity 1.2s ease;cursor:grab;touch-action:none;width:100%;height:100%;display:block;border-radius:50%"></canvas>
+            <div id="globe-overlay" style="position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:50%"></div>
+          </div>
+          <!-- polaroid cards live here so they overflow the circle boundary -->
+          <div id="globe-polaroid-layer" style="position:absolute;inset:0;pointer-events:none;overflow:visible;"></div>
+        </div>
+        <div class="globe-cities">
+          <div class="city-chip reveal d1"><span>🇫🇷</span> Paris</div>
+          <div class="city-chip reveal d2"><span>🇧🇪</span> Bruxelles</div>
+          <div class="city-chip reveal d1"><span>🇸🇳</span> Dakar</div>
+          <div class="city-chip reveal d3"><span>🇨🇲</span> Douala</div>
+          <div class="city-chip reveal d2"><span>🇨🇮</span> Abidjan</div>
+          <div class="city-chip reveal d1"><span>🇺🇸</span> New York</div>
+          <div class="city-chip reveal d3"><span>🇨🇦</span> Montréal</div>
+          <div class="city-chip reveal d2"><span>🇬🇧</span> Londres</div>
+        </div>
+      </div>
+
+      <div class="global-copy">
+        <span class="s-label reveal" data-i18n="global.label">Partout dans le monde</span>
+        <h2 class="s-title reveal d1" data-i18n-html="global.h2">Une tontine sans<br><span class="grad">frontières.</span></h2>
+        <p class="s-desc reveal d2" data-i18n="global.desc">Vos membres sont à Paris, Dakar, Bruxelles ou Montréal ? Wallnkap efface les distances. Votre cercle d'épargne fonctionne à l'identique, peu importe le fuseau horaire ou le continent.</p>
+        <div class="global-feats reveal d3">
+          <div class="gf-item">
+            <div class="gf-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div>
+              <div class="gf-title" data-i18n="global.feat1.title">Multi-continents</div>
+              <div class="gf-desc" data-i18n="global.feat1.desc">Europe, Afrique, Amériques — la tontine tourne partout.</div>
+            </div>
+          </div>
+          <div class="gf-item">
+            <div class="gf-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 9.81a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16l.19.92z"/></svg>
+            </div>
+            <div>
+              <div class="gf-title" data-i18n="global.feat2.title">Notifications instantanées</div>
+              <div class="gf-desc" data-i18n="global.feat2.desc">Chaque action est notifiée en temps réel à tous les membres.</div>
+            </div>
+          </div>
+          <div class="gf-item">
+            <div class="gf-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--blue2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <div>
+              <div class="gf-title" data-i18n="global.feat3.title">Confiance & sécurité</div>
+              <div class="gf-desc" data-i18n="global.feat3.desc">Historique immuable partagé — transparence totale à distance.</div>
+            </div>
+          </div>
+        </div>
+        <a href="#download" class="btn-primary reveal d4" style="display:inline-flex;margin-top:32px" data-i18n="global.cta">Rejoindre depuis n'importe où</a>
+      </div>
+
     </div>
   </div>
 </section>
@@ -2856,8 +3257,18 @@
       'footer.link.help':'Centre d\'aide','footer.link.tutorials':'Tutoriels','footer.link.blog':'Blog','footer.link.community':'Communauté',
       'footer.link.cgu':'Conditions d\'utilisation','footer.link.privacy':'Confidentialité','footer.link.cookies':'Cookies & Mentions','footer.link.rgpd':'RGPD',
       'footer.copyright':'© 2026 Wallnkap. Tous droits réservés.','footer.cookie.btn':'Gérer les cookies','footer.made':'Fait avec ♥ pour les tontines',
-      'cookie.text':'<strong>Wallnkap</strong> utilise des cookies analytiques (Google Tag Manager) pour mesurer l\'audience et améliorer l\'expérience. Aucune donnée n\'est transmise à des fins publicitaires. <a href="#legal" data-legal-tab="mentions">En savoir plus</a>',
-      'cookie.accept':'Accepter','cookie.refuse':'Refuser'
+      'cookie.text':'<strong>Wallnkap</strong> utilise des cookies pour améliorer l\'expérience. Aucune donnée n\'est transmise à des fins publicitaires. <a href="#legal" data-legal-tab="mentions">En savoir plus</a>',
+      'cookie.accept':'Accepter','cookie.refuse':'Refuser',
+      'global.label':'Partout dans le monde',
+      'global.h2':'Une tontine sans<br><span class="grad">frontières.</span>',
+      'global.desc':'Vos membres sont à Paris, Dakar, Bruxelles ou Montréal ? Wallnkap efface les distances. Votre cercle d\'épargne fonctionne à l\'identique, peu importe le fuseau horaire ou le continent.',
+      'global.feat1.title':'Multi-continents',
+      'global.feat1.desc':'Europe, Afrique, Amériques — la tontine tourne partout.',
+      'global.feat2.title':'Notifications instantanées',
+      'global.feat2.desc':'Chaque action est notifiée en temps réel à tous les membres.',
+      'global.feat3.title':'Confiance & sécurité',
+      'global.feat3.desc':'Historique immuable partagé — transparence totale à distance.',
+      'global.cta':'Rejoindre depuis n\'importe où'
     },
     en: {
       'nav.concept':'The concept','nav.features':'Features','nav.how':'How it works','nav.pricing':'Pricing','nav.legal':'Legal & GDPR','nav.cta':'Download',
@@ -2939,8 +3350,18 @@
       'footer.link.help':'Help center','footer.link.tutorials':'Tutorials','footer.link.blog':'Blog','footer.link.community':'Community',
       'footer.link.cgu':'Terms of use','footer.link.privacy':'Privacy','footer.link.cookies':'Cookies & Legal','footer.link.rgpd':'GDPR',
       'footer.copyright':'© 2026 Wallnkap. All rights reserved.','footer.cookie.btn':'Manage cookies','footer.made':'Made with ♥ for tontines',
-      'cookie.text':'<strong>Wallnkap</strong> uses analytics cookies (Google Tag Manager) to measure audience and improve the experience. No data is shared for advertising purposes. <a href="#legal" data-legal-tab="mentions">Learn more</a>',
-      'cookie.accept':'Accept','cookie.refuse':'Decline'
+      'cookie.text':'<strong>Wallnkap</strong> uses cookies to improve your experience. No data is shared for advertising purposes. <a href="#legal" data-legal-tab="mentions">Learn more</a>',
+      'cookie.accept':'Accept','cookie.refuse':'Decline',
+      'global.label':'Across the Globe',
+      'global.h2':'A tontine without<br><span class="grad">borders.</span>',
+      'global.desc':'Your members are in Paris, Dakar, Brussels or Montreal? Wallnkap erases the distance. Your savings circle works identically, regardless of time zone or continent.',
+      'global.feat1.title':'Multi-continent',
+      'global.feat1.desc':'Europe, Africa, Americas — the tontine runs everywhere.',
+      'global.feat2.title':'Instant notifications',
+      'global.feat2.desc':'Every action is notified in real time to all members.',
+      'global.feat3.title':'Trust & security',
+      'global.feat3.desc':'Shared immutable history — total transparency at a distance.',
+      'global.cta':'Join from anywhere'
     }
   };
 
@@ -3209,6 +3630,31 @@ document.getElementById('navBurger').addEventListener('click',()=>{
       showBanner();
     });
   }
+})();
+
+// ── Theme toggle
+(function(){
+  var THEME_KEY = 'wk_theme';
+  var html = document.documentElement;
+  var stored = localStorage.getItem(THEME_KEY);
+  if(stored === 'light') html.setAttribute('data-theme','light');
+
+  function toggleTheme(){
+    var isLight = html.getAttribute('data-theme') === 'light';
+    if(isLight){
+      html.removeAttribute('data-theme');
+      localStorage.setItem(THEME_KEY,'dark');
+    } else {
+      html.setAttribute('data-theme','light');
+      localStorage.setItem(THEME_KEY,'light');
+    }
+    document.dispatchEvent(new CustomEvent('wk-theme-change'));
+  }
+
+  var btn = document.getElementById('themeToggle');
+  var btnM = document.getElementById('themeToggleMobile');
+  if(btn) btn.addEventListener('click', toggleTheme);
+  if(btnM) btnM.addEventListener('click', toggleTheme);
 })();
 
 // ── Legal section: FAQ accordion
