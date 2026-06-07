@@ -126,12 +126,10 @@
       z-index: 0;
       background-image: url(images/hero_soft.png);
       background-size: cover;
-      background-position: center right;
-      overflow: hidden;
       background-position: center;
       background-repeat: no-repeat;
       opacity: .5;
-      mix-blend-mode: overlay;
+      will-change: transform;
     }
     
     #hero-canvas{position:absolute;inset:0;z-index:1}
@@ -915,6 +913,29 @@
       .feat-grid{grid-template-columns:1fr}
       .inno-grid{grid-template-columns:1fr}
       h1{font-size:36px}
+    }
+
+    /* ── MOBILE SCROLL PERFORMANCE ── */
+    @media(max-width:1024px){
+      html{scroll-behavior:auto}
+      /* Reduce expensive blur filters on mobile */
+      .hg1,.hg2{filter:blur(60px)}
+      /* Disable float animation on phone mockup to free GPU for scroll */
+      .phone-wrap{animation:none}
+      .phone-shadow{animation:none}
+      /* Hero background: reposition for portrait — show face toward top-center */
+      #hero-bg{
+        background-position: 65% top;
+        background-size: cover;
+        opacity: .55;
+      }
+    }
+    @media(max-width:640px){
+      #hero-bg{
+        background-position: 68% 8%;
+        background-size: cover;
+        opacity: .6;
+      }
     }
 
     /* ── FOCUS VISIBLE (RGAA 10.7) ── */
@@ -2110,7 +2131,7 @@
   <div class="section">
     <div class="concept-grid">
       <div class="concept-img-box reveal">
-        <img src="images/hands.png" alt="Mains unies — solidarité tontine Wallnkap" loading="lazy">
+        <img src="images/thinking.png" alt="Femme souriante — Wallnkap tontine digitale" loading="lazy">
         <div class="concept-overlay"></div>
       </div>
       <div>
@@ -3836,9 +3857,17 @@ addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 40), {p
     this.a = Math.random()*.4+.1;
     this.c = Math.random()>.5 ? '#3C5AE0' : '#6B8AFF';
   }
-  const isMobile = window.innerWidth < 768;
-  for(let i=0;i<(isMobile?30:70);i++) pts.push(new Pt());
-  function draw(){
+  const isMobile = window.innerWidth < 1024;
+  for(let i=0;i<(isMobile?20:70);i++) pts.push(new Pt());
+  function drawStatic(){
+    ctx.clearRect(0,0,W,H);
+    pts.forEach(p=>{
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=p.c; ctx.globalAlpha=p.a; ctx.fill();
+    });
+    ctx.globalAlpha=1;
+  }
+  function drawAnimated(){
     ctx.clearRect(0,0,W,H);
     pts.forEach(p=>{
       p.x+=p.vx; p.y+=p.vy;
@@ -3848,19 +3877,17 @@ addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 40), {p
       ctx.fillStyle=p.c; ctx.globalAlpha=p.a; ctx.fill();
     });
     ctx.globalAlpha=1;
-    if(!isMobile){
-      for(let i=0;i<pts.length;i++) for(let j=i+1;j<pts.length;j++){
-        const dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y;
-        const d=Math.sqrt(dx*dx+dy*dy);
-        if(d<110){
-          ctx.beginPath(); ctx.moveTo(pts[i].x,pts[i].y); ctx.lineTo(pts[j].x,pts[j].y);
-          ctx.strokeStyle='#3C5AE0'; ctx.globalAlpha=(1-d/110)*.1; ctx.lineWidth=.5; ctx.stroke();
-        }
+    for(let i=0;i<pts.length;i++) for(let j=i+1;j<pts.length;j++){
+      const dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y;
+      const d=Math.sqrt(dx*dx+dy*dy);
+      if(d<110){
+        ctx.beginPath(); ctx.moveTo(pts[i].x,pts[i].y); ctx.lineTo(pts[j].x,pts[j].y);
+        ctx.strokeStyle='#3C5AE0'; ctx.globalAlpha=(1-d/110)*.1; ctx.lineWidth=.5; ctx.stroke();
       }
     }
-    requestAnimationFrame(draw);
+    requestAnimationFrame(drawAnimated);
   }
-  draw();
+  if(isMobile){ drawStatic(); } else { drawAnimated(); }
 })();
 
 // ── Scroll reveal
@@ -3946,12 +3973,18 @@ document.getElementById('navBurger').addEventListener('click',()=>{
   });
 })();
 
-// ── Parallax hero bg
+// ── Parallax hero bg (desktop only — parallax on mobile causes scroll jank on iOS Safari)
 (function(){
   const bg = document.getElementById('hero-bg');
   if(!bg) return;
+  if(window.innerWidth < 1024) return;
+  let rafId = null;
   addEventListener('scroll', () => {
-    bg.style.transform = `translateY(${scrollY * .25}px)`;
+    if(rafId) return;
+    rafId = requestAnimationFrame(() => {
+      bg.style.transform = `translateY(${scrollY * .25}px)`;
+      rafId = null;
+    });
   }, {passive:true});
 })();
 
