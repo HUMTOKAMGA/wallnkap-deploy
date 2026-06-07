@@ -1551,8 +1551,104 @@
     }
     /* Showcase cards */
     [data-theme="light"] .sc-card {
-      background: rgba(230,235,255,.75);
-      border-color: rgba(0,0,80,.1);
+      background: #ffffff;
+      border-color: rgba(0,0,0,.08);
+      box-shadow: 0 8px 32px rgba(60,90,224,.10), 0 2px 8px rgba(0,0,0,.05);
+    }
+    [data-theme="light"] .sc-screen {
+      position: relative;
+      margin: 12px 12px 0;
+      border-radius: 14px 14px 0 0;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(60,90,224,.12);
+    }
+    [data-theme="light"] .sc-screen::before {
+      content: '';
+      position: absolute;
+      top: 8px; left: 50%; transform: translateX(-50%);
+      width: 30px; height: 3px;
+      background: rgba(60,90,224,.18);
+      border-radius: 99px;
+      z-index: 2;
+    }
+    [data-theme="light"] .sc-label {
+      color: #0f172a;
+      border-top: 1px solid rgba(0,0,0,.06);
+      margin: 10px 4px 0;
+      padding-top: 10px;
+    }
+    [data-theme="light"] .sc-sub {
+      color: #64748b;
+      margin-bottom: 4px;
+    }
+    /* Showcase screen – cold light palette */
+    [data-theme="light"] .scr-dark,
+    [data-theme="light"] .scr-mid {
+      background: linear-gradient(180deg, #eef2ff 0%, #dde6ff 100%);
+    }
+    [data-theme="light"] .scr-row {
+      background: rgba(255,255,255,.9);
+      border-color: rgba(60,90,224,.14);
+    }
+    [data-theme="light"] .scr-line {
+      background: rgba(60,90,224,.14);
+    }
+    [data-theme="light"] .sc-b {
+      background: rgba(60,90,224,.1);
+      color: #3c5ae0;
+    }
+    [data-theme="light"] .sc-s {
+      background: rgba(90,106,138,.1);
+      color: #5a6a8a;
+    }
+    [data-theme="light"] .draw-orb {
+      background: radial-gradient(circle, rgba(60,90,224,.45) 0%, transparent 70%);
+    }
+    [data-theme="light"] .draw-ring {
+      border-color: rgba(60,90,224,.25);
+    }
+    [data-theme="light"] .draw-ring:nth-child(2) {
+      border-color: rgba(60,90,224,.12);
+    }
+    .sc-badge-locked {
+      background: rgba(255,255,255,.02);
+      border: 1px dashed rgba(255,255,255,.08);
+      border-radius: 9px;
+      padding: 9px;
+      text-align: center;
+      opacity: .35;
+    }
+    [data-theme="light"] .sc-badge-locked {
+      background: rgba(60,90,224,.05);
+      border-color: rgba(60,90,224,.2);
+    }
+    [data-theme="light"] .sc-progress-track {
+      background: rgba(60,90,224,.1) !important;
+    }
+    /* Phone hero mockup – cold light palette */
+    [data-theme="light"] .phone-frame {
+      border-color: rgba(255,255,255,.06);
+      box-shadow: 0 24px 64px rgba(60,90,224,.18), 0 6px 20px rgba(0,0,0,.08), inset 0 1px 0 rgba(255,255,255,.06);
+    }
+    [data-theme="light"] .phone-screen {
+      background: linear-gradient(180deg, #eef2ff 0%, #dde6ff 100%);
+    }
+    [data-theme="light"] .ps-progress {
+      background: rgba(60,90,224,.1);
+    }
+    [data-theme="light"] .ps-bell {
+      background: rgba(255,255,255,.75);
+      border-color: rgba(60,90,224,.14);
+    }
+    [data-theme="light"] .ps-card {
+      background: rgba(255,255,255,.8);
+      border-color: rgba(60,90,224,.12);
+    }
+    [data-theme="light"] .ic-s {
+      background: rgba(90,106,138,.12);
+    }
+    [data-theme="light"] .phone-shadow {
+      background: radial-gradient(ellipse, rgba(60,90,224,.15) 0%, transparent 70%);
     }
     /* Legal cards */
     [data-theme="light"] .legal-card {
@@ -2426,7 +2522,7 @@
             <div style="background:linear-gradient(135deg,rgba(60,90,224,.15),rgba(107,138,255,.08));border-radius:12px;padding:12px;border:1px solid rgba(107,138,255,.2)">
               <div style="font-size:10px;color:var(--muted)">Objectif</div>
               <div style="font-family:Space Grotesk,sans-serif;font-size:18px;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">3 000 €</div>
-              <div style="height:5px;background:rgba(255,255,255,.07);border-radius:3px;margin-top:8px;overflow:hidden">
+              <div class="sc-progress-track" style="height:5px;background:rgba(255,255,255,.07);border-radius:3px;margin-top:8px;overflow:hidden">
                 <div style="height:100%;width:67%;background:var(--grad);border-radius:3px"></div>
               </div>
               <div style="display:flex;justify-content:space-between;margin-top:4px;font-size:9px;color:var(--muted)"><span>2 010€ collectés</span><span>67%</span></div>
@@ -2461,11 +2557,11 @@
                 <div style="font-size:20px">🏆</div>
                 <div style="font-size:9px;color:var(--blue2);margin-top:3px;font-weight:600">Ponctuel</div>
               </div>
-              <div style="background:rgba(255,255,255,.02);border:1px dashed rgba(255,255,255,.08);border-radius:9px;padding:9px;text-align:center;opacity:.35">
+              <div class="sc-badge-locked">
                 <div style="font-size:20px">🌟</div>
                 <div style="font-size:9px;color:var(--muted);margin-top:3px">Verrouillé</div>
               </div>
-              <div style="background:rgba(255,255,255,.02);border:1px dashed rgba(255,255,255,.08);border-radius:9px;padding:9px;text-align:center;opacity:.35">
+              <div class="sc-badge-locked">
                 <div style="font-size:20px">👑</div>
                 <div style="font-size:9px;color:var(--muted);margin-top:3px">Verrouillé</div>
               </div>
@@ -2512,7 +2608,7 @@
             <div style="font-size:11px;font-weight:700">Cagnotte Vacances</div>
             <div style="background:linear-gradient(135deg,rgba(60,90,224,.15),rgba(107,138,255,.08));border-radius:12px;padding:12px;border:1px solid rgba(107,138,255,.2)">
               <div style="font-family:Space Grotesk,sans-serif;font-size:18px;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">3 000 €</div>
-              <div style="height:5px;background:rgba(255,255,255,.07);border-radius:3px;margin-top:8px;overflow:hidden"><div style="height:100%;width:67%;background:var(--grad);border-radius:3px"></div></div>
+              <div class="sc-progress-track" style="height:5px;background:rgba(255,255,255,.07);border-radius:3px;margin-top:8px;overflow:hidden"><div style="height:100%;width:67%;background:var(--grad);border-radius:3px"></div></div>
             </div>
           </div>
         </div>
