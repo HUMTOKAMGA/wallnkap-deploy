@@ -122,14 +122,16 @@
     }
     #hero-bg{
       position: absolute;
-      inset: 0;
+      inset: -4%;        /* oversized to absorb scale-down without showing edges */
       z-index: 0;
       background-image: url(images/hero_soft.png);
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      opacity: .5;
-      will-change: transform;
+      opacity: .55;
+      transform: scale(1.06);  /* initial zoom — matches JS start value */
+      transform-origin: center center;
+      will-change: transform, opacity;
     }
     
     #hero-canvas{position:absolute;inset:0;z-index:1}
@@ -3988,19 +3990,35 @@ document.getElementById('navBurger').addEventListener('click',()=>{
   });
 })();
 
-// ── Parallax hero bg (desktop only — parallax on mobile causes scroll jank on iOS Safari)
+// ── Parallax hero bg — depth effect (desktop only)
+// Three-layer effect: translateY (parallax) + scale-out (recession) + opacity fade
 (function(){
-  const bg = document.getElementById('hero-bg');
-  if(!bg) return;
+  const bg   = document.getElementById('hero-bg');
+  const hero = document.getElementById('hero');
+  if(!bg || !hero) return;
   if(window.innerWidth < 1024) return;
+
   let rafId = null;
+
+  function updateDepth(){
+    const heroH   = hero.offsetHeight;
+    const progress = Math.min(scrollY / heroH, 1);   // 0 at top → 1 at hero bottom
+
+    const ty      = scrollY * 0.42;                  // parallax: bg moves at 42% scroll speed
+    const scale   = 1.06 - progress * 0.06;          // zoom-out: 1.06 → 1.00
+    const opacity = 0.55 - progress * 0.30;          // fade:      0.55 → 0.25
+
+    bg.style.transform = `translateY(${ty}px) scale(${scale})`;
+    bg.style.opacity   = Math.max(opacity, 0.25).toFixed(3);
+    rafId = null;
+  }
+
   addEventListener('scroll', () => {
     if(rafId) return;
-    rafId = requestAnimationFrame(() => {
-      bg.style.transform = `translateY(${scrollY * .25}px)`;
-      rafId = null;
-    });
+    rafId = requestAnimationFrame(updateDepth);
   }, {passive:true});
+
+  updateDepth(); // sync state on load
 })();
 
 // ── Legal section: Tab switching (RGAA 7.1/7.3 — pattern ARIA tabs + navigation clavier)
