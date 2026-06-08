@@ -1,3 +1,6 @@
+# robots.txt — wallnkap.com
+# https://developers.google.com/search/docs/crawling-indexing/robots/intro
+
 User-agent: *
 Allow: /
 

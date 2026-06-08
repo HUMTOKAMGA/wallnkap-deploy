@@ -1,13 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- ── Page principale ── -->
   <url>
     <loc>https://wallnkap.com/</loc>
-    <lastmod>2026-06-07</lastmod>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://wallnkap.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://wallnkap.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr"       href="https://wallnkap.com/"/>
+    <xhtml:link rel="alternate" hreflang="en"       href="https://wallnkap.com/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://wallnkap.com/"/>
+    <image:image>
+      <image:loc>https://wallnkap.com/images/banniere.png</image:loc>
+      <image:title>Wallnkap — Application Tontine Digitale</image:title>
+      <image:caption>Interface de l'application Wallnkap pour la gestion de tontines et d'épargne rotative</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wallnkap.com/images/hero_soft.png</image:loc>
+      <image:title>Wallnkap — La tontine, comme vous ne l'avez jamais vécue</image:title>
+    </image:image>
   </url>
+
+  <!-- ── Section : Le concept ── -->
+  <url>
+    <loc>https://wallnkap.com/#concept</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr"       href="https://wallnkap.com/#concept"/>
+    <xhtml:link rel="alternate" hreflang="en"       href="https://wallnkap.com/#concept"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wallnkap.com/#concept"/>
+    <image:image>
+      <image:loc>https://wallnkap.com/images/thinking.png</image:loc>
+      <image:title>Wallnkap — La tontine digitale modernise l'épargne collective africaine</image:title>
+    </image:image>
+  </url>
+
+  <!-- ── Section : Fonctionnalités ── -->
+  <url>
+    <loc>https://wallnkap.com/#features</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr"       href="https://wallnkap.com/#features"/>
+    <xhtml:link rel="alternate" hreflang="en"       href="https://wallnkap.com/#features"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wallnkap.com/#features"/>
+  </url>
+
+  <!-- ── Section : Comment ça marche ── -->
+  <url>
+    <loc>https://wallnkap.com/#how</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr"       href="https://wallnkap.com/#how"/>
+    <xhtml:link rel="alternate" hreflang="en"       href="https://wallnkap.com/#how"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wallnkap.com/#how"/>
+  </url>
+
+  <!-- ── Section : Tarifs ── -->
+  <url>
+    <loc>https://wallnkap.com/#pricing</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr"       href="https://wallnkap.com/#pricing"/>
+    <xhtml:link rel="alternate" hreflang="en"       href="https://wallnkap.com/#pricing"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wallnkap.com/#pricing"/>
+  </url>
+
+  <!-- ── Section : Télécharger ── -->
+  <url>
+    <loc>https://wallnkap.com/#download</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr"       href="https://wallnkap.com/#download"/>
+    <xhtml:link rel="alternate" hreflang="en"       href="https://wallnkap.com/#download"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wallnkap.com/#download"/>
+  </url>
+
+  <!-- ── Section : Légal & RGPD ── -->
+  <url>
+    <loc>https://wallnkap.com/#legal</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr"       href="https://wallnkap.com/#legal"/>
+    <xhtml:link rel="alternate" hreflang="en"       href="https://wallnkap.com/#legal"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wallnkap.com/#legal"/>
+  </url>
+
 </urlset>
