@@ -918,11 +918,26 @@
     /* ── MOBILE SCROLL PERFORMANCE ── */
     @media(max-width:1024px){
       html{scroll-behavior:auto}
-      /* Reduce expensive blur filters on mobile */
-      .hg1,.hg2{filter:blur(60px)}
-      /* Disable float animation on phone mockup to free GPU for scroll */
+
+      /* ── NUCLEAR backdrop-filter disable ──────────────────────────────────
+         Every backdrop-filter creates a separate GPU compositing layer on iOS.
+         With 17+ elements using it, the GPU is saturated during scroll.
+         Replace with opaque fallback backgrounds. */
+      *{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+      nav.solid{background:rgba(6,9,30,.98)!important}
+      .fbadge{background:rgba(6,9,30,.97)!important}
+      .nav-mobile{background:rgba(6,9,30,.99)!important}
+
+      /* Remove floating badge animations — unnecessary GPU work on mobile */
+      .fb1,.fb2,.fb3{animation:none!important}
+
+      /* Hero glows: remove expensive filter:blur entirely */
+      .hg1,.hg2{display:none}
+
+      /* Disable float animation on phone mockup */
       .phone-wrap{animation:none}
       .phone-shadow{animation:none}
+
       /* Hero background: reposition for portrait — show face toward top-center */
       #hero-bg{
         background-position: 65% top;
@@ -3349,7 +3364,7 @@
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--blue2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
             Éditeur
           </div>
-          <p><strong>Wallnkap</strong><br>Nom commercial de : HUMTO KAMGA Andrew<br>Développeur indépendant<br>Montpellier, France</p>
+          <p><strong>Wallnkap</strong><br>Contact : wallnkap@gmail.com<br>Développeur indépendant<br>Montpellier, France</p>
         </div>
 
         <div class="ment-card">
@@ -3575,7 +3590,7 @@
 
     <!-- ── Bottom bar ── -->
     <div class="f-bottom">
-      <p class="f-copy" data-i18n="footer.copyright">© 2026 Wallnkap — HUMTO KAMGA Andrew. Tous droits réservés.</p>
+      <p class="f-copy" data-i18n="footer.copyright">© 2026 Wallnkap — wallnkap@gmail.com. Tous droits réservés.</p>
       <p class="f-made" data-i18n="footer.made">Fait avec ♥ pour les tontines</p>
       <div class="f-bottom-links">
         <a href="#legal" data-legal-tab="confidentialite" data-i18n="footer.link.privacy">Confidentialité</a>
@@ -3687,7 +3702,7 @@
       'footer.link.features':'Fonctionnalités','footer.link.how':'Comment ça marche','footer.link.pricing':'Tarifs','footer.link.showcase':'Aperçu',
       'footer.link.help':'Centre d\'aide','footer.link.tutorials':'Tutoriels','footer.link.blog':'Blog','footer.link.community':'Communauté',
       'footer.link.cgu':'Conditions d\'utilisation','footer.link.privacy':'Confidentialité','footer.link.cookies':'Cookies & Mentions','footer.link.rgpd':'RGPD',
-      'footer.copyright':'© 2026 Wallnkap — HUMTO KAMGA Andrew. Tous droits réservés.','footer.cookie.btn':'Gérer les cookies','footer.made':'Fait avec ♥ pour les tontines',
+      'footer.copyright':'© 2026 Wallnkap — wallnkap@gmail.com. Tous droits réservés.','footer.cookie.btn':'Gérer les cookies','footer.made':'Fait avec ♥ pour les tontines',
       'footer.link.concept':'Le concept','footer.link.faq':'FAQ','footer.link.mentions':'Mentions légales',
       'footer.nl.title':'Rejoignez la communauté<br><span class="grad">Wallnkap</span>',
       'footer.nl.desc':'Des milliers de familles gèrent déjà leur épargne rotative avec Wallnkap. Recevez nos actualités et conseils tontine.',
@@ -3785,7 +3800,7 @@
       'footer.link.features':'Features','footer.link.how':'How it works','footer.link.pricing':'Pricing','footer.link.showcase':'Preview',
       'footer.link.help':'Help center','footer.link.tutorials':'Tutorials','footer.link.blog':'Blog','footer.link.community':'Community',
       'footer.link.cgu':'Terms of use','footer.link.privacy':'Privacy','footer.link.cookies':'Cookies & Legal','footer.link.rgpd':'GDPR',
-      'footer.copyright':'© 2026 Wallnkap — HUMTO KAMGA Andrew. All rights reserved.','footer.cookie.btn':'Manage cookies','footer.made':'Made with ♥ for tontines',
+      'footer.copyright':'© 2026 Wallnkap — wallnkap@gmail.com. All rights reserved.','footer.cookie.btn':'Manage cookies','footer.made':'Made with ♥ for tontines',
       'footer.link.concept':'The concept','footer.link.faq':'FAQ','footer.link.mentions':'Legal notices',
       'footer.nl.title':'Join the <span class="grad">Wallnkap</span> community',
       'footer.nl.desc':'Thousands of families already manage their rotating savings with Wallnkap. Get our news and tontine tips.',
@@ -4246,7 +4261,7 @@ document.getElementById('navBurger').addEventListener('click',()=>{
       },
       "contactPoint": {
         "@type": "ContactPoint",
-        "email": "contact@wallnkap.com",
+        "email": "wallnkap@gmail.com",
         "contactType": "customer support",
         "availableLanguage": ["French", "English"]
       },
@@ -4263,7 +4278,74 @@ document.getElementById('navBurger').addEventListener('click',()=>{
       "name": "Wallnkap",
       "description": "Application mobile de tontine digitale et d'épargne rotative",
       "publisher": { "@id": "https://wallnkap.com/#organization" },
-      "inLanguage": ["fr-FR", "en"]
+      "inLanguage": ["fr-FR", "en"],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://wallnkap.com/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      },
+      "hasPart": [
+        {
+          "@type": "SiteNavigationElement",
+          "@id": "https://wallnkap.com/#nav-concept",
+          "name": "Le concept",
+          "description": "Découvrez comment Wallnkap modernise la tontine africaine avec transparence et sécurité bancaire",
+          "url": "https://wallnkap.com/#concept"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "@id": "https://wallnkap.com/#nav-features",
+          "name": "Fonctionnalités",
+          "description": "Gestion de groupes, cotisations, tirages en direct, cagnotte collective, notifications",
+          "url": "https://wallnkap.com/#features"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "@id": "https://wallnkap.com/#nav-how",
+          "name": "Comment ça marche",
+          "description": "Créez votre groupe, invitez vos membres, gérez cotisations et tirages en 3 étapes",
+          "url": "https://wallnkap.com/#how"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "@id": "https://wallnkap.com/#nav-pricing",
+          "name": "Tarifs",
+          "description": "Essai gratuit 30 jours — abonnement Premium à 9,99 €/mois",
+          "url": "https://wallnkap.com/#pricing"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "@id": "https://wallnkap.com/#nav-legal",
+          "name": "Légal & RGPD",
+          "description": "Mentions légales, conditions d'utilisation, politique de confidentialité et conformité RGPD",
+          "url": "https://wallnkap.com/#legal"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://wallnkap.com/#webpage",
+      "url": "https://wallnkap.com",
+      "name": "Wallnkap — Application Tontine Digitale | Épargne Rotative iOS & Android",
+      "isPartOf": { "@id": "https://wallnkap.com/#website" },
+      "about": { "@id": "https://wallnkap.com/#app" },
+      "description": "Wallnkap est l'application mobile de tontine digitale. Gérez vos groupes d'épargne rotative, cotisations et tirages en toute sécurité. iOS & Android. Essai gratuit 30 jours.",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://wallnkap.com/images/banniere.png",
+        "width": 1200,
+        "height": 630
+      },
+      "inLanguage": "fr-FR",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://wallnkap.com/" }
+        ]
+      }
     },
     {
       "@type": "MobileApplication",
