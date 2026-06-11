@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Concept Wallnkap — Tontine Digitale & Épargne Rotative Africaine</title>
+  <meta name="description" content="Découvrez comment Wallnkap modernise la tontine africaine. Sécurité bancaire, transparence totale, 100% mobile. La tontine digitale pour votre communauté.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://wallnkap.com/concept">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wallnkap.com/concept">
+  <meta property="og:site_name" content="Wallnkap">
+  <meta property="og:title" content="Le Concept Wallnkap — Tontine Digitale Moderne">
+  <meta property="og:description" content="Wallnkap conserve l'esprit de solidarité de la tontine africaine et y ajoute transparence, traçabilité et puissance du digital.">
+  <meta property="og:image" content="https://wallnkap.com/images/banniere.png">
+  <link rel="icon" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#06091E;--bg2:#0D1230;--blue:#1A2FBE;--blue2:#3C5AE0;--gold:#F59E0B;
+      --text:#EDF0FF;--muted:#8893A8;--silver:#C8D0E0;
+      --grad:linear-gradient(135deg,#3C5AE0 0%,#F59E0B 100%);
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;min-height:100vh}
+
+    /* NAV */
+    nav{position:sticky;top:0;z-index:100;background:rgba(6,9,30,.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.06);padding:0 24px}
+    .nav-inner{max-width:1100px;margin:0 auto;height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px}
+    .nav-logo img{width:32px;height:32px;border-radius:8px;object-fit:cover}
+    .nav-links{display:flex;gap:28px;list-style:none}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:13.5px;font-weight:500;transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--text)}
+    .nav-cta{background:var(--blue2);color:#fff;padding:8px 18px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:opacity .2s}
+    .nav-cta:hover{opacity:.85}
+
+    /* HERO SECTION */
+    .page-hero{padding:80px 24px 60px;text-align:center;max-width:800px;margin:0 auto}
+    .s-label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue2);background:rgba(60,90,224,.12);padding:5px 14px;border-radius:20px;margin-bottom:20px}
+    .page-title{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3.2rem);line-height:1.15;margin-bottom:20px}
+    .grad{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .page-desc{font-size:1.05rem;color:var(--silver);max-width:600px;margin:0 auto 40px}
+
+    /* CONTENT */
+    .section{max-width:1100px;margin:0 auto;padding:60px 24px}
+
+    /* CONCEPT POINTS */
+    .concept-intro{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:60px}
+    .concept-intro img{width:100%;border-radius:20px;object-fit:cover;max-height:420px}
+    .cp-list{display:flex;flex-direction:column;gap:24px}
+    .cp{display:flex;gap:16px;align-items:flex-start}
+    .cp-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .ci-b{background:rgba(60,90,224,.15)}
+    .ci-gold{background:rgba(245,158,11,.12)}
+    .ci-l{background:rgba(60,90,224,.1)}
+    .cp-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;margin-bottom:5px}
+    .cp-desc{font-size:14px;color:var(--silver);line-height:1.6}
+
+    /* PILIERS */
+    .pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-bottom:60px}
+    .pillar{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:28px 24px}
+    .pillar-num{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:40px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:12px}
+    .pillar-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;margin-bottom:8px}
+    .pillar-desc{font-size:14px;color:var(--silver);line-height:1.6}
+
+    /* CTA */
+    .cta-block{background:linear-gradient(135deg,rgba(60,90,224,.15),rgba(245,158,11,.08));border:1px solid rgba(60,90,224,.2);border-radius:20px;padding:48px 32px;text-align:center}
+    .cta-title{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.8rem;margin-bottom:12px}
+    .cta-desc{color:var(--silver);margin-bottom:28px;font-size:15px}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--blue2);color:#fff;padding:14px 28px;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;transition:transform .2s,opacity .2s}
+    .btn-primary:hover{transform:translateY(-2px);opacity:.9}
+    .btn-ghost{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.2);color:var(--text);padding:14px 28px;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;margin-left:12px;transition:border-color .2s}
+    .btn-ghost:hover{border-color:rgba(255,255,255,.4)}
+
+    /* FOOTER */
+    footer{border-top:1px solid rgba(255,255,255,.06);padding:32px 24px;text-align:center;color:var(--muted);font-size:13px}
+    footer a{color:var(--blue2);text-decoration:none}
+    .breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);padding:16px 24px;max-width:1100px;margin:0 auto}
+    .breadcrumb a{color:var(--muted);text-decoration:none}
+    .breadcrumb a:hover{color:var(--text)}
+    .breadcrumb span{opacity:.5}
+
+    @media(max-width:768px){
+      .concept-intro{grid-template-columns:1fr}
+      .concept-intro img{display:none}
+      .nav-links{display:none}
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://wallnkap.com/concept",
+        "url": "https://wallnkap.com/concept",
+        "name": "Le Concept Wallnkap — Tontine Digitale & Épargne Rotative Africaine",
+        "description": "Découvrez comment Wallnkap modernise la tontine africaine avec sécurité bancaire, transparence totale et technologie mobile.",
+        "isPartOf": {"@id": "https://wallnkap.com/#website"},
+        "about": {"@id": "https://wallnkap.com/#app"},
+        "inLanguage": "fr-FR",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://wallnkap.com/"},
+            {"@type": "ListItem", "position": 2, "name": "Le concept", "item": "https://wallnkap.com/concept"}
+          ]
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="/images/logo.jpg" alt="Wallnkap">
+        Wallnkap
+      </a>
+      <ul class="nav-links">
+        <li><a href="/concept" class="active">Le concept</a></li>
+        <li><a href="/fonctionnalites">Fonctionnalités</a></li>
+        <li><a href="/comment-ca-marche">Comment ça marche</a></li>
+        <li><a href="/tarifs">Tarifs</a></li>
+        <li><a href="/telecharger">Télécharger</a></li>
+      </ul>
+      <a href="/telecharger" class="nav-cta">Essai gratuit</a>
+    </div>
+  </nav>
+
+  <div class="breadcrumb">
+    <a href="/">Accueil</a>
+    <span>›</span>
+    <span>Le concept</span>
+  </div>
+
+  <div class="page-hero">
+    <span class="s-label">Le concept</span>
+    <h1 class="page-title">Vous connaissez déjà la tontine.<br><span class="grad">Nous l'avons amplifiée.</span></h1>
+    <p class="page-desc">La tontine existe depuis des siècles au cœur des communautés africaines. Wallnkap conserve cet esprit de solidarité et y ajoute la transparence, la traçabilité et la puissance du digital.</p>
+  </div>
+
+  <div class="section">
+    <div class="concept-intro">
+      <img src="/images/thinking.png" alt="Femme souriante — Wallnkap tontine digitale" loading="lazy">
+      <div class="cp-list">
+        <div class="cp">
+          <div class="cp-icon ci-b">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div>
+            <div class="cp-title">Sécurité de niveau bancaire</div>
+            <div class="cp-desc">Authentification biométrique, stockage chiffré (flutter_secure_storage), infrastructure Supabase certifiée. Votre argent et vos données sont inviolables.</div>
+          </div>
+        </div>
+        <div class="cp">
+          <div class="cp-icon ci-gold">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <div>
+            <div class="cp-title">Transparence totale & vérifiable</div>
+            <div class="cp-desc">Chaque cotisation, tirage et transaction est enregistrée et visible par tous les membres en temps réel. L'algorithme de tirage est auditable.</div>
+          </div>
+        </div>
+        <div class="cp">
+          <div class="cp-icon ci-l">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+          </div>
+          <div>
+            <div class="cp-title">100% mobile · toujours synchronisé</div>
+            <div class="cp-desc">iOS et Android, interface bilingue (fr/en), notifications instantanées. Gérez votre tontine depuis n'importe quel continent.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <div class="pillar-title">Une tradition modernisée</div>
+        <div class="pillar-desc">La tontine africaine repose sur la confiance mutuelle entre membres d'une communauté. Wallnkap numérise ce lien sans le trahir — chaque règle reste définie par le groupe, pas par l'application.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <div class="pillar-title">Zéro ambiguïté</div>
+        <div class="pillar-desc">Finis les carnets papier et les malentendus sur "qui a payé quoi". Chaque cotisation est horodatée, chaque tirage est visible en direct, chaque décision est traçable pour tous.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <div class="pillar-title">Conçu pour la diaspora</div>
+        <div class="pillar-desc">Membres sur plusieurs continents, devises différentes, fuseaux horaires variés — Wallnkap gère tout ça nativement. Votre groupe reste soudé même à des milliers de kilomètres.</div>
+      </div>
+    </div>
+
+    <div class="cta-block">
+      <h2 class="cta-title">Prêt à lancer votre tontine ?</h2>
+      <p class="cta-desc">30 jours d'essai gratuit, sans carte bancaire. Votre groupe peut être prêt en moins de 2 minutes.</p>
+      <a href="/telecharger" class="btn-primary">Télécharger Wallnkap</a>
+      <a href="/fonctionnalites" class="btn-ghost">Voir les fonctionnalités</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Wallnkap · <a href="/">Accueil</a> · <a href="/fonctionnalites">Fonctionnalités</a> · <a href="/tarifs">Tarifs</a> · <a href="/#legal">Mentions légales</a> · <a href="mailto:contact@wallnkap.com">contact@wallnkap.com</a></p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comment ça marche — Wallnkap | Lancez votre tontine en 3 étapes</title>
+  <meta name="description" content="Créez votre groupe, configurez votre tontine et suivez tout en temps réel. Wallnkap vous guide en 3 étapes simples pour lancer votre épargne collective.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://wallnkap.com/comment-ca-marche">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wallnkap.com/comment-ca-marche">
+  <meta property="og:site_name" content="Wallnkap">
+  <meta property="og:title" content="Comment ça marche — Wallnkap | 3 étapes pour votre tontine">
+  <meta property="og:description" content="Créez votre groupe, configurez la tontine, suivez en temps réel. Tontine digitale opérationnelle en moins de 2 minutes.">
+  <meta property="og:image" content="https://wallnkap.com/images/banniere.png">
+  <link rel="icon" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#06091E;--bg2:#0D1230;--blue:#1A2FBE;--blue2:#3C5AE0;--gold:#F59E0B;
+      --text:#EDF0FF;--muted:#8893A8;--silver:#C8D0E0;
+      --grad:linear-gradient(135deg,#3C5AE0 0%,#F59E0B 100%);
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;min-height:100vh}
+    nav{position:sticky;top:0;z-index:100;background:rgba(6,9,30,.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.06);padding:0 24px}
+    .nav-inner{max-width:1100px;margin:0 auto;height:64px;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px}
+    .nav-logo img{width:32px;height:32px;border-radius:8px;object-fit:cover}
+    .nav-links{display:flex;gap:28px;list-style:none}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:13.5px;font-weight:500;transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--text)}
+    .nav-cta{background:var(--blue2);color:#fff;padding:8px 18px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none}
+    .page-hero{padding:80px 24px 60px;text-align:center;max-width:800px;margin:0 auto}
+    .s-label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue2);background:rgba(60,90,224,.12);padding:5px 14px;border-radius:20px;margin-bottom:20px}
+    .page-title{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3.2rem);line-height:1.15;margin-bottom:20px}
+    .grad{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .page-desc{font-size:1.05rem;color:var(--silver);max-width:600px;margin:0 auto}
+    .section{max-width:1100px;margin:0 auto;padding:60px 24px}
+    .breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);padding:16px 24px;max-width:1100px;margin:0 auto}
+    .breadcrumb a{color:var(--muted);text-decoration:none}
+    .breadcrumb span{opacity:.5}
+
+    /* STEPS */
+    .steps{display:flex;flex-direction:column;gap:0;margin-bottom:60px}
+    .step{display:flex;gap:32px;padding:40px 0;border-bottom:1px solid rgba(255,255,255,.06);align-items:flex-start}
+    .step:last-child{border-bottom:none}
+    .step-left{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:12px}
+    .step-num{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:56px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+    .step-line{width:2px;height:40px;background:linear-gradient(to bottom,rgba(60,90,224,.4),transparent)}
+    .step:last-child .step-line{display:none}
+    .step-body{flex:1;padding-top:8px}
+    .step-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;margin-bottom:12px}
+    .step-desc{font-size:15px;color:var(--silver);line-height:1.7;margin-bottom:12px}
+    .step-micro{font-size:12px;color:var(--blue2);font-weight:600;background:rgba(60,90,224,.1);padding:6px 14px;border-radius:20px;display:inline-block}
+    .step-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center}
+    .si-1{background:rgba(60,90,224,.15)}
+    .si-2{background:rgba(245,158,11,.12)}
+    .si-3{background:rgba(34,197,94,.1)}
+
+    /* FAQ */
+    .faq{margin-bottom:60px}
+    .faq-title{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.6rem;margin-bottom:32px}
+    .faq-item{border-bottom:1px solid rgba(255,255,255,.07);padding:20px 0}
+    .faq-q{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;margin-bottom:8px}
+    .faq-a{font-size:14px;color:var(--silver);line-height:1.65}
+
+    .cta-block{background:linear-gradient(135deg,rgba(60,90,224,.15),rgba(245,158,11,.08));border:1px solid rgba(60,90,224,.2);border-radius:20px;padding:48px 32px;text-align:center}
+    .cta-title{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.8rem;margin-bottom:12px}
+    .cta-desc{color:var(--silver);margin-bottom:28px;font-size:15px}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--blue2);color:#fff;padding:14px 28px;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;transition:transform .2s,opacity .2s}
+    .btn-primary:hover{transform:translateY(-2px);opacity:.9}
+    .btn-ghost{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.2);color:var(--text);padding:14px 28px;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;margin-left:12px}
+    footer{border-top:1px solid rgba(255,255,255,.06);padding:32px 24px;text-align:center;color:var(--muted);font-size:13px}
+    footer a{color:var(--blue2);text-decoration:none}
+    @media(max-width:768px){.nav-links{display:none}.step{flex-direction:column;gap:16px}.step-left{flex-direction:row}.step-line{display:none}.btn-ghost{margin-left:0;margin-top:12px}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "HowTo",
+        "name": "Comment lancer sa tontine avec Wallnkap",
+        "description": "Guide en 3 étapes pour créer et gérer une tontine digitale avec l'application Wallnkap.",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Créez votre groupe",
+            "text": "Donnez un nom à votre groupe, personnalisez-le et invitez vos proches via un lien ou un code unique. En moins de 2 minutes, votre communauté est prête."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "Configurez la tontine",
+            "text": "Définissez les règles : montant des cotisations, fréquence, ordre des bénéficiaires (manuel ou tirage algorithmique)."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Suivez en temps réel",
+            "text": "Notifications automatiques, rappels de cotisation, rapports financiers complets et historique immuable."
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Combien de temps faut-il pour créer une tontine sur Wallnkap ?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Moins de 2 minutes. Vous créez votre groupe, invitez vos membres par lien ou QR code, et configurez les règles de la tontine en quelques taps."}
+          },
+          {
+            "@type": "Question",
+            "name": "Comment fonctionne le tirage au sort sur Wallnkap ?",
+            "acceptedAnswer": {"@type": "Answer", "text": "L'algorithme de tirage est auditable par chaque membre du groupe. Les résultats sont affichés en direct devant tout le groupe, garantissant une totale transparence."}
+          },
+          {
+            "@type": "Question",
+            "name": "Wallnkap est-il disponible sur iOS et Android ?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Oui, Wallnkap est disponible sur l'App Store (iOS) et Google Play (Android). L'interface est bilingue français/anglais."}
+          }
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://wallnkap.com/comment-ca-marche",
+        "url": "https://wallnkap.com/comment-ca-marche",
+        "name": "Comment ça marche — Wallnkap | 3 étapes pour votre tontine",
+        "isPartOf": {"@id": "https://wallnkap.com/#website"},
+        "inLanguage": "fr-FR",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://wallnkap.com/"},
+            {"@type": "ListItem", "position": 2, "name": "Comment ça marche", "item": "https://wallnkap.com/comment-ca-marche"}
+          ]
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="/images/logo.jpg" alt="Wallnkap">
+        Wallnkap
+      </a>
+      <ul class="nav-links">
+        <li><a href="/concept">Le concept</a></li>
+        <li><a href="/fonctionnalites">Fonctionnalités</a></li>
+        <li><a href="/comment-ca-marche" class="active">Comment ça marche</a></li>
+        <li><a href="/tarifs">Tarifs</a></li>
+        <li><a href="/telecharger">Télécharger</a></li>
+      </ul>
+      <a href="/telecharger" class="nav-cta">Essai gratuit</a>
+    </div>
+  </nav>
+
+  <div class="breadcrumb">
+    <a href="/">Accueil</a>
+    <span>›</span>
+    <span>Comment ça marche</span>
+  </div>
+
+  <div class="page-hero">
+    <span class="s-label">Comment ça marche</span>
+    <h1 class="page-title">Lancez votre tontine<br><span class="grad">en 3 étapes.</span></h1>
+    <p class="page-desc">De zéro à une tontine opérationnelle en moins de 2 minutes. Simple, guidé, sans erreur possible.</p>
+  </div>
+
+  <div class="section">
+    <div class="steps">
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">01</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-body">
+          <div class="step-title">Créez votre groupe</div>
+          <p class="step-desc">Donnez un nom à votre groupe, choisissez une photo et personnalisez les paramètres. Invitez vos proches directement depuis l'app via un lien partageable, un QR code ou un code personnel. En moins de 2 minutes, votre communauté est prête à épargner ensemble.</p>
+          <span class="step-micro">⚡ Invitation par lien · QR code · Code personnel</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">02</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-body">
+          <div class="step-title">Configurez la tontine</div>
+          <p class="step-desc">Définissez toutes les règles de votre épargne collective : montant des cotisations, fréquence (hebdomadaire, mensuelle...), ordre des bénéficiaires (manuel ou tirage algorithmique). Le système s'adapte à vos habitudes culturelles et financières.</p>
+          <span class="step-micro">🔄 Tirage automatique · Ordre fixe · Hybride</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left">
+          <div class="step-num">03</div>
+        </div>
+        <div class="step-body">
+          <div class="step-title">Suivez en temps réel</div>
+          <p class="step-desc">Recevez des notifications automatiques pour chaque cotisation, tirage et événement important. Rapports financiers complets, historique immuable et tableau de bord en direct — chaque membre sait où en est la tontine, à tout instant, depuis n'importe quel pays.</p>
+          <span class="step-micro">📊 Rapports PDF · Historique · Alertes push</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq">
+      <h2 class="faq-title">Questions fréquentes</h2>
+      <div class="faq-item">
+        <div class="faq-q">Combien de temps faut-il pour créer une tontine sur Wallnkap ?</div>
+        <div class="faq-a">Moins de 2 minutes. Vous créez votre groupe, invitez vos membres par lien ou QR code, et configurez les règles de la tontine en quelques taps.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Comment fonctionne le tirage au sort ?</div>
+        <div class="faq-a">L'algorithme de tirage est auditable par chaque membre du groupe. Les résultats sont affichés en direct devant tout le groupe, garantissant une totale transparence. Aucune manipulation n'est possible.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Peut-on avoir des membres dans plusieurs pays ?</div>
+        <div class="faq-a">Oui. Wallnkap est conçu pour la diaspora africaine — membres sur plusieurs continents, interface bilingue français/anglais, notifications push dans tous les fuseaux horaires.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Que se passe-t-il si un membre ne paie pas ?</div>
+        <div class="faq-a">L'application envoie des rappels automatiques avant la date d'échéance. Le statut de chaque membre (payé / en attente) est visible par tous en temps réel, créant une responsabilité collective naturelle.</div>
+      </div>
+    </div>
+
+    <div class="cta-block">
+      <h2 class="cta-title">Prêt à démarrer ?</h2>
+      <p class="cta-desc">Téléchargez Wallnkap et créez votre première tontine gratuitement. 30 jours d'essai sans carte bancaire.</p>
+      <a href="/telecharger" class="btn-primary">Télécharger l'application</a>
+      <a href="/tarifs" class="btn-ghost">Voir les tarifs</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Wallnkap · <a href="/">Accueil</a> · <a href="/fonctionnalites">Fonctionnalités</a> · <a href="/tarifs">Tarifs</a> · <a href="/#legal">Mentions légales</a> · <a href="mailto:contact@wallnkap.com">contact@wallnkap.com</a></p>
+  </footer>
+</body>
+</html>
