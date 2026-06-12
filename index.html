@@ -1960,55 +1960,8 @@
       .city-chip { font-size: 12px; padding: 6px 12px; }
     }
 
-    /* ════════════════ DEBUG MODE (perf bisection) ════════════════
-       Toggled live via the on-page panel (?debug in URL). Each flag is a
-       class on <html>. Goal: isolate the source of scroll jank, then
-       re-enable everything and remove only the real culprit. */
-    html.dbg-off-reveal .reveal{
-      opacity:1!important;transform:none!important;transition:none!important;
-    }
-    html.dbg-off-marquee .ticker-track,
-    html.dbg-off-marquee .testi-track,
-    html.dbg-off-marquee .showcase-track{
-      animation:none!important;
-    }
-    html.dbg-off-cv #features,
-    html.dbg-off-cv #showcase,
-    html.dbg-off-cv #testimonials,
-    html.dbg-off-cv #how,
-    html.dbg-off-cv #innovation,
-    html.dbg-off-cv #stats{
-      content-visibility:visible!important;
-      contain-intrinsic-size:auto!important;
-    }
-    /* Nuclear: kill every CSS animation + transition at once */
-    html.dbg-off-allanim *{
-      animation:none!important;transition:none!important;
-    }
-
-    #dbg-panel{
-      position:fixed;right:12px;bottom:12px;z-index:99999;
-      display:flex;flex-direction:column;gap:6px;
-      padding:10px;border-radius:14px;
-      background:rgba(6,9,30,.92);border:1px solid rgba(107,138,255,.4);
-      font-family:'Inter',sans-serif;font-size:12px;color:#fff;
-      box-shadow:0 8px 30px rgba(0,0,0,.5);
-      -webkit-backdrop-filter:none;backdrop-filter:none;
-    }
-    #dbg-panel .dbg-title{font-weight:700;font-size:11px;letter-spacing:.05em;opacity:.7;text-transform:uppercase;margin-bottom:2px}
-    #dbg-panel button{
-      appearance:none;border:1px solid rgba(255,255,255,.18);
-      background:rgba(46,160,90,.22);color:#fff;
-      padding:8px 12px;border-radius:9px;font-size:12px;font-weight:600;
-      text-align:left;cursor:pointer;min-width:160px;
-    }
-    #dbg-panel button.off{background:rgba(220,60,60,.28);border-color:rgba(255,120,120,.5)}
-    #dbg-panel button::before{content:'● ';color:#5cff9d}
-    #dbg-panel button.off::before{content:'✕ ';color:#ff8a8a}
-    #dbg-panel .dbg-reset{background:rgba(107,138,255,.25);border-color:rgba(107,138,255,.5);text-align:center}
-    #dbg-panel .dbg-reset::before{content:''}
   </style>
-  <script type="module" crossorigin src="./assets/index-CIaWmmCc.js"></script>
+  <script type="module" crossorigin src="./assets/index-BszFJzu1.js"></script>
 </head>
 <body>
 
@@ -4535,82 +4488,5 @@ document.getElementById('navBurger').addEventListener('click',()=>{
 }
 </script>
 
-<!-- ════════════════ DEBUG MODE CONTROLLER ════════════════
-     Open the page with ?debug in the URL to show the toggle panel.
-     Each toggle disables one suspected source of jank, live, and the
-     choice is saved (localStorage) so it survives reloads. Once the
-     culprit is found: clear flags (Réinitialiser) and remove only it. -->
-<script>
-(function(){
-  var FLAGS = [
-    { key:'reveal',  label:'Reveal (apparition au scroll)' },
-    { key:'marquee', label:'Marquees (ticker/témoins/showcase)' },
-    { key:'bgpaths', label:'Lignes animées du fond' },
-    { key:'globe',   label:'Globe (rendu canvas continu)' },
-    { key:'cv',      label:'content-visibility (sections)' },
-    { key:'allanim', label:'☢ TOUT couper (anim + transitions)' }
-  ];
-
-  function isOff(key){ try { return localStorage.getItem('dbg-off-'+key)==='1'; } catch(e){ return false; } }
-
-  // Apply saved flags immediately (reveal/marquee via <html> classes)
-  FLAGS.forEach(function(f){
-    if(isOff(f.key)) document.documentElement.classList.add('dbg-off-'+f.key);
-  });
-  // bgpaths self-reads its flag inside background-paths.js
-
-  var show = /[?&]debug/.test(location.search) || FLAGS.some(function(f){ return isOff(f.key); });
-  if(!show) return;
-
-  function setFlag(key, off){
-    try { localStorage.setItem('dbg-off-'+key, off?'1':'0'); } catch(e){}
-    document.documentElement.classList.toggle('dbg-off-'+key, off);
-    if(key==='bgpaths' && window.__bgPaths) window.__bgPaths.setEnabled(!off);
-    if(key==='globe'   && window.__globe)   window.__globe.setEnabled(!off);
-    // reveal off: force any not-yet-revealed content visible
-    if(key==='reveal' && off){
-      document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('up'); });
-    }
-  }
-
-  function build(){
-    var panel = document.createElement('div');
-    panel.id = 'dbg-panel';
-    var title = document.createElement('div');
-    title.className = 'dbg-title';
-    title.textContent = '⚙ Debug perf';
-    panel.appendChild(title);
-
-    FLAGS.forEach(function(f){
-      var b = document.createElement('button');
-      function render(){
-        var off = isOff(f.key);
-        b.className = off ? 'off' : '';
-        b.textContent = (off ? 'OFF · ' : 'ON · ') + f.label;
-      }
-      b.addEventListener('click', function(){
-        setFlag(f.key, !isOff(f.key));
-        render();
-      });
-      render();
-      panel.appendChild(b);
-    });
-
-    var reset = document.createElement('button');
-    reset.className = 'dbg-reset';
-    reset.textContent = '↺ Tout réactiver';
-    reset.addEventListener('click', function(){
-      FLAGS.forEach(function(f){ setFlag(f.key, false); });
-      location.reload();
-    });
-    panel.appendChild(reset);
-
-    document.body.appendChild(panel);
-  }
-
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', build);
-  else build();
-})();
-</script>
 </body>
 </html>
