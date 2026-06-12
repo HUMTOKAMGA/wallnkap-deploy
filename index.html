@@ -1519,6 +1519,43 @@
       --glass: rgba(255,255,255,0.6);
       --glass-border: rgba(0,0,50,0.12);
     }
+
+    /* ── LIGHT MODE — Hero legibility via glassmorphism ──
+       Instead of a flat opaque scrim, frost the photo *behind the copy* with a
+       glossy, near-transparent glass panel. The backdrop blur is what makes
+       the text readable while keeping the luxurious see-through glass look. */
+    [data-theme="light"] #hero-bg{ opacity:.72; }
+    [data-theme="light"] .hero-copy{
+      background:
+        linear-gradient(115deg, transparent 30%, rgba(255,255,255,.30) 43%, transparent 56%),
+        linear-gradient(135deg, rgba(255,255,255,.22) 0%, rgba(255,255,255,.05) 100%);
+      -webkit-backdrop-filter:blur(28px) saturate(160%);
+      backdrop-filter:blur(28px) saturate(160%);
+      border:1px solid rgba(255,255,255,.6);
+      border-radius:30px;
+      padding:44px 46px;
+      box-shadow:0 24px 70px rgba(20,35,80,.14),
+                 inset 0 1px 0 rgba(255,255,255,.78);
+    }
+    [data-theme="light"] .eyebrow{
+      background:rgba(255,255,255,.40);
+      -webkit-backdrop-filter:blur(6px);
+      backdrop-filter:blur(6px);
+      border-color:rgba(184,118,18,.45);
+      color:#7A4D0E;
+    }
+    [data-theme="light"] .ew-dot{ background:#B87612; }
+    [data-theme="light"] .hero-desc{ color:#27314F; }
+    /* Mobile: backdrop-filter is force-disabled (perf) → opaque-ish glass fallback */
+    @media(max-width:1024px){
+      [data-theme="light"] .hero-copy{
+        background:rgba(255,255,255,.78);
+        border-color:rgba(255,255,255,.8);
+        padding:34px 26px;
+      }
+      [data-theme="light"] .eyebrow{ background:rgba(255,255,255,.85); }
+    }
+
     /* Nav */
     [data-theme="light"] nav.solid {
       background: rgba(242,245,255,.95);
@@ -1748,6 +1785,141 @@
     /* Restriction items */
     [data-theme="light"] .restr-item svg path,
     [data-theme="light"] .restr-item svg rect { color: var(--muted); }
+
+    /* ════════════ LIGHT MODE — UNIFIED GLASSMORPHISM ════════════
+       Glossy, near-transparent frosted glass on every surface. Scoped to
+       desktop/tablet-large because backdrop-filter is force-disabled ≤1024px
+       (perf) — mobile keeps the readable semi-opaque backgrounds above. */
+    @media (min-width:1025px){
+      [data-theme="light"] .feat-card,
+      [data-theme="light"] .testi-card,
+      [data-theme="light"] .inno-card,
+      [data-theme="light"] .stat-box,
+      [data-theme="light"] .price-card,
+      [data-theme="light"] .legal-card,
+      [data-theme="light"] .faq-item-l,
+      [data-theme="light"] .ment-card,
+      [data-theme="light"] .plan-tile,
+      [data-theme="light"] .f-newsletter,
+      [data-theme="light"] .cookie-inner,
+      [data-theme="light"] .dash-overlay,
+      [data-theme="light"] nav.solid,
+      [data-theme="light"] .fbadge,
+      [data-theme="light"] .ps-card,
+      [data-theme="light"] .ps-bell,
+      [data-theme="light"] .app-badge,
+      [data-theme="light"] .f-social,
+      [data-theme="light"] .f-app-btn{
+        background:
+          linear-gradient(115deg, transparent 32%, rgba(255,255,255,.22) 44%, transparent 56%),
+          linear-gradient(135deg, rgba(255,255,255,.22) 0%, rgba(255,255,255,.05) 100%) !important;
+        -webkit-backdrop-filter:blur(22px) saturate(160%);
+        backdrop-filter:blur(22px) saturate(160%);
+        border:1px solid rgba(255,255,255,.6) !important;
+        box-shadow:0 14px 44px rgba(20,35,80,.10),
+                   inset 0 1px 0 rgba(255,255,255,.78) !important;
+      }
+      /* Highlighted plan stays more present + brand-blue glow */
+      [data-theme="light"] .price-card.hot{
+        background:linear-gradient(135deg,
+          rgba(255,255,255,.55) 0%,
+          rgba(255,255,255,.30) 100%) !important;
+        box-shadow:0 22px 60px rgba(60,90,224,.20),
+                   inset 0 1px 0 rgba(255,255,255,.85) !important;
+      }
+      /* Glass nav: a touch more frost so links stay crisp over content */
+      [data-theme="light"] nav.solid{
+        background:linear-gradient(135deg,
+          rgba(255,255,255,.55) 0%,
+          rgba(255,255,255,.40) 100%) !important;
+        -webkit-backdrop-filter:blur(26px) saturate(160%);
+        backdrop-filter:blur(26px) saturate(160%);
+      }
+    }
+
+    /* ════════════ DARK MODE — UNIFIED GLASSMORPHISM ════════════
+       Same glossy frosted treatment, navy-tinted, on every surface.
+       Dark mode = absence of data-theme → scoped with :not([data-theme=light]). */
+    html:not([data-theme="light"]) .hero-copy{
+      background:
+        linear-gradient(115deg, transparent 30%, rgba(255,255,255,.12) 43%, transparent 56%),
+        linear-gradient(135deg, rgba(255,255,255,.08) 0%, rgba(255,255,255,.02) 100%);
+      -webkit-backdrop-filter:blur(26px) saturate(145%);
+      backdrop-filter:blur(26px) saturate(145%);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:30px;
+      padding:44px 46px;
+      box-shadow:0 24px 70px rgba(0,0,0,.38),
+                 inset 0 1px 0 rgba(255,255,255,.16);
+    }
+    @media (min-width:1025px){
+      html:not([data-theme="light"]) .feat-card,
+      html:not([data-theme="light"]) .testi-card,
+      html:not([data-theme="light"]) .inno-card,
+      html:not([data-theme="light"]) .stat-box,
+      html:not([data-theme="light"]) .price-card,
+      html:not([data-theme="light"]) .legal-card,
+      html:not([data-theme="light"]) .faq-item-l,
+      html:not([data-theme="light"]) .ment-card,
+      html:not([data-theme="light"]) .plan-tile,
+      html:not([data-theme="light"]) .f-newsletter,
+      html:not([data-theme="light"]) .cookie-inner,
+      html:not([data-theme="light"]) .dash-overlay,
+      html:not([data-theme="light"]) nav.solid,
+      html:not([data-theme="light"]) .fbadge,
+      html:not([data-theme="light"]) .ps-card,
+      html:not([data-theme="light"]) .ps-bell,
+      html:not([data-theme="light"]) .app-badge,
+      html:not([data-theme="light"]) .f-social,
+      html:not([data-theme="light"]) .f-app-btn{
+        background:
+          linear-gradient(115deg, transparent 32%, rgba(255,255,255,.09) 44%, transparent 56%),
+          linear-gradient(135deg, rgba(255,255,255,.08) 0%, rgba(255,255,255,.02) 100%) !important;
+        -webkit-backdrop-filter:blur(22px) saturate(150%);
+        backdrop-filter:blur(22px) saturate(150%);
+        border:1px solid rgba(255,255,255,.13) !important;
+        box-shadow:0 14px 44px rgba(0,0,0,.35),
+                   inset 0 1px 0 rgba(255,255,255,.13) !important;
+      }
+      html:not([data-theme="light"]) .price-card.hot{
+        background:
+          linear-gradient(135deg, rgba(60,90,224,.24) 0%, rgba(255,255,255,.04) 100%) !important;
+        border-color:rgba(107,138,255,.42) !important;
+        box-shadow:0 22px 60px rgba(60,90,224,.30),
+                   inset 0 1px 0 rgba(255,255,255,.18) !important;
+      }
+      html:not([data-theme="light"]) nav.solid{
+        background:linear-gradient(135deg, rgba(12,16,44,.55) 0%, rgba(12,16,44,.32) 100%) !important;
+        -webkit-backdrop-filter:blur(26px) saturate(150%);
+        backdrop-filter:blur(26px) saturate(150%);
+      }
+    }
+
+    /* ════════════ MOBILE — targeted glass (nav + hero only) ════════════
+       backdrop-filter stays disabled on the other surfaces (scroll perf);
+       these two are cheap — nav is 1 layer, hero-copy only at the top. */
+    @media (max-width:1024px){
+      nav.solid, .hero-copy{
+        -webkit-backdrop-filter:blur(18px) saturate(150%) !important;
+        backdrop-filter:blur(18px) saturate(150%) !important;
+      }
+      [data-theme="light"] .hero-copy{
+        background:linear-gradient(135deg, rgba(255,255,255,.40) 0%, rgba(255,255,255,.16) 100%) !important;
+        border-color:rgba(255,255,255,.6) !important;
+        padding:34px 26px !important;
+      }
+      html:not([data-theme="light"]) .hero-copy{
+        background:linear-gradient(135deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,.03) 100%) !important;
+        border-color:rgba(255,255,255,.14) !important;
+        padding:34px 26px !important;
+      }
+      [data-theme="light"] nav.solid{
+        background:linear-gradient(135deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,.4) 100%) !important;
+      }
+      html:not([data-theme="light"]) nav.solid{
+        background:linear-gradient(135deg, rgba(12,16,44,.55) 0%, rgba(12,16,44,.34) 100%) !important;
+      }
+    }
 
     /* ── THEME TOGGLE BUTTON ── */
     .theme-toggle {
