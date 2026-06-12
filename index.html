@@ -1972,6 +1972,19 @@
     html.dbg-off-marquee .showcase-track{
       animation:none!important;
     }
+    html.dbg-off-cv #features,
+    html.dbg-off-cv #showcase,
+    html.dbg-off-cv #testimonials,
+    html.dbg-off-cv #how,
+    html.dbg-off-cv #innovation,
+    html.dbg-off-cv #stats{
+      content-visibility:visible!important;
+      contain-intrinsic-size:auto!important;
+    }
+    /* Nuclear: kill every CSS animation + transition at once */
+    html.dbg-off-allanim *{
+      animation:none!important;transition:none!important;
+    }
 
     #dbg-panel{
       position:fixed;right:12px;bottom:12px;z-index:99999;
@@ -1995,7 +2008,7 @@
     #dbg-panel .dbg-reset{background:rgba(107,138,255,.25);border-color:rgba(107,138,255,.5);text-align:center}
     #dbg-panel .dbg-reset::before{content:''}
   </style>
-  <script type="module" crossorigin src="./assets/index-ChsGEOev.js"></script>
+  <script type="module" crossorigin src="./assets/index-CIaWmmCc.js"></script>
 </head>
 <body>
 
@@ -4532,7 +4545,10 @@ document.getElementById('navBurger').addEventListener('click',()=>{
   var FLAGS = [
     { key:'reveal',  label:'Reveal (apparition au scroll)' },
     { key:'marquee', label:'Marquees (ticker/témoins/showcase)' },
-    { key:'bgpaths', label:'Lignes animées du fond' }
+    { key:'bgpaths', label:'Lignes animées du fond' },
+    { key:'globe',   label:'Globe (rendu canvas continu)' },
+    { key:'cv',      label:'content-visibility (sections)' },
+    { key:'allanim', label:'☢ TOUT couper (anim + transitions)' }
   ];
 
   function isOff(key){ try { return localStorage.getItem('dbg-off-'+key)==='1'; } catch(e){ return false; } }
@@ -4550,6 +4566,7 @@ document.getElementById('navBurger').addEventListener('click',()=>{
     try { localStorage.setItem('dbg-off-'+key, off?'1':'0'); } catch(e){}
     document.documentElement.classList.toggle('dbg-off-'+key, off);
     if(key==='bgpaths' && window.__bgPaths) window.__bgPaths.setEnabled(!off);
+    if(key==='globe'   && window.__globe)   window.__globe.setEnabled(!off);
     // reveal off: force any not-yet-revealed content visible
     if(key==='reveal' && off){
       document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('up'); });
