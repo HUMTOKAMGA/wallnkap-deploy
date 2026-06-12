@@ -1546,13 +1546,8 @@
     }
     [data-theme="light"] .ew-dot{ background:#B87612; }
     [data-theme="light"] .hero-desc{ color:#27314F; }
-    /* Mobile: backdrop-filter is force-disabled (perf) → opaque-ish glass fallback */
+    /* Mobile: hero badge pill stays readable without the glass card */
     @media(max-width:1024px){
-      [data-theme="light"] .hero-copy{
-        background:rgba(255,255,255,.78);
-        border-color:rgba(255,255,255,.8);
-        padding:34px 26px;
-      }
       [data-theme="light"] .eyebrow{ background:rgba(255,255,255,.85); }
     }
 
@@ -1895,29 +1890,30 @@
       }
     }
 
-    /* ════════════ MOBILE — targeted glass (nav + hero only) ════════════
-       backdrop-filter stays disabled on the other surfaces (scroll perf);
-       these two are cheap — nav is 1 layer, hero-copy only at the top. */
+    /* ════════════ MOBILE — targeted glass (nav only) ════════════
+       Only the nav keeps the glass on mobile (cheap, single layer). The hero
+       copy is intentionally FREE (no glass block) — text sits over the photo. */
     @media (max-width:1024px){
-      nav.solid, .hero-copy{
+      nav.solid{
         -webkit-backdrop-filter:blur(18px) saturate(150%) !important;
         backdrop-filter:blur(18px) saturate(150%) !important;
-      }
-      [data-theme="light"] .hero-copy{
-        background:linear-gradient(135deg, rgba(255,255,255,.40) 0%, rgba(255,255,255,.16) 100%) !important;
-        border-color:rgba(255,255,255,.6) !important;
-        padding:34px 26px !important;
-      }
-      html:not([data-theme="light"]) .hero-copy{
-        background:linear-gradient(135deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,.03) 100%) !important;
-        border-color:rgba(255,255,255,.14) !important;
-        padding:34px 26px !important;
       }
       [data-theme="light"] nav.solid{
         background:linear-gradient(135deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,.4) 100%) !important;
       }
       html:not([data-theme="light"]) nav.solid{
         background:linear-gradient(135deg, rgba(12,16,44,.55) 0%, rgba(12,16,44,.34) 100%) !important;
+      }
+      /* Hero: no glass card on mobile — free over the photo, like before */
+      [data-theme="light"] .hero-copy,
+      html:not([data-theme="light"]) .hero-copy{
+        background:none !important;
+        -webkit-backdrop-filter:none !important;
+        backdrop-filter:none !important;
+        border:0 !important;
+        border-radius:0 !important;
+        box-shadow:none !important;
+        padding:0 !important;
       }
     }
 
