@@ -1524,11 +1524,14 @@
        Instead of a flat opaque scrim, frost the photo *behind the copy* with a
        glossy, near-transparent glass panel. The backdrop blur is what makes
        the text readable while keeping the luxurious see-through glass look. */
-    [data-theme="light"] #hero-bg{ opacity:.72; }
+    /* Hero light mode: reproduce the dark-mode mood — image at low opacity
+       over a dark canvas, instead of a washed-out near-white veil. */
+    [data-theme="light"] #hero{ background:#0a0f24; }
+    [data-theme="light"] #hero-bg{ opacity:.6; }
     [data-theme="light"] .hero-copy{
       background:
-        linear-gradient(115deg, transparent 30%, rgba(255,255,255,.30) 43%, transparent 56%),
-        linear-gradient(135deg, rgba(255,255,255,.22) 0%, rgba(255,255,255,.05) 100%);
+        linear-gradient(115deg, transparent 30%, rgba(255,255,255,.40) 43%, transparent 56%),
+        linear-gradient(135deg, rgba(255,255,255,.82) 0%, rgba(255,255,255,.66) 100%);
       -webkit-backdrop-filter:blur(28px) saturate(160%);
       backdrop-filter:blur(28px) saturate(160%);
       border:1px solid rgba(255,255,255,.6);
@@ -1915,6 +1918,12 @@
         box-shadow:none !important;
         padding:0 !important;
       }
+      /* The hero photo is dark on mobile too → light-mode text must be light
+         so it stays readable directly over the photo (no glass card here). */
+      [data-theme="light"] .hero-copy h1{ color:#FFFFFF; }
+      [data-theme="light"] .hero-desc{ color:#D6E0FA; }
+      [data-theme="light"] .hs-n{ color:#FFFFFF; }
+      [data-theme="light"] .hs-l{ color:#C2CEEC; }
     }
 
     /* ── THEME TOGGLE BUTTON ── */
