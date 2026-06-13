@@ -2129,7 +2129,7 @@
     }
 
   </style>
-  <script type="module" crossorigin src="./assets/index-BszFJzu1.js"></script>
+  <script type="module" crossorigin src="./assets/index-inYSnwA7.js"></script>
 </head>
 <body>
 
@@ -4031,6 +4031,7 @@
     document.querySelectorAll('.lang-btn').forEach(function(b){
       b.classList.toggle('active', b.getAttribute('data-lang') === lang);
     });
+    document.dispatchEvent(new CustomEvent('wk-lang-change', { detail: { lang: lang } }));
   }
 
   window.wkI18n = { applyLang: applyLang, getCurrentLang: function(){ return currentLang; } };
@@ -4096,27 +4097,16 @@ addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 40), {p
   if(isMobile){ drawStatic(); } else { drawAnimated(); }
 })();
 
-// ── Scroll reveal
-const obs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('up'); });
-},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-// ── Counter animation
-function animCount(el){
-  if(el.dataset.static){ el.textContent=el.dataset.static; return; }
-  const target=parseInt(el.dataset.count), suffix=el.dataset.suffix||'', dur=1800, t0=performance.now();
-  const step=now=>{
-    const p=Math.min((now-t0)/dur,1), e=1-Math.pow(1-p,3);
-    el.textContent=Math.round(e*target).toLocaleString('fr-FR')+suffix;
-    if(p<1) requestAnimationFrame(step);
-  };
-  requestAnimationFrame(step);
-}
-const cobs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ animCount(e.target); cobs.unobserve(e.target); }});
-},{threshold:.5});
-document.querySelectorAll('[data-count],[data-static]').forEach(el=>cobs.observe(el));
+// ── Reveals & compteurs : gérés par gsap-enhance.js (module).
+//    Filet de sécurité : si le module n'a pas démarré (erreur/blocage réseau),
+//    on rend tout le contenu .reveal visible et on fige les compteurs.
+setTimeout(()=>{
+  if(window.__wkAnim) return; // gsap-enhance a pris la main
+  document.querySelectorAll('.reveal').forEach(el=>el.classList.add('up'));
+  document.querySelectorAll('[data-count],[data-static]').forEach(el=>{
+    el.textContent = el.dataset.static || ((parseInt(el.dataset.count,10)||0).toLocaleString('fr-FR')+(el.dataset.suffix||''));
+  });
+}, 1500);
 
 // ── Pricing toggle
 const ptM=document.getElementById('ptM'), ptY=document.getElementById('ptY');
@@ -4140,8 +4130,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 
-// Hero reveals on load
-setTimeout(()=>document.querySelectorAll('#hero .reveal').forEach(el=>el.classList.add('up')),120);
+// Hero reveals on load — fallback si gsap-enhance.js n'a pas pris la main
+setTimeout(()=>{ if(!window.__wkAnim) document.querySelectorAll('#hero .reveal').forEach(el=>el.classList.add('up')); },120);
 
 // ── Hamburger menu (RGAA 7.1 — aria-expanded + aria-hidden)
 function closeMobileNav(){
