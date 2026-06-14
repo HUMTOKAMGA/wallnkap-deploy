@@ -233,6 +233,7 @@
     .hs-n{
       font-family:'Space Grotesk',sans-serif;
       font-size:28px;font-weight:800;color:var(--text);
+      font-variant-numeric:tabular-nums;font-feature-settings:"tnum";
     }
     .hs-l{font-size:13px;color:var(--muted);margin-top:4px}
 
@@ -710,6 +711,7 @@
       font-size:clamp(40px,5vw,62px);font-weight:800;line-height:1;
       background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
       margin-bottom:12px;
+      font-variant-numeric:tabular-nums;font-feature-settings:"tnum";
     }
     .stat-l{font-size:15px;color:var(--muted);font-weight:500}
 
@@ -1051,18 +1053,8 @@
       .fbadge{background:rgba(6,9,30,.97)!important}
       .nav-mobile{background:rgba(6,9,30,.99)!important}
 
-      /* Remove floating badge animations — unnecessary GPU work on mobile */
-      .fb1,.fb2,.fb3{animation:none!important}
-
-      /* Hero glows: remove expensive filter:blur entirely */
-      .hg1,.hg2{display:none}
-
-      /* Disable float animation on phone mockup */
-      .phone-wrap{animation:none}
-      .phone-shadow{animation:none}
-
-      /* box-shadow animations repaint every frame on the main thread — kill on mobile */
-      .draw-orb{animation:none!important}
+      /* Animations réactivées sur mobile (lévitation badges/téléphone, glows hero, draw-orb).
+         Toutes en transform/opacity → GPU. draw-orb tourne aussi (à surveiller sur très vieux mobiles). */
 
       /* Isolate the infinite marquees on their own GPU layer so they don't
          repaint siblings, and skip their work while scrolled off-screen.
@@ -2328,7 +2320,7 @@
     }
 
   </style>
-  <script type="module" crossorigin src="./assets/index-CC41iJyC.js"></script>
+  <script type="module" crossorigin src="./assets/index-DHO0Ao1V.js"></script>
 </head>
 <body>
 
