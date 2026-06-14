@@ -83,9 +83,11 @@
     nav{
       position:fixed;top:0;width:100%;z-index:1000;
       padding:20px 60px;
-      display:flex;align-items:center;justify-content:space-between;
+      display:flex;align-items:center;justify-content:flex-start;gap:44px;
       transition:all .35s cubic-bezier(.4,0,.2,1);
     }
+    /* contrôles de droite regroupés et alignés (langue · thème · CTA · burger) */
+    .nav-actions{display:flex;align-items:center;gap:12px;margin-left:auto}
     nav.solid{
       background:rgba(6,9,30,.9);
       backdrop-filter:blur(24px);
@@ -107,8 +109,45 @@
       -webkit-background-clip:text;-webkit-text-fill-color:transparent;
     }
     .nav-links{display:flex;gap:36px;list-style:none}
-    .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
-    .nav-links a:hover{color:var(--text)}
+
+    /* ── NAV · scrim de lisibilité (haut de page, hero sombre dans les 2 thèmes) ── */
+    nav::before{
+      content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
+      background:linear-gradient(to bottom,rgba(6,9,30,.62),rgba(6,9,30,0));
+      transition:opacity .35s ease;
+    }
+    nav.solid::before{opacity:0}
+
+    /* ── NAV liens · contraste adapté top / solid × clair / sombre ── */
+    .nav-links a{
+      position:relative;text-decoration:none;font-size:14px;font-weight:600;
+      color:#DCE3F5;text-shadow:0 1px 10px rgba(0,0,0,.45);
+      transition:color .2s;
+    }
+    .nav-links a:hover,.nav-links a:focus-visible{color:#fff}
+    nav.solid .nav-links a{color:#AEB9D6;text-shadow:none}
+    nav.solid .nav-links a:hover,nav.solid .nav-links a:focus-visible{color:#fff}
+    [data-theme="light"] nav.solid .nav-links a{color:#33406B}
+    [data-theme="light"] nav.solid .nav-links a:hover,
+    [data-theme="light"] nav.solid .nav-links a:focus-visible{color:#0A1130}
+    /* soulignement animé (vivant / fluide) + indicateur de section active */
+    .nav-links a::after{
+      content:'';position:absolute;left:0;right:0;bottom:-7px;height:2px;border-radius:2px;
+      background:var(--grad);transform:scaleX(0);transform-origin:center;
+      transition:transform .3s cubic-bezier(.4,0,.2,1);
+    }
+    .nav-links a:hover::after,
+    .nav-links a:focus-visible::after,
+    .nav-links a.is-active::after{transform:scaleX(1)}
+    .nav-links a.is-active{color:#fff}
+    [data-theme="light"] nav.solid .nav-links a.is-active{color:#0A1130}
+
+    /* ── A11Y · focus visible homogène sur toute la nav ── */
+    .nav-links a:focus-visible,.nav-cta:focus-visible,.lang-btn:focus-visible,
+    .theme-toggle:focus-visible,.nav-burger:focus-visible,.nav-logo:focus-visible{
+      outline:2px solid var(--blue2);outline-offset:3px;border-radius:8px;
+    }
+
     .nav-cta{
       display:flex;align-items:center;gap:8px;
       background:var(--grad);color:#fff;
@@ -995,6 +1034,8 @@
       .feat-grid{grid-template-columns:1fr}
       .inno-grid{grid-template-columns:1fr}
       h1{font-size:36px}
+      /* CTA déjà présent dans le tiroir mobile → on évite la surcharge de la barre */
+      .nav-actions .nav-cta{display:none}
     }
 
     /* ── MOBILE SCROLL PERFORMANCE ── */
@@ -1146,7 +1187,9 @@
       display:none;flex-direction:column;gap:5px;cursor:pointer;
       padding:6px;background:none;border:none;
     }
-    .nav-burger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .25s}
+    .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all .25s}
+    /* en haut sur hero sombre → barres claires ; barre opaque → couleur du thème */
+    nav.solid .nav-burger span{background:var(--text)}
     .nav-mobile{
       display:none;position:fixed;top:60px;left:0;right:0;
       background:rgba(6,9,30,.96);backdrop-filter:blur(24px);
@@ -1549,22 +1592,26 @@
     /* ── LANG TOGGLE ── */
     .lang-toggle{
       display:flex;align-items:center;gap:2px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.09);
+      border:1px solid rgba(255,255,255,.16);
+      backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
       border-radius:100px;
       padding:3px;
-      margin-right:4px;
     }
     .lang-btn{
       background:none;border:none;cursor:pointer;
       font-family:'Space Grotesk',sans-serif;
       font-size:12px;font-weight:700;letter-spacing:.04em;
-      color:var(--muted);
+      color:#CCD5EC;
       padding:5px 10px;border-radius:100px;
       transition:all .2s;
     }
     .lang-btn.active{background:var(--grad);color:#fff;box-shadow:0 2px 8px rgba(60,90,224,.3)}
-    .lang-btn:hover:not(.active){color:var(--text);background:rgba(255,255,255,.06)}
+    .lang-btn:hover:not(.active){color:#fff;background:rgba(255,255,255,.12)}
+    /* mode clair, barre opaque : texte/contour sombres pour le contraste */
+    [data-theme="light"] nav.solid .lang-toggle{background:rgba(0,0,50,.05);border-color:rgba(0,0,50,.16)}
+    [data-theme="light"] nav.solid .lang-btn:not(.active){color:#33406B}
+    [data-theme="light"] nav.solid .lang-btn:hover:not(.active){color:#0A1130;background:rgba(0,0,50,.06)}
     .nav-lang-mobile{
       display:none;align-items:center;justify-content:center;gap:8px;
       padding:12px 0 4px;
@@ -1578,17 +1625,18 @@
 
     /* ── LIGHT THEME ── */
     [data-theme="light"] {
-      --bg: #F2F5FF;
-      --bg2: #E8EDFF;
-      --navy: #EBF0FF;
+      /* Palette « Bleu Acier · Periwinkle » — fond teinté pour faire ressortir le verre */
+      --bg: #DDE4F4;
+      --bg2: #D2DCF0;
+      --navy: #E3E9F7;
       --card: rgba(255,255,255,0.7);
       --blue: #3C5AE0;
       --blue2: #3C5AE0;
       --blue3: #6B8AFF;
       --silver: #5A6A8A;
-      --text: #080C22;
-      --muted: #4A5580;
-      --border: rgba(0,0,50,0.1);
+      --text: #141A3D;
+      --muted: #44507A;
+      --border: rgba(20,26,61,0.12);
       --grad: linear-gradient(135deg,#3C5AE0 0%,#7A9AFF 100%);
       --gold: #B87612;
       --gold2: #D49210;
@@ -1632,12 +1680,12 @@
 
     /* Nav */
     [data-theme="light"] nav.solid {
-      background: rgba(242,245,255,.95);
-      box-shadow: 0 4px 24px rgba(0,0,80,.1);
+      background: rgba(221,228,244,.92);
+      box-shadow: 0 4px 24px rgba(20,26,61,.12);
     }
     [data-theme="light"] .nav-mobile {
-      background: rgba(242,245,255,.98);
-      box-shadow: 0 4px 24px rgba(0,0,80,.12);
+      background: rgba(221,228,244,.98);
+      box-shadow: 0 4px 24px rgba(20,26,61,.14);
     }
     /* Floating badges */
     [data-theme="light"] .fbadge {
@@ -1663,6 +1711,52 @@
     /* Innovation strip */
     [data-theme="light"] #innovation {
       background: linear-gradient(135deg,rgba(60,90,224,.05) 0%,rgba(107,138,255,.03) 100%);
+    }
+
+    /* ════════════ HIVER GLACIAL · mode clair ════════════ */
+    /* sections positionnées (pour neige/aurores en couches) */
+    #concept,#features{position:relative;overflow:hidden}
+    #concept>.section,#features>.section{position:relative;z-index:1}
+    /* dégradés glaciaux */
+    [data-theme="light"] #concept,
+    [data-theme="light"] #features{
+      background:linear-gradient(180deg,#E1E8F7 0%,#CCD7F0 55%,#DCE3F6 100%);
+    }
+    [data-theme="light"] #innovation{
+      background:linear-gradient(180deg,#DCE3F6 0%,#C7D2EE 55%,#D8E0F4 100%);
+    }
+    /* aurores periwinkle dérivantes (concept & features) */
+    [data-theme="light"] #concept::before,
+    [data-theme="light"] #features::before{
+      content:'';position:absolute;inset:-15%;z-index:0;pointer-events:none;
+      background:
+        radial-gradient(40% 50% at 16% 12%,rgba(157,180,240,.55),transparent 70%),
+        radial-gradient(36% 46% at 86% 82%,rgba(185,200,242,.5),transparent 72%),
+        radial-gradient(30% 38% at 60% 32%,rgba(124,150,225,.32),transparent 70%);
+      filter:blur(34px);
+      animation:wkAurora 16s ease-in-out infinite alternate;
+    }
+    @keyframes wkAurora{
+      0%{transform:translate3d(0,0,0) scale(1)}
+      100%{transform:translate3d(0,-24px,0) scale(1.09)}
+    }
+    /* ambient techno + glow concept recolorés en periwinkle */
+    [data-theme="light"] #innovation .inno-ambient{
+      background:
+        radial-gradient(34% 46% at 14% 18%,rgba(157,180,240,.6),transparent 70%),
+        radial-gradient(32% 44% at 86% 84%,rgba(185,200,242,.5),transparent 72%);
+    }
+    [data-theme="light"] .concept-glow{
+      background:
+        radial-gradient(45% 45% at 28% 22%,rgba(157,180,240,.6),transparent 70%),
+        radial-gradient(42% 42% at 82% 86%,rgba(185,200,242,.45),transparent 72%);
+    }
+    /* couche neige (canvas, injectée par GSAP) */
+    .wk-snow{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;transition:opacity 1s ease}
+    [data-theme="light"] .wk-snow{opacity:1}
+    @media (prefers-reduced-motion: reduce){
+      [data-theme="light"] #concept::before,
+      [data-theme="light"] #features::before{animation:none}
     }
     /* Inno cards */
     [data-theme="light"] .inno-card {
@@ -1691,7 +1785,7 @@
       box-shadow: 0 16px 48px rgba(60,90,224,.15);
     }
     /* Footer */
-    [data-theme="light"] footer { background: #f0f4ff; }
+    [data-theme="light"] footer { background: #D6DEF0; }
     [data-theme="light"] .f-newsletter {
       background: rgba(255,255,255,.75);
       border-color: rgba(0,0,80,.08);
@@ -1866,6 +1960,7 @@
        (perf) — mobile keeps the readable semi-opaque backgrounds above. */
     @media (min-width:1025px){
       [data-theme="light"] .feat-card,
+      [data-theme="light"] .cp,
       [data-theme="light"] .testi-card,
       [data-theme="light"] .inno-card,
       [data-theme="light"] .stat-box,
@@ -2006,25 +2101,44 @@
     .theme-toggle {
       width: 38px; height: 38px;
       border-radius: 12px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.1);
+      /* visible d'emblée sur le hero sombre (les 2 thèmes, barre transparente) */
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.22);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
       cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      transition: all .2s;
-      color: var(--muted);
-      margin-right: 4px;
+      transition: background .2s, border-color .2s, color .2s, transform .12s;
+      color: #EAF0FF;
       flex-shrink: 0;
     }
-    [data-theme="light"] .theme-toggle {
-      background: rgba(0,0,50,.05);
-      border-color: rgba(0,0,50,.12);
+    /* barre opaque en mode clair → contour + icône foncés pour le contraste */
+    [data-theme="light"] nav.solid .theme-toggle {
+      background: rgba(0,0,50,.06);
+      border-color: rgba(0,0,50,.2);
+      color: #2A3556;
     }
-    .theme-toggle:hover { background: rgba(255,255,255,.1); color: var(--text); }
-    [data-theme="light"] .theme-toggle:hover { background: rgba(0,0,50,.08); }
+    .theme-toggle:hover {
+      background: rgba(255,255,255,.18); color: #fff;
+      border-color: rgba(255,255,255,.32);
+      box-shadow: 0 0 18px rgba(60,90,224,.35);
+    }
+    [data-theme="light"] nav.solid .theme-toggle:hover {
+      background: rgba(0,0,50,.1); color:#0A1130; border-color: rgba(0,0,50,.28);
+    }
+    .theme-toggle:active { transform: scale(.92); }
     .theme-toggle .icon-sun { display: block; }
     .theme-toggle .icon-moon { display: none; }
     [data-theme="light"] .theme-toggle .icon-sun { display: none; }
     [data-theme="light"] .theme-toggle .icon-moon { display: block; }
+    /* animation de bascule : l'icône qui apparaît tourne et grossit (rejouée à chaque switch) */
+    .theme-toggle .icon-sun, .theme-toggle .icon-moon { animation: ttSwap .4s cubic-bezier(.34,1.56,.64,1); }
+    @keyframes ttSwap{
+      0%{ transform: rotate(-120deg) scale(.3); opacity:0 }
+      100%{ transform: none; opacity:1 }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .theme-toggle .icon-sun,.theme-toggle .icon-moon{ animation:none }
+    }
 
     /* ── GLOBAL / GLOBE SECTION ── */
     #global {
@@ -2214,7 +2328,7 @@
     }
 
   </style>
-  <script type="module" crossorigin src="./assets/index-Ka1JyBMJ.js"></script>
+  <script type="module" crossorigin src="./assets/index-CC41iJyC.js"></script>
 </head>
 <body>
 
@@ -2235,21 +2349,23 @@
     <li><a href="#pricing" data-i18n="nav.pricing">Tarifs</a></li>
     <li><a href="#legal" data-i18n="nav.legal">Légal &amp; RGPD</a></li>
   </ul>
-  <div class="lang-toggle" role="group" aria-label="Langue du site">
-    <button class="lang-btn active" data-lang="fr" aria-pressed="true" aria-label="Français">FR</button>
-    <button class="lang-btn" data-lang="en" aria-pressed="false" aria-label="English">EN</button>
+  <div class="nav-actions">
+    <div class="lang-toggle" role="group" aria-label="Langue du site">
+      <button class="lang-btn active" data-lang="fr" aria-pressed="true" aria-label="Français">FR</button>
+      <button class="lang-btn" data-lang="en" aria-pressed="false" aria-label="English">EN</button>
+    </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Basculer le thème" aria-pressed="false">
+      <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <a href="#download" class="nav-cta">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-6 2h12v2H6v-2z"/></svg>
+      <span data-i18n="nav.cta">Télécharger</span>
+    </a>
+    <button class="nav-burger" id="navBurger" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="navMobile">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
   </div>
-  <button class="theme-toggle" id="themeToggle" aria-label="Basculer le thème" aria-pressed="false">
-    <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-    <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-  </button>
-  <a href="#download" class="nav-cta">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-6 2h12v2H6v-2z"/></svg>
-    <span data-i18n="nav.cta">Télécharger</span>
-  </a>
-  <button class="nav-burger" id="navBurger" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="navMobile">
-    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
-  </button>
 </nav>
 </header>
 <div class="nav-mobile" id="navMobile" aria-hidden="true">
