@@ -395,7 +395,7 @@
     .s-desc{font-size:18px;color:var(--muted);line-height:1.72;max-width:580px}
 
     /* ── CONCEPT ── */
-    #concept{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    #concept{background:transparent}
     .concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
     .concept-img-box{
       height:480px;border-radius:24px;overflow:hidden;
@@ -481,9 +481,7 @@
     /* ── INNOVATION STRIP ── */
     #innovation{
       padding:100px 60px;
-      background:linear-gradient(135deg,rgba(60,90,224,.07) 0%,rgba(107,138,255,.05) 100%);
-      border-top:1px solid rgba(60,90,224,.15);
-      border-bottom:1px solid rgba(60,90,224,.15);
+      background:transparent;
     }
     .inno-header{text-align:center;margin-bottom:60px}
     .inno-grid{
@@ -535,6 +533,32 @@
       .inno-ambient{animation:none!important}
     }
 
+    /* ════════════ FOND FIXE CROSS-FADE (Concept · Technologie · Monde · Tarifs) ════════════ */
+    /* Une scène fixe derrière le contenu (z-index:-1), visible à travers les sections
+       transparentes. L'opacité de chaque image est pilotée par sa position à l'écran
+       (getBoundingClientRect → robuste mobile, insensible à content-visibility) :
+       en scrollant d'une section à l'autre, une image se fond dans la suivante au même
+       endroit → vraie continuité d'image. */
+    #bg-stage{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+    .bg-img{
+      position:absolute;left:0;right:0;top:-7%;bottom:-7%;   /* marge pour le parallax */
+      background-size:cover;background-position:center center;background-repeat:no-repeat;
+      opacity:0;                       /* piloté en JS selon la section visible */
+      will-change:opacity,transform;
+      transform:translate3d(0,0,0);
+    }
+    /* ── images · mode sombre (défaut) ── */
+    .bg-img[data-sec="concept"]   {background-image:url(images/back1_sombre.png)}
+    .bg-img[data-sec="innovation"]{background-image:url(images/back2_sombre.png)}
+    .bg-img[data-sec="global"]    {background-image:url(images/back3_sombre.png)}
+    .bg-img[data-sec="pricing"]   {background-image:url(images/back4_sombre.png)}
+    .bg-img[data-sec="download"]  {background-image:url(images/hands.webp)} /* image unique (clair+sombre) */
+    /* ── images · mode clair ── */
+    [data-theme="light"] .bg-img[data-sec="concept"]   {background-image:url(images/back1.png)}
+    [data-theme="light"] .bg-img[data-sec="innovation"]{background-image:url(images/back2.png)}
+    [data-theme="light"] .bg-img[data-sec="global"]    {background-image:url(images/back3.png)}
+    [data-theme="light"] .bg-img[data-sec="pricing"]   {background-image:url(images/back4.png)}
+
     /* ── FEATURES ── */
     #features .s-title{text-align:center}
     #features .s-label{display:block;text-align:center}
@@ -572,7 +596,7 @@
     .feat-desc{color:var(--muted);font-size:14px;line-height:1.65}
 
     /* ── HOW IT WORKS ── */
-    #how{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    #how{background:transparent}
     .how-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
     .steps{display:flex;flex-direction:column}
     .step{display:flex;gap:24px;align-items:flex-start;padding:26px 0;position:relative}
@@ -740,7 +764,7 @@
     .testi-role{font-size:12px;color:var(--muted);margin-top:2px}
 
     /* ── PRICING ── */
-    #pricing{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    #pricing{background:transparent}
     .pricing-header{text-align:center;margin-bottom:56px}
     .pt-toggle{
       display:inline-flex;background:var(--card);border:1px solid var(--border);
@@ -2134,9 +2158,7 @@
 
     /* ── GLOBAL / GLOBE SECTION ── */
     #global {
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      background: transparent;
       overflow: hidden;
       position: relative;
     }
@@ -2320,9 +2342,18 @@
     }
 
   </style>
-  <script type="module" crossorigin src="./assets/index-DHO0Ao1V.js"></script>
+  <script type="module" crossorigin src="./assets/index-DaS1D7td.js"></script>
 </head>
 <body>
+
+<!-- ═══ FOND FIXE CROSS-FADE (Concept · Technologie · Monde · Tarifs) ═══ -->
+<div id="bg-stage" aria-hidden="true">
+  <div class="bg-img" data-sec="concept"></div>
+  <div class="bg-img" data-sec="innovation"></div>
+  <div class="bg-img" data-sec="global"></div>
+  <div class="bg-img" data-sec="pricing"></div>
+  <div class="bg-img" data-sec="download"></div>
+</div>
 
 <!-- Skip link (RGAA 12.1) -->
 <a href="#main-content" class="skip-link">Aller au contenu principal</a>
@@ -3252,7 +3283,6 @@
 
 <!-- ═══ DOWNLOAD ═══ -->
 <section id="download" style="position:relative">
-  <div style="position:absolute;inset:0;background-image:url('images/hands.webp');background-size:cover;background-position:center;opacity:.07;z-index:0"></div>
   <div class="dl-glow"></div>
   <div class="dl-inner">
     <img src="images/logo.jpg" class="dl-logo reveal" alt="Wallnkap" loading="lazy" decoding="async">
