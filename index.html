@@ -45,7 +45,11 @@
   <meta name="twitter:image" content="https://wallnkap.com/images/banniere.png" />
   <meta name="twitter:image:alt" content="Wallnkap — Application de tontine digitale" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Polices chargées en NON bloquant : preload as=style puis bascule en stylesheet à l'onload.
+       Évite que la requête CSS Google Fonts bloque le 1er rendu (FCP/LCP). display=swap
+       affiche immédiatement le texte avec une police système, puis échange à l'arrivée. -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"></noscript>
   <style>
     :root {
       --bg:      #06091E;
@@ -2342,7 +2346,7 @@
     }
 
   </style>
-  <script type="module" crossorigin src="./assets/index-B84HmEQK.js"></script>
+  <script type="module" crossorigin src="./assets/index-DzmW6gp1.js"></script>
 </head>
 <body>
 
@@ -2362,7 +2366,7 @@
 <header>
 <nav id="nav" aria-label="Navigation principale">
   <a href="/" class="nav-logo" aria-label="Wallnkap — Accueil">
-    <img src="images/logo.jpg" alt="Wallnkap">
+    <img src="images/logo-sm.webp" alt="Wallnkap" width="36" height="36" fetchpriority="high">
     <span class="nav-logo-txt">Wallnkap</span>
   </a>
   <ul class="nav-links">
@@ -3285,7 +3289,7 @@
 <section id="download" style="position:relative">
   <div class="dl-glow"></div>
   <div class="dl-inner">
-    <img src="images/logo.jpg" class="dl-logo reveal" alt="Wallnkap" loading="lazy" decoding="async">
+    <img src="images/logo-sm.webp" class="dl-logo reveal" alt="Wallnkap" width="80" height="80" loading="lazy" decoding="async">
     <h2 class="dl-title reveal d1" data-i18n-html="dl.h2">
       Votre tontine<br>vous attend dans<br><span class="grad">votre poche.</span>
     </h2>
@@ -3913,7 +3917,7 @@
       <!-- Brand -->
       <div class="f-brand">
         <div class="f-brand-logo">
-          <img src="images/logo.jpg" alt="Wallnkap" loading="lazy" decoding="async">
+          <img src="images/logo-sm.webp" alt="Wallnkap" width="42" height="42" loading="lazy" decoding="async">
           <span>Wallnkap</span>
         </div>
         <p class="f-brand-desc" data-i18n-html="footer.tagline">La tontine digitale — épargne collective,<br>transparence et solidarité pour les communautés modernes.</p>
