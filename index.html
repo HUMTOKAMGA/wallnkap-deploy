@@ -548,16 +548,16 @@
       transform:translate3d(0,0,0);
     }
     /* ── images · mode sombre (défaut) ── */
-    .bg-img[data-sec="concept"]   {background-image:url(images/back1_sombre.png)}
-    .bg-img[data-sec="innovation"]{background-image:url(images/back2_sombre.png)}
-    .bg-img[data-sec="global"]    {background-image:url(images/back3_sombre.png)}
-    .bg-img[data-sec="pricing"]   {background-image:url(images/back4_sombre.png)}
+    .bg-img[data-sec="concept"]   {background-image:url(images/back1_sombre.webp)}
+    .bg-img[data-sec="innovation"]{background-image:url(images/back2_sombre.webp)}
+    .bg-img[data-sec="global"]    {background-image:url(images/back3_sombre.webp)}
+    .bg-img[data-sec="pricing"]   {background-image:url(images/back4_sombre.webp)}
     .bg-img[data-sec="download"]  {background-image:url(images/hands.webp)} /* image unique (clair+sombre) */
     /* ── images · mode clair ── */
-    [data-theme="light"] .bg-img[data-sec="concept"]   {background-image:url(images/back1.png)}
-    [data-theme="light"] .bg-img[data-sec="innovation"]{background-image:url(images/back2.png)}
-    [data-theme="light"] .bg-img[data-sec="global"]    {background-image:url(images/back3.png)}
-    [data-theme="light"] .bg-img[data-sec="pricing"]   {background-image:url(images/back4.png)}
+    [data-theme="light"] .bg-img[data-sec="concept"]   {background-image:url(images/back1.webp)}
+    [data-theme="light"] .bg-img[data-sec="innovation"]{background-image:url(images/back2.webp)}
+    [data-theme="light"] .bg-img[data-sec="global"]    {background-image:url(images/back3.webp)}
+    [data-theme="light"] .bg-img[data-sec="pricing"]   {background-image:url(images/back4.webp)}
 
     /* ── FEATURES ── */
     #features .s-title{text-align:center}
@@ -2342,7 +2342,7 @@
     }
 
   </style>
-  <script type="module" crossorigin src="./assets/index-DaS1D7td.js"></script>
+  <script type="module" crossorigin src="./assets/index-B84HmEQK.js"></script>
 </head>
 <body>
 
@@ -4419,9 +4419,12 @@ document.getElementById('navBurger').addEventListener('click',()=>{
   if(window.innerWidth < 1024) return;
 
   let rafId = null;
+  // heroH mis en cache : le lire dans la boucle rAF forcerait un recalcul de layout
+  // à chaque frame de scroll. On le recalcule seulement au resize.
+  let heroH = hero.offsetHeight;
+  addEventListener('resize', () => { heroH = hero.offsetHeight; }, {passive:true});
 
   function updateDepth(){
-    const heroH   = hero.offsetHeight;
     const progress = Math.min(scrollY / heroH, 1);   // 0 at top → 1 at hero bottom
 
     const ty      = scrollY * 0.42;                  // parallax: bg moves at 42% scroll speed
